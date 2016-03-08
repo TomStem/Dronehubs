@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308135304) do
+ActiveRecord::Schema.define(version: 20160308153814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "drones", force: :cascade do |t|
+    t.string   "brand"
+    t.string   "model"
+    t.string   "camera"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "drones", ["user_id"], name: "index_drones_on_user_id", using: :btree
+
+  create_table "jobs", force: :cascade do |t|
+    t.string   "description"
+    t.string   "location"
+    t.datetime "date"
+    t.string   "status"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,4 +57,6 @@ ActiveRecord::Schema.define(version: 20160308135304) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "drones", "users"
+  add_foreign_key "jobs", "users"
 end
