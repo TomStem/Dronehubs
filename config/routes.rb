@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'bids/new'
+
+  get 'bids/create'
+
   root to: 'pages#home'
 
   devise_for :users
