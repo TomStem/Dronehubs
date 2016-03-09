@@ -1,0 +1,12 @@
+<h2>My Drones</h2>
+
+<ul>
+  <% @drones.each do |drone| %>
+  <li>
+    <%= drone.brand %> <%= drone.model %> <%= link_to "Show", owner_drone_path(drone) %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "add a drone", new_owner_drone_path %>
+<%= link_to "back", owner_profile_path %>
