@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'owners/index'
+
+  get 'owners/show'
+
   get 'bids/new'
 
   get 'bids/create'
