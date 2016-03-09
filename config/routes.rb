@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :inquirer do
-  get 'bids/create'
-  end
-
   root to: 'pages#home'
 
   devise_for :users
