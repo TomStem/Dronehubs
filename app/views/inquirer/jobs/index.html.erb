@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Inquirer Jobs</h1>
+  <ul class="list-unstyled">
+  <% @jobs.each do |job| %>
+    <li><%= job.location %></li>
+  <% end %>
+  </ul>
+</div>

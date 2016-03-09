@@ -1,0 +1,2 @@
+module Inquirer::BidsHelper
+end
