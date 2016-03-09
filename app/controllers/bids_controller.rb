@@ -9,5 +9,6 @@ class BidsController < ApplicationController
 
       redirect_to job_path(@job)
     else
+    end
   end
 end
