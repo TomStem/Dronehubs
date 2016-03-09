@@ -4,7 +4,7 @@ class CreateJobs < ActiveRecord::Migration
       t.string :description
       t.string :location
       t.datetime :date
-      t.string :status
+      t.string :status, default: 'open'
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
