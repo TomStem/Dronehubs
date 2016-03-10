@@ -38,7 +38,7 @@ class Owner::DronesController < ApplicationController
   private
 
   def drone_params
-    params.require(:drone).permit(:brand, :model, :camera, :user_id)
+    params.require(:drone).permit(:brand, :model, :camera, :user_id, :photo, :photo_cache)
   end
 
 end
