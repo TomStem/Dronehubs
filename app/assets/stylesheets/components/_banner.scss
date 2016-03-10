@@ -1,9 +1,9 @@
 .banner {
   color: white;
-  background-image: url("drone.jpg");
+  background-image: asset-url("drone.jpg");
   text-align: center;
   height: 80vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */ 
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   align-items: center;
