@@ -20,18 +20,25 @@ class Owner::DronesController < ApplicationController
   end
 
   def edit
+    @drone = Drone.find(params[:id])
   end
 
   def update
+    @drone = Drone.find(params[:id])
+    @drone.update!(drone_params)
+    redirect_to owner_drones_path
   end
 
   def destroy
+    @drone = Drone.find(params[:id])
+    @drone.destroy!
+    redirect_to owner_drones_path
   end
 
   private
 
   def drone_params
-    params.require(:drone).permit(:brand, :model, :camera, :user_id)
+    params.require(:drone).permit(:brand, :model, :camera, :user_id, :photo, :photo_cache)
   end
 
 end

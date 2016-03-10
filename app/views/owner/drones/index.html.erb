@@ -1,12 +1,24 @@
 <h2>My Drones</h2>
 
-<ul>
-  <% @drones.each do |drone| %>
-  <li>
-    <%= drone.brand %> <%= drone.model %> <%= link_to "Show", owner_drone_path(drone) %>
-  </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <% @drones.each do |drone| %>
+    <div class="col-xs-12 col-md-4">
+      <div class="thumbnail">
+        <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
+        <div class="caption">
+          <h3><%= drone.brand %> <%= drone.model %></h3>
+          <p>
+            <%= link_to "Show", owner_drone_path(drone), { class: "btn btn-primary" } %> <%= link_to "Edit", edit_owner_drone_path(drone), { class: "btn btn-primary " } %> <%= link_to "Delete", owner_drone_path(drone) , method: :delete,
+            data: { confirm: "Are you sure you want to delete the #{drone.brand} #{drone.model}?" },
+            class: "btn btn-danger" %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to "add a drone", new_owner_drone_path %>
-<%= link_to "back", owner_profile_path %>
+<%= link_to "Add a drone", new_owner_drone_path, { class: "btn btn-success" } %>
+<%= link_to "Back", owner_profile_path, { class: "btn btn-primary" } %>
