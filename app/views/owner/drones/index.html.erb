@@ -1,12 +1,18 @@
 <h2>My Drones</h2>
 
-<ul>
-  <% @drones.each do |drone| %>
-  <li>
-    <%= drone.brand %> <%= drone.model %> <%= link_to "Show", owner_drone_path(drone) %>
-  </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <% @drones.each do |drone| %>
+    <div class="col-xs-12 col-md-4">
+      <h3><%= drone.brand %> <%= drone.model %></h3>
+      <%= image_tag "http://unsplash.it/200/200", size: "200x200" , alt:"drone-picture" %>
+      <p>
+        <%= link_to "Show", owner_drone_path(drone), { class: "btn btn-primary" } %> <%= link_to "Edit", "#", { class: "btn btn-primary " } %> <%= link_to "Delete", "#" , { class: "btn btn-danger" } %>
+      </p>
+    </div>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to "add a drone", new_owner_drone_path %>
-<%= link_to "back", owner_profile_path %>
+<%= link_to "Add a drone", new_owner_drone_path, { class: "btn btn-success" } %>
+<%= link_to "Back", owner_profile_path, { class: "btn btn-primary" } %>
