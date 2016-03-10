@@ -26,6 +26,9 @@ class Owner::DronesController < ApplicationController
   end
 
   def destroy
+    @drone = Drone.find(params[:id])
+    @drone.destroy!
+    redirect_to owner_drones_path
   end
 
   private
