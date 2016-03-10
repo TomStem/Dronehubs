@@ -1,3 +1,13 @@
-<h2><%= @owner.first_name %></h2>
-<p>description</p>
-<%= link_to "see my Drones", owner_drones_path %>
+<h2><%= @owner.first_name %> <%= @owner.last_name %></h2>
+<p>description:</p>
+<!-- should be nice if there is a popup where you can input the description -->
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum dolorem aspernatur quis, sunt. Sapiente illo laboriosam, laborum provident impedit consequuntur assumenda totam, deleniti veniam magnam quo nostrum. Eaque, perferendis aut.</p>
+
+<%= link_to "see my Drones", owner_drones_path, { class: "btn btn-success" } %>
+
+<p>Current bids:</p>
+<ul>
+  <li>$10 on Job A status: not accepted</li>
+  <li>$15 on Job B status: accepted</li>
+  <li>$20 on Job C status: not accepted</li>
+</ul>
