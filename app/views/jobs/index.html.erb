@@ -1,2 +1,23 @@
-<h1>Jobs#index</h1>
-<p>Find me in app/views/jobs/index.html.erb</p>
+<h1>All currently available jobs</h1>
+<h2>Let the bidding begin</h2>
+<button>
+<%= link_to "Create a new job", new_inquirer_job_path(@job) %>  
+</button>  
+
+  <ul>
+    <% @jobs.each do |job| %>
+    <li>
+      <p><%= job.description %></p>
+      <p>Created by <%= job.user_id %></p>
+        <!-- job.user_id.first_name " " job.user_id.last_name -->
+      <button>
+        <%= link_to "Go to job",  inquirer_job_path(job) %>
+      </button>
+      <button>
+        <%= link_to "Place a bid",  new_job_bid_path(job) %>
+      </button>
+      
+    </li>
+      <% end %>
+  </ul>
+
