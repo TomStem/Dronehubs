@@ -1,0 +1,17 @@
+<h1 class="text-center"> Create a new job </h1>
+
+<div class="container"> 
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <%= simple_form_for(@job) do |f| %>
+      <%= f.error_notification %>
+
+      <%= f.input :description %>
+      <%= f.input :location %>
+      <%= f.input :date %>
+
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
