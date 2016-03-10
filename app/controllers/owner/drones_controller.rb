@@ -20,9 +20,13 @@ class Owner::DronesController < ApplicationController
   end
 
   def edit
+    @drone = Drone.find(params[:id])
   end
 
   def update
+    @drone = Drone.find(params[:id])
+    @drone.update!(drone_params)
+    redirect_to owner_drones_path
   end
 
   def destroy

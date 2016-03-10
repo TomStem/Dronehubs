@@ -1,0 +1,8 @@
+<%= simple_form_for([ :owner, @drone]) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :brand %>
+  <%= f.input :model %>
+  <%= f.input :camera %>
+  <%= f.submit %>
+<% end %>
