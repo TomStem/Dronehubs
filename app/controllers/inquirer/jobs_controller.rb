@@ -14,7 +14,7 @@ module Inquirer
     end
 
     def show
-      @job = Job.find(params[current_user])
+      @job = Job.find(params[:id])
     end
 
     def update
