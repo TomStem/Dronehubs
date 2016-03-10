@@ -8,4 +8,3 @@ class User < ActiveRecord::Base
   has_many :drones, dependent: :destroy # as owner
   has_many :jobs, dependent: :destroy # as inquirer
 end
-  

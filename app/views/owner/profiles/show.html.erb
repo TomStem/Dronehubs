@@ -1,3 +1,31 @@
-<h2><%= @owner.first_name %></h2>
-<p>description</p>
-<%= link_to "see my Drones", owner_drones_path %>
+<div class="container">
+  <div class="description">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+      <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "text-align: center;" %>
+        <h2><%= @owner.first_name %> <%= @owner.last_name %></h2>
+        <p>description:</p>
+        <!-- should be nice if there is a popup where you can input the description -->
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum dolorem aspernatur quis, sunt. Sapiente illo laboriosam, laborum provident impedit consequuntur assumenda totam, deleniti veniam magnam quo nostrum. Eaque, perferendis aut.</p>
+
+      </div>
+      <div class="col-xs-12 col-sm-8">
+
+        <p>My bids:</p>
+        <ul>
+          <li>$10 on Job A status: closed</li>
+          <li>$15 on Job B status: accepted</li>
+          <li>$20 on Job C status: open</li>
+          <% @owner.drones.each do |drone| %>
+          <% drone.bids.each do |bid| %>
+          <li>$<%= bid.amount %> on Job status: <%= bid.status %></li>
+          <% end %>
+          <% end %>
+        </ul>
+
+        <p><%= link_to "see my Drones", owner_drones_path, { class: "btn btn-success" } %></p>
+      </div>
+    </div>
+  </div>
+
+</div>
