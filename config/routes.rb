@@ -24,4 +24,10 @@ Rails.application.routes.draw do
 
     resources :drones
   end
+
+  resources :jobs do
+    collection do
+      get 'latest', to: "jobs#latest"
+    end
+  end
 end
