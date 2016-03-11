@@ -38,6 +38,61 @@
     </div>
   </div>
 </div>
-<div class="container padded">
-
+<div class="container padded"> 
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>The latest offers</h2>
+        </div>
+      </div>
+      <hr>
+      <% @latest_jobs.each do |job| %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <p>Created by <%= job.user.first_name %></p>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <p><%= job.description %></p>
+        </div>
+      </div> 
+      <% end %>
+      <div class="row text-center">
+        <div class="coll-xs-12">
+          <%= link_to "See all open jobs",  jobs_path(@job), { class: "btn btn-primary" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+​
+<div class="container padded"> 
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Check out our latest drone providers</h2>
+        </div>
+      </div>
+      <hr>
+      <% @latest_owners.each do |user| %>
+          <p><%= user.first_name %></p>
+​
+      <% user.drones.each do |drone|%>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: url('<%= image_path drone.photo[0] %>');">
+          <div class="card-description">
+            <h2><%= user.first_name %></h2>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+      <div class="row text-center">
+        <div class="coll-xs-12">
+          <%= link_to "Check out all our providers",  owners_path, { class: "btn btn-primary" } %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
