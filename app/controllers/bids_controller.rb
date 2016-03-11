@@ -7,8 +7,10 @@ class BidsController < ApplicationController
 
   def create
     @drones = available_drones
-    @bid = Bid.new(params.require(:bid).permit(:amount, :description, :drone_id))
+    @job = Job.find(params[:job_id])
+    @bid = Bid.new(bid_params)
     @bid.user = current_user
+    @bid.job = @job
     @bid.save!
     redirect_to jobs_path
   end
@@ -19,5 +21,9 @@ class BidsController < ApplicationController
     Drone.select do |drone|
       drone unless @job.drones.include?(drone)
     end
+  end
+
+  def bid_params
+    params.require(:bid).permit(:amount, :description, :job_id, :drone_id, :user_id)
   end
 end

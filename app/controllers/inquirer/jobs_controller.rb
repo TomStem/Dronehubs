@@ -4,17 +4,19 @@ module Inquirer
       @jobs = current_user.jobs
     end
 
-    def create
-      @job = Job.create!(job_params)
-      redirect_to inquirer_jobs_path(@job)
+    def show
+      @job = Job.find(params[:id])
     end
 
     def new
       @job = Job.new
     end
-
-    def show
-      @job = Job.find(params[:id])
+    
+    def create
+      @job = Job.new(job_params)
+      @job.user = current_user
+      @job.save!
+      redirect_to inquirer_jobs_path(@job)
     end
 
     def update
@@ -26,7 +28,7 @@ module Inquirer
     private
 
     def job_params
-      params.require(:job).permit(:description, :location, :date)
+      params.require(:job).permit(:description, :location, :date, :user_id)
     end
   end
 end
