@@ -13,24 +13,21 @@
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
         </div>
       <% end %>
 
       <!-- Profile picture and dropdown -->
+       <%= link_to t(".home", default: "Home"), root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".about", default: "About"), "", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".legislation", default: "Legislation"), "", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".jobs", default: "Jobs"), jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= link_to current_user.owner, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to owner_profile_path do %>
                 <i class="fa fa-user"></i> <%= t ".profile", default: "Profile" %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to root_path do %>
-                <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
               <% end %>
             </li>
             <li>
@@ -45,13 +42,17 @@
       <% elsif user_signed_in? %>
 
         <!-- Profile picture and dropdown -->
+        <%= link_to t(".home", default: "Home"), root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".about", default: "About"), "", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".legislation", default: "Legislation"), "", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".jobs", default: "Jobs"), jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= link_to current_user.first_name, "", class: "fa fa-user navbar-wagon-link dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to root_path do %>
-                <i class="fa fa-home"></i>  <%= t ".profile", default: "Home" %>
+              <%= link_to inquirer_jobs_path do %>
+                <i class="fa fa-bookmark"></i>  <%= t ".myjobs", default: "My jobs" %>
               <% end %>
             </li>
             <li>
@@ -68,7 +69,7 @@
       <!-- Login text link -->
       <%= link_to t(".home", default: "Home"), root_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".about", default: "About"), "", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".jobs", default: "Legislation"), "", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".legislation", default: "Legislation"), "", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".jobs", default: "Jobs"), jobs_path, class: "navbar-wagon-item navbar-wagon-link" %>
        <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-warning" %>
