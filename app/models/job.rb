@@ -3,4 +3,8 @@ class Job < ActiveRecord::Base
   
   has_many :bids, dependent: :destroy 
   has_many :drones, through: :bids
+
+  def self.search(search)
+    where("location ILIKE ? ", "%#{search}%")
+  end
 end
