@@ -3,15 +3,7 @@
 <div class="container"> 
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <%= simple_form_for([ :inquirer, @job]) do |f| %>
-      <%= f.error_notification %>
-
-      <%= f.input :description %>
-      <%= f.input :location %>
-      <%= f.input :date %>
-
-      <%= f.button :submit %>
-      <% end %>
+      <%= render 'form' %>
     </div>
   </div>
 </div>

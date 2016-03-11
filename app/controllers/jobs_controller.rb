@@ -12,4 +12,9 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
   end
+
+  def latest
+    # get a list of 3 jobs that have been posted latest
+    @jobs = Job.latest
+  end
 end

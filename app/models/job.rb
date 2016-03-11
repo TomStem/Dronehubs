@@ -7,4 +7,7 @@ class Job < ActiveRecord::Base
   def self.search(search)
     where("location ILIKE ? ", "%#{search}%")
   end
+
+  scope :latest, -> { order('created_at')[0..2] }
 end
+
