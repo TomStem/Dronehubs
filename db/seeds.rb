@@ -2,6 +2,27 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 
+#Creating 20 fake users
+
+20.times do 
+  user = User.new({
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password: Faker::Internet.password,
+  owner: Faker::Boolean.boolean
+  })
+  user.save!
+  if !user.owner
+   Job.create({
+   description: Faker::Lorem.paragraph,
+   location: Faker::Address.city,
+   date: Faker::Date.forward,
+   user_id: user.id
+  })
+  end
+end
+
 
 # User.create({
 #   user_id: 1,
