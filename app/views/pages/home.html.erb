@@ -8,28 +8,28 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10 col-md-offset-1">
-            <div class="form-section">
+            <%= form_tag(jobs_path, :method => "get", class: "form-section") do %>
               <div class="row">
                 <form role="form">
                   <div class="col-md-8">
                     <div class="form-group">
                       <label class="sr-only" for="location">Location</label>
-                      <input type="email" class="form-control" id="location" placeholder="Where ?">
+                      <%= text_field_tag :search, params[:search],  placeholder: "Where?", class: "form-control", :input_html => {:minlength => 4 } %>
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
-                      <label class="sr-only" for="guest">What ?</label>
-                      <select id="guest" name="what" class="form-control">
-                        <option value="1">Drone</option>
-                        <option value="2">Job</option>
+                      <label class="sr-only" for="choice">What ?</label>
+                      <select id="choice" name="what" class="form-control">
+                        <option value="drone">Drone</option>
+                        <option value="job">Job</option>
                       </select>
                     </div>
                   </div>
                   <div class="col-md-2">
-                    <button type="submit" class="btn btn-default btn-success">Search</button>
+                     <%= submit_tag "Search", class: "btn btn-warning" %>
                   </div>
-                </form>
+              <% end %>
               </div>
             </div>
           </div>
@@ -38,6 +38,61 @@
     </div>
   </div>
 </div>
-<div class="container padded">
-  Content here
+<div class="container padded"> 
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>The latest offers</h2>
+        </div>
+      </div>
+      <hr>
+      <% @latest_jobs.each do |job| %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3">
+          <p>Created by <%= job.user.first_name %></p>
+        </div>
+        <div class="col-xs-12 col-sm-9">
+          <p><%= job.description %></p>
+        </div>
+      </div> 
+      <% end %>
+      <div class="row text-center">
+        <div class="coll-xs-12">
+          <%= link_to "See all open jobs",  jobs_path(@job), { class: "btn btn-primary" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+​
+<div class="container padded"> 
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Check out our latest drone providers</h2>
+        </div>
+      </div>
+      <hr>
+      <% @latest_owners.each do |user| %>
+          <p><%= user.first_name %></p>
+​
+      <% user.drones.each do |drone|%>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: url('<%= image_path drone.photo[0] %>');">
+          <div class="card-description">
+            <h2><%= user.first_name %></h2>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+      <div class="row text-center">
+        <div class="coll-xs-12">
+          <%= link_to "Check out all our providers",  owners_path, { class: "btn btn-primary" } %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
