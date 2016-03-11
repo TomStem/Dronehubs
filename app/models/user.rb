@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
   has_many :bids, dependent: :destroy, through: :drones # as owner
   has_many :drones, dependent: :destroy # as owner
   has_many :jobs, dependent: :destroy # as inquirer
+
+  scope :latest, -> { order('created_at')[0..2] }
+  
 end
