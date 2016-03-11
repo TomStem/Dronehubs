@@ -1,14 +1,14 @@
-<h1 class="text-center">Create a new bid</h1>
+<h1 class="text-center">Edit this Job</h1>
 
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <%= simple_form_for([@drone, @job, @bid]) do |f| %>
+      <%= simple_form_for([ :inquirer, @job]) do |f| %>
       <%= f.error_notification %>
 
-      <%= f.input :amount %>
       <%= f.input :description %>
-      <%= f.input :drone_id, as: :select, :collection => @drones %>
+      <%= f.input :location %>
+      <%= f.input :date %>
 
       <%= f.button :submit %>
       <% end %>

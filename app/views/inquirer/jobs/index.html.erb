@@ -1,8 +1,32 @@
 <div class="container">
-  <h1>Inquirer Jobs</h1>
-  <ul class="list-unstyled">
-  <% @jobs.each do |job| %>
-    <li><%= job.location %></li>
-  <% end %>
-  </ul>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Your listed jobs</h2>
+        </div>
+      </div>
+      <hr>
+      <% @jobs.each do |job| %>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <p><%= job.description %></p>
+            <p><%= job.location %></p>
+          </div>
+          <div class="col-xs-12 col-sm-3">
+            <div class="btn-group" role="group">
+                <%= link_to "Edit job", edit_inquirer_job_path(job), { class: "btn btn-default" } %>
+                <%= link_to "Delete job", inquirer_job_path(job),  class: "btn btn-default" ,
+                  method: :delete,
+                  data: { confirm: "Are you sure?" }%>
+            </div>
+          </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center">
+  <%= link_to "All jobs", jobs_path, { class: "btn btn-primary btn-lg" } %>
 </div>

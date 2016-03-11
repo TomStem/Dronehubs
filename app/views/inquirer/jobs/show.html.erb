@@ -1,31 +1,43 @@
-<div class="container"> 
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <div class="row">
-        <div class="col-xs-12">
-          <h2>Your listed jobs</h2>
-        </div>
-      </div>
-      <hr>
-      <% @jobs.each do |job| %>
-        <div class="row">
-          <div class="col-xs-12 col-sm-6">
-            <p><%= job.description %></p>
-          </div>
-          <div class="col-xs-12 col-sm-3">
-            <div class="btn-group" role="group">
-                <%= link_to "Edit job", edit_inquirer_job(@job), { class: "btn btn-default" } %>
-                <%= link_to "Delete job", jobs_path(@job), { class: "btn btn-default" },
-                  method: :delete,
-                  data: { confirm: "Are you sure?" }%>
-            </div>
-          </div>
-      </div> 
-      <% end %>
-    </div>
-  </div>
-</div>
+<div class="container">
 
-<div class="container text-center">
-  <%= link_to "All jobs", jobs_path, { class: "btn btn-primary btn-lg" } %>  
+<h2>Job.title</h2>
+
+<h4>Description</h4>
+<p><%= @job.description %></p>
+
+<h4>Location</h4>
+<p><%= @job.location %></p>
+
+<h4>Bids</h4>
+<% if @job.bids == [] %>
+<p>There are no bids on this job at the moment</p>
+<% else %>
+<table class="table">
+<tr>
+  <th>Amount</th>
+  <th>Bidder</th>
+  <th>Description</th>
+  <% if @job.user == current_user %>
+  <th></th>
+  <% end %>
+</tr>
+<% @job.bids.each do |bid| %>
+  <tr>
+    <td>€<%= bid.amount %></td>
+    <td><%= bid.drone.user.first_name %></td>
+    <td><%= bid.description %></td>
+    <% if @job.user == current_user %>
+    <td>
+      <%= simple_form_for([:inquirer, @job, bid]) do |f| %>
+        <%= f.error_notification %>
+        <%= f.input_field :status, collection: ["open", "accepted", "closed"], prompt: "open" %>
+        <%= f.button :submit %>
+      <% end %>
+      <!--  link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid)-->
+      </td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<% end %>
 </div>

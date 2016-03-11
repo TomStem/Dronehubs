@@ -13,12 +13,9 @@
 
         <p>My bids:</p>
         <ul>
-          <li>$10 on Job A status: closed</li>
-          <li>$15 on Job B status: accepted</li>
-          <li>$20 on Job C status: open</li>
           <% @owner.drones.each do |drone| %>
           <% drone.bids.each do |bid| %>
-          <li>$<%= bid.amount %> on Job status: <%= bid.status %></li>
+          <li>€<%= bid.amount %> on job from <%= bid.job.user.first_name %> <strong>status: <%= bid.status %></strong></li>
           <% end %>
           <% end %>
         </ul>

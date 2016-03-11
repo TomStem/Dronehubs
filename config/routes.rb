@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
   namespace :inquirer do
     resources :jobs do
-      resources :bids, only: [] do
-        member do
-          patch :accept
-        end
-      end
+      resources :bids, only: [:update] #do
+        # member do
+        #   patch :accept
+        # end
+      # end
     end
   end
 
