@@ -29,12 +29,6 @@
                   <div class="col-md-2">
                      <%= submit_tag "Search", class: "btn btn-warning" %>
                   </div>
-
-              <% if @jobs.present? %>
-                <%= render 'job' %>
-              <% else %>
-                <p>There are no jobs containing the term(s) <%= params[:search] %>.</p>
-              <% end %>
               <% end %>
               </div>
             </div>
