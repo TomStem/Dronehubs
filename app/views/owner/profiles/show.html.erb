@@ -26,11 +26,17 @@
 
     <div class="tab-content" id="personal">
       <div class="container">
-        <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "text-align: center;" %>
-        <h2><%= @owner.first_name %> <%= @owner.last_name %></h2>
-        <p>description:</p>
-        <!-- should be nice if there is a popup where you can input the description -->
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum dolorem aspernatur quis, sunt. Sapiente illo laboriosam, laborum provident impedit consequuntur assumenda totam, deleniti veniam magnam quo nostrum. Eaque, perferendis aut.</p>
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "text-align: center; border-radius: 50%" %>
+            <h2><%= @owner.first_name %> <%= @owner.last_name %></h2>
+          </div>
+          <div class="col-xs-12 col-sm-8">
+            <p>description:</p>
+            <!-- should be nice if there is a popup where you can input the description -->
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum dolorem aspernatur quis, sunt. Sapiente illo laboriosam, laborum provident impedit consequuntur assumenda totam, deleniti veniam magnam quo nostrum. Eaque, perferendis aut.</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -49,9 +55,9 @@
 
     <div class="tab-content hidden" id="profile_jobs">
       <div class="container">
-      <p>My Jobs: </p>
-      <% @jobs.each do |job| %>
-        <p><%= job.description %></p>
+        <p>My Jobs: </p>
+        <% @jobs.each do |job| %>
+        <p><%= job.description %> <strong>by: <%= job.user.first_name %></strong></p>
         <% end %>
       </div>
     </div>
@@ -62,7 +68,11 @@
           <% @owner.drones.each do |drone| %>
           <div class="col-xs-12 col-md-4">
             <div class="thumbnail">
+              <% if drone[:photo] == nil %>
+              <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture" %>
+              <% else %>
               <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
+              <% end %>
               <div class="caption">
                 <h3><%= drone.brand %> <%= drone.model %></h3>
               </div>
