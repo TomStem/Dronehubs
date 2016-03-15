@@ -1,16 +1,36 @@
-<div id="drone-footer">
-  <div class="wrapper">
-    <ul>
-      <li><%= link_to t(".home", default: "Home"), root_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
-      <li><%= link_to t(".about", default: "About"), "", class: "navbar-wagon-item navbar-wagon-link" %></li>
-      <li><%= link_to t(".jobs", default: "Legislation"), "", class: "navbar-wagon-item navbar-wagon-link" %></li>
-      <li><%= link_to t(".jobs", default: "Jobs"), jobs_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
-    </ul>
-
-    <ul>
-  <li><%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
-      <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
-    </ul>
-
-  </div>
+<div class="wrapper">
+<div class="container padded">
+    <div class="row">
+            <div class="col-xs-3">
+                <ul class="list-unstyled">
+                    <li>Site<li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Legislation</a></li>
+                    <li><a href="/jobs">Jobs</a></li>
+                </ul>
+            </div>
+            <vr></vr>
+            <div class="col-xs-3">
+                <ul class="list-unstyled">
+                    <li>Users<li>
+                    <li><a href="#">Sign up</a></li>
+                    <li><a href="#">Log in</a></li>
+                </ul>
+            </div>
+    </div>
+    <hr>
+    <div class="row">
+            <div class="col-xs-8">
+                <ul class="list-unstyled list-inline pull-left">
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-4">
+                <p class="text-muted pull-right">© 2016 Drone hubs. All rights reserved</p>
+            </div>
+        </div>
+</div>
 </div>
