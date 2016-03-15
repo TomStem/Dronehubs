@@ -1,39 +1,53 @@
-<div class="banner-jobs">
-  <div class="banner-content">
-    <h1>All currently available jobs</h1>
-    <p>Let the bidding begin</p>
-  </div>
-</div>
-
-<div class="container text-center">
-  <%= link_to "Create a new job", new_inquirer_job_path(@job), { class: "btn btn-primary btn-lg" } %>
-</div>
-<div class="container">
+<div class="container jobs-body">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <div class="row">
-        <div class="col-xs-12">
-          <h2>The offers</h2>
+    <div class="col-md-3 col-lg-2">
+      <div class="sidebar hidden-xs">
+        <ul>
+          <h5>CATEGORIES</h5>
+<!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
+          <li><a href="#all" class="active">ALL CATEGORIES</a></li>
+          <li><a href="#fun">EDUCATION</a></li>
+          <li><a href="#agriculture">ENVIRONMENT</a></li>
+          <li><a href="#fun">FAMILY</a></li>
+          <li><a href="#festival">FESTIVAL</a></li>
+          <li><a href="#fun">FUN</a></li>
+          <li><a href="#other">OTHER</a></li>
+          <li><a href="#sport">SPORT</a></li>
+          <li><a href="#wedding">WEDDING</a></li>
+        </ul>
+      </div>
+    </div>
+<!-- this content should change together with the changing href or the class active -->
+    <div class="col-md-9 col-lg-10">
+      <h5>EXPLORE > <a href="#all" class="active">ALL CATEGORIES</a></h5>
+      <div class="banner-jobs">
+        <div class="banner-content">
+          <h1>All categories</h1>
+          <p>Let the bidding begin</p>
         </div>
       </div>
-      <hr>
-      <% @jobs.each do |job| %>
-        <div class="row">
-          <div class="col-xs-12 col-sm-2">
-            <h4>Created by <%= job.user.first_name %></h4>
-            <!-- TODO = job.user_id.first_name " " job.user_id.last_name -->
-          </div>
-          <div class="col-xs-12 col-sm-6">
-            <p><%= job.description %></p>
-          </div>
-          <div class="col-xs-12 col-sm-3">
-            <div class="btn-group" role="group">
-                <%= link_to "Go to job",  inquirer_job_path(job), { class: "btn btn-default" } %>
-                <%= link_to "Place a bid",  new_job_bid_path(job), { class: "btn btn-default" } %>
+
+      <div class="row">
+        <% @jobs.each do |job|%>
+        <div class="col-xs-12">
+          <div class="job-details">
+            <div class="job-user">
+              <div class="img-user"></div>
+              <h6>2 bids</h6>
+<!-- this h6-content will change to 'place first bid' || the amount of bids placed -->
+              <%= link_to "Place a bid",  new_job_bid_path(job), { class: "btn btn-default btn-sm" } %> 
             </div>
+            <div>            
+              <h4><%=job.user.first_name%></h4>
+              <h6>WEDDING</h6>
+<!-- this h6-content tag will change with the category -->
+              <p><%=job.description%></p>
+            </div> 
           </div>
+        </div>
+        <% end %>
+<!-- show 10max and allow user to show the next 10 etc.  -->
       </div>
-      <% end %>
     </div>
   </div>
 </div>
