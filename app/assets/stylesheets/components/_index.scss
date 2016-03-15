@@ -6,3 +6,36 @@
 // 
 
 // not needed anymore
+
+
+h2.subtitle {
+    position: relative;
+    z-index: 1;
+     font: 33px sans-serif;
+    margin-top: 30px;
+    text-align: center;
+    
+    &:before {
+        border-top: 1px solid #B1E4B8;
+        content:"";
+        margin: 0 auto; 
+        position: absolute;
+        top: 50%; left: 0; right: 0; bottom: 0;
+        width: 95%;
+        z-index: -1;
+    }
+
+    span { 
+        background: #fff; 
+        padding: 5px 15px; 
+        border: 3px solid #B1E4B8;
+    }
+}
+
+.step {
+  margin-top: 40px;
+}
+
+.home {
+  color: #004E64;
+}
