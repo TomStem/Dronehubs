@@ -1,11 +1,74 @@
+body{
+  background-color: #E9EAEC;
+  h4{
+    margin: 20px 0;
+  }
+  h5{
+    margin: 20px 0;
+    font-weight: bold;
+  }
+  h6{
+    margin-bottom: 5px;
+  }
+  li{
+    margin: 10px 0;
+    list-style: none;
+  }
+  a.active {
+    color: #79B791;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  a {
+    color: black;
+    text-decoration: none;
+    &:hover {
+    color: #79B791;
+    }
+  }
+}
+.jobs-body{
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 50px;
+}
+.banner-content{
+  padding-left: 10px;
+}
+.job-details {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  background-color: white;
+  border: 5px solid #E9EAEC;
+  h1{
+    font-size: 20px;
+  }
+  p{
+    color: $gray-light;
+    font-size: 15px;
+  }
+}
+.job-user{
+  margin: 20px;
+  text-align: center;
+}
+.img-user{
+  height: 55px;
+  width: 55px;
+  margin-left: 20px;
+  background-size: cover !important;
+  background-image: asset-url('jobs/iris.png');
+}
+
 .banner-jobs {
   color: white;
-  text-align: center;
+  text-align: left;
   height: 230px;
   background-size: cover !important;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   margin-bottom: 20px;
   background-image: asset-url('jobs/unsplash_banner.jpeg');
   background-position: 30% 50%;
@@ -17,3 +80,16 @@
     font-size: 20px;
   }
 }
+
+.card-jobs {
+  height: 350px;
+  color: white;
+  position: relative;
+  .img{
+    padding: 5px 5px;
+  }
+  .content{
+    padding: 5px 5px;
+  }
+}
+
