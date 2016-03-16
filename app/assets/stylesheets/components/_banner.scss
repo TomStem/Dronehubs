@@ -1,6 +1,6 @@
 .banner {
   color: white;
-  background-image: asset-url("drone.jpg");
+  background-image: asset-url("dutch-landscape.jpg");
   text-align: center;
   height: 80vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
@@ -14,7 +14,13 @@
   text-shadow: grey 0em 0em 0.1em;
   font-weight: bold;
 }
-.banner p {
+.banner-content p{
+  font-size: 20px;
+  font-weight: lighter;
+  color: white;
+  margin-bottom: 20px;
+}
+.banner.search p {
   font-size: 20px;
   font-weight: lighter;
   color: rgba(255, 255, 255, 0.7);

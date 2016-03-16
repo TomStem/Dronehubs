@@ -1,0 +1,75 @@
+.owners-body{
+  margin-top: 50px;
+  h4{
+    margin: 20px 0;
+  }
+  h5{
+    margin: 20px 0;
+    font-weight: bold;
+  }
+  h6{
+    margin-bottom: 5px;
+  }
+  li{
+    margin: 10px 0;
+    list-style: none;
+  }
+}
+.banner-owners {
+  color: white;
+  text-align: left;
+  height: 230px;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 20px;
+  background-image: asset-url('owners/pilot.jpeg');
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 20px;
+  }
+}
+.banner-content{
+  padding-left: 10px;
+}
+.owner-details {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  background-color: white;
+  border: 1px solid #79B791;
+  h1{
+    font-size: 20px;
+  }
+  p{
+    color: $gray-light;
+    font-size: 15px;
+  }
+}
+.owner-user{
+  margin: 20px;
+  text-align: center;
+}
+.img-user{
+  height: 55px;
+  width: 55px;
+  margin-left: 20px;
+  background-size: cover !important;
+  background-image: asset-url('owners/iris.png');
+}
+.card-owners {
+  height: 350px;
+  color: white;
+  position: relative;
+  .img{
+    padding: 5px 5px;
+  }
+  .content{
+    padding: 5px 5px;
+  }
+}
+
