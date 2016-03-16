@@ -2,34 +2,33 @@
   <h1>Pilot Dashboard</h1>
 </div>
 
-
-<div class="container padded">
-
   <div class="tab-box">
     <div class="tabs">
       <a class="tab active" href="#" data-target="#personal">
         <h3>My Profile</h3>
       </a>
-      <a class="tab" href="#" data-target="#profile_bids">
-        <h3>My Bids</h3>
-        <p><%= @bids_amount %></p>
-      </a>
       <a class="tab" href="#" data-target="#profile_jobs">
         <h3>My Jobs</h3>
         <p><%= @jobs_amount %></p>
+      </a>
+      <a class="tab" href="#" data-target="#profile_bids">
+        <h3>My Bids</h3>
+        <p><%= @bids_amount %></p>
       </a>
       <a class="tab" href="#" data-target="#profile_drones">
         <h3>My Drones</h3>
       </a>
     </div>
 
+<div class="container">
 
     <div class="tab-content" id="personal">
       <div class="container">
+      <h2 class="subtitle"><span>my profile</span></h2>
         <div class="row">
           <div class="col-xs-12 col-sm-4">
-            <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "text-align: center; border-radius: 50%" %>
-            <h2><%= @owner.first_name %> <%= @owner.last_name %></h2>
+            <p style="text-align: center;"><%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "border-radius: 50%;" %></p>
+            <h2 style="text-align: center;"><%= @owner.first_name %> <%= @owner.last_name %></h2>
           </div>
           <div class="col-xs-12 col-sm-8">
             <p>description:</p>
@@ -40,9 +39,18 @@
       </div>
     </div>
 
+    <div class="tab-content hidden" id="profile_jobs">
+      <div class="container">
+        <h2 class="subtitle"><span>My Jobs</span></h2>
+        <% @jobs.each do |job| %>
+        <p><%= job.description %> <strong>by: <%= job.user.first_name %></strong></p>
+        <% end %>
+      </div>
+    </div>
+
     <div class="tab-content hidden" id="profile_bids">
       <div class="container">
-        <p>My bids:</p>
+        <h2 class="subtitle"><span>My bids</span></h2>
         <ul>
           <% @owner.drones.each do |drone| %>
           <% drone.bids.each do |bid| %>
@@ -53,17 +61,9 @@
       </div>
     </div>
 
-    <div class="tab-content hidden" id="profile_jobs">
-      <div class="container">
-        <p>My Jobs: </p>
-        <% @jobs.each do |job| %>
-        <p><%= job.description %> <strong>by: <%= job.user.first_name %></strong></p>
-        <% end %>
-      </div>
-    </div>
-
     <div class="tab-content hidden" id="profile_drones">
       <div class="container">
+      <h2 class="subtitle"><span>my drones</span></h2>
         <div class="row">
           <% @owner.drones.each do |drone| %>
           <div class="col-xs-12 col-md-4">
