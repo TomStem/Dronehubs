@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
 
+  get '/terms', to: "pages#terms"
+
+
   devise_for :users
 
   resources :jobs, only: [:index, :show] do
