@@ -1,6 +1,12 @@
 class OwnersController < ApplicationController
   def index
-    @owners = user.owner.all
+    users = User.all
+    @owners = []
+    users.each do |user|
+      if user.owner == true
+      @owners << user
+      end
+    end
   end
 
   def show

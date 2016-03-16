@@ -1,30 +1,30 @@
 /* Card design */
 .card {
-  height: 250px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
-  color: white;
+  height: 300px;
   position: relative;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  border-radius: 1px;
+  margin-bottom: 5px;
+  border: 1px solid #79B791;
+  background-color: white;
 }
-.card-user {
+.card-image{
+  height: 150px;
+  background-size: cover !important;
+  padding: 5px 5px;
+}
+.card-avatar{
   position: absolute;
   right: 10px;
   top: 10px;
-}
-.card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 20px;
+  height: 50px;
+  width: 50px;
 }
 .card-description {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  top: 150px;
+  left: 5px;
 }
-.card-description h2 {
+.card-description h4 {
   font-size: 22px;
 }
 .card-description p {

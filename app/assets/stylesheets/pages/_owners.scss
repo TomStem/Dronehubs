@@ -1,4 +1,4 @@
-.jobs-body{
+.owners-body{
   margin-top: 50px;
   h4{
     margin: 20px 0;
@@ -15,7 +15,7 @@
     list-style: none;
   }
 }
-.banner-jobs {
+.banner-owners {
   color: white;
   text-align: left;
   height: 230px;
@@ -24,8 +24,7 @@
   align-items: center;
   justify-content: left;
   margin-bottom: 20px;
-  background-image: asset-url('jobs/unsplash_banner.jpeg');
-  background-position: 30% 50%;
+  background-image: asset-url('owners/pilot.jpeg');
   h1 {
     font-size: 50px;
     font-weight: bold;
@@ -37,7 +36,7 @@
 .banner-content{
   padding-left: 10px;
 }
-.job-details {
+.owner-details {
   display: flex;
   align-items: center;
   padding-left: 0;
@@ -51,7 +50,7 @@
     font-size: 15px;
   }
 }
-.job-user{
+.owner-user{
   margin: 20px;
   text-align: center;
 }
@@ -60,7 +59,17 @@
   width: 55px;
   margin-left: 20px;
   background-size: cover !important;
-  background-image: asset-url('jobs/iris.png');
+  background-image: asset-url('owners/iris.png');
 }
-
+.card-owners {
+  height: 350px;
+  color: white;
+  position: relative;
+  .img{
+    padding: 5px 5px;
+  }
+  .content{
+    padding: 5px 5px;
+  }
+}
 
