@@ -1,6 +1,6 @@
-<div class="container jobs-body">
+<div class="jobs-body">
   <div class="row">
-    <div class="col-md-3 col-lg-2">
+    <div class="col-md-2 col-lg-1 col-sm-offset-1">
       <div class="sidebar hidden-xs">
         <ul>
           <h5>CATEGORIES</h5>
@@ -18,7 +18,7 @@
       </div>
     </div>
 <!-- this content should change together with the changing href or the class active -->
-    <div class="col-md-9 col-lg-10">
+    <div class="col-md-8 col-lg-9">
       <h5>EXPLORE > <a href="#all" class="active">ALL CATEGORIES</a></h5>
       <div class="banner-jobs">
         <div class="banner-content">
@@ -35,7 +35,7 @@
               <div class="img-user"></div>
               <h6>2 bids</h6>
 <!-- this h6-content will change to 'place first bid' || the amount of bids placed -->
-              <%= link_to "Place a bid",  new_job_bid_path(job), { class: "btn btn-default btn-sm" } %> 
+              <%= link_to "Place a bid",  new_job_bid_path(job), { class: "btn btn-primary btn-sm" } %> 
             </div>
             <div>            
               <h4><%=job.user.first_name%></h4>
