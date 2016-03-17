@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/terms', to: "pages#terms"
+  get '/legislation', to: "pages#legislation"
 
 
   devise_for :users
