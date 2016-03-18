@@ -1,3 +1,5 @@
-.simple_form_for {
-  background-color: red;
+.form-control:focus{
+  border-color: #79B791;
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(121, 183, 145, 0.6);
 }
