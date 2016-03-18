@@ -22,10 +22,10 @@
   margin-bottom: 0;
 }
 .tab {
-  background: $dronegreenb;
   flex: 0 0 25%;
   text-align: center;
   padding: 20px 0;
+  margin-right: 20px;
 }
 .tab.active {
   background:  #F6FBFA;
@@ -36,6 +36,30 @@
 
 .tab-content {
  // background-color: white;
- padding: 20px 0;
- margin: 0 10px;
+}
+
+.subtitle-tabs {
+    color: #949796;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    font: 18px sans-serif;
+    margin-top: 30px;
+    text-align: center;
+
+    &:before {
+        border-top: 1px solid #B1E4B8;
+        content:"";
+        margin: 0 auto;
+        position: absolute;
+        top: 50%; left: 0; right: 0; bottom: 0;
+        width: 95%;
+        z-index: -1;
+    }
+
+    span {
+        background: #F6FBFA;
+        padding: 5px 15px;
+        border: 2px solid #B1E4B8;
+    }
 }
