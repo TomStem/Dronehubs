@@ -16,7 +16,7 @@ class Owner::DronesController < ApplicationController
     @drone = Drone.new(drone_params)
     @drone.user = current_user
     @drone.save!
-    redirect_to owner_drones_path
+    redirect_to owner_profile_path
   end
 
   def edit
@@ -26,13 +26,13 @@ class Owner::DronesController < ApplicationController
   def update
     @drone = Drone.find(params[:id])
     @drone.update!(drone_params)
-    redirect_to owner_drones_path
+    redirect_to owner_profile_path
   end
 
   def destroy
     @drone = Drone.find(params[:id])
     @drone.destroy!
-    redirect_to owner_drones_path
+    redirect_to owner_profile_path
   end
 
   private
