@@ -1,11 +1,17 @@
 <div class="jobs-body">
   <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h2 class="subtitle"><span>Jobs</span></h2>
+      <br>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-2 col-sm-offset-1">
       <div class="sidebar hidden-xs">
         <ul>
           <h5>CATEGORIES</h5>
           <hr>
-<!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
+          <!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
           <li><a href="#all" class="active">ALL CATEGORIES</a></li>
           <li><a href="#fun">EDUCATION</a></li>
           <li><a href="#agriculture">ENVIRONMENT</a></li>
@@ -18,7 +24,7 @@
         </ul>
       </div>
     </div>
-<!-- this content should change together with the changing href or the class active -->
+    <!-- this content should change together with the changing href or the class active -->
     <div class="col-md-8">
       <h5>JOBS > <a href="#all" class="active">ALL CATEGORIES</a></h5>
       <div class="banner-jobs">
@@ -36,7 +42,7 @@
               <%= image_tag "jobs/iris.png", class:"list-avatar"%>
               <h6><i class="fa fa-gavel"></i> 2 bids</h6>
               <!-- this h6-content will change to 'place first bid' || the amount of bids placed -->
-              <%= link_to "Place a bid",  new_job_bid_path(job), { class: "btn btn-primary btn-sm js-jobs-new-bid", 'data-job-id' => job.id  } %> 
+              <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-sm", data: {'job-id': job.id, toggle: "modal", target: "#modal-bid"}} %> 
             </div>
             <div>            
               <h4><%=job.user.first_name%></h4>
@@ -47,14 +53,11 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-10 col-xs-offset-1 js-jobs-new-bid-form" data-job-id="<%= job.id %>">
-          <%= render 'bids/form', job: job, bid: Bid.new %>
-        </div>
-      </div>
-<!-- show 10max and allow user to show the next 10 etc.  -->
+      <!-- show 10max and allow user to show the next 10 etc.  -->
       <% end %>
 
     </div>
   </div>
 </div>
+
+<%= render 'jobs/modal_new' %>
