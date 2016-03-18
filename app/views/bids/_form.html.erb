@@ -1,9 +1,0 @@
-<%= simple_form_for([job, bid]) do |f| %>
-  <%= f.error_notification %>
-
-  <%= f.input :amount %>
-  <%= f.input :description %>
-  <%= f.input :drone_id, as: :select, :collection => @drones %>
-
-  <%= f.button :submit %>
-<% end %>
