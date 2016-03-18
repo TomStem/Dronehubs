@@ -1,4 +1,74 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+// @import "alert";
+// @import "avatars";
+// @import "badges";
+// @import "banner";
+// @import "searchbar";
+//
+
+// not needed anymore
+
+
+h2.subtitle {
+    color: #949796;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    font: 18px sans-serif;
+    margin-top: 30px;
+    text-align: center;
+
+    &:before {
+        border-top: 1px solid #B1E4B8;
+        content:"";
+        margin: 0 auto;
+        position: absolute;
+        top: 50%; left: 0; right: 0; bottom: 0;
+        width: 95%;
+        z-index: -1;
+    }
+
+    span {
+        background: #F6FBFA;
+        padding: 5px 15px;
+        border: 2px solid #B1E4B8;
+    }
+}
+
+.step {
+  margin-top: 40px;
+}
+
+.home {
+  color: #004E64;
+}
+
+.cat-box {
+    border: 1px solid rgba(102, 101, 100, .5);
+    border-width: 1px;
+    background-color: #fff;
+    width: 240px;
+    height: 150px;
+     display: flex;
+  align-items: center;
+  justify-content: center;
+    &:hover.cat-text {
+     box-shadow: inset 0 0 0 25px #B1E4B8;
+        transition:all 0.3s ease;
+    }
+    p {
+        position: relative;
+        top: 18px;
+    }
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.cat-text {
+    display: none;
+}
+
+.flex {
+    display: block;
+}
