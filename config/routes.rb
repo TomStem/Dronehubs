@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :bids, only: [:new, :create]
   end
 
-  resources :owners, only: [:index, :show]
+  resources :pilots, only: [:index, :show]
 
   namespace :inquirer do
     resources :jobs do
