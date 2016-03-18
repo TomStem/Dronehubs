@@ -2,29 +2,29 @@
   <h1>Pilot Dashboard</h1>
 </div>
 
-  <div class="tab-box">
-    <div class="tabs">
-      <a class="tab active" href="#" data-target="#personal">
-        <h3>My Profile</h3>
-      </a>
-      <a class="tab" href="#" data-target="#profile_jobs">
-        <h3>My Jobs</h3>
-        <p><%= @jobs_amount %></p>
-      </a>
-      <a class="tab" href="#" data-target="#profile_bids">
-        <h3>My Bids</h3>
-        <p><%= @bids_amount %></p>
-      </a>
-      <a class="tab" href="#" data-target="#profile_drones">
-        <h3>My Drones</h3>
-      </a>
-    </div>
+<div class="tab-box">
+  <div class="tabs">
+    <a class="tab active" href="#" data-target="#personal">
+      <h3>My Profile</h3>
+    </a>
+    <a class="tab" href="#" data-target="#profile_jobs">
+      <h3>My Jobs</h3>
+      <p><%= @jobs_amount %></p>
+    </a>
+    <a class="tab" href="#" data-target="#profile_bids">
+      <h3>My Bids</h3>
+      <p><%= @bids_amount %></p>
+    </a>
+    <a class="tab" href="#" data-target="#profile_drones">
+      <h3>My Drones</h3>
+    </a>
+  </div>
 
-<div class="container">
+  <div class="container">
 
     <div class="tab-content" id="personal">
       <div class="container">
-      <h2 class="subtitle"><span>my profile</span></h2>
+        <h2 class="subtitle"><span>my profile</span></h2>
         <div class="row">
           <div class="col-xs-12 col-sm-4">
             <p style="text-align: center;"><%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "border-radius: 50%;" %></p>
@@ -63,7 +63,7 @@
 
     <div class="tab-content hidden" id="profile_drones">
       <div class="container">
-      <h2 class="subtitle"><span>my drones</span></h2>
+        <h2 class="subtitle"><span>my drones</span></h2>
         <div class="row">
           <% @owner.drones.each do |drone| %>
           <div class="col-xs-12 col-md-4">
@@ -75,13 +75,24 @@
               <% end %>
               <div class="caption">
                 <h3><%= drone.brand %> <%= drone.model %></h3>
+                <p>
+                  <%= link_to owner_drone_path(drone) do %>
+                  <i class="fa fa-search"></i>
+                  <% end %>
+                  <%= link_to edit_owner_drone_path(drone) do %>
+                  <i class="fa fa-pencil"></i>
+                  <% end %>
+                  <%= link_to owner_drone_path(drone), method: :delete, data: { confirm: "Are you sure you want to delete the #{drone.brand} #{drone.model}?" } do %>
+                  <i class="fa fa-trash"></i>
+                  <% end %>
+                </p>
               </div>
             </div>
           </div>
           <% end %>
         </div>
       </div>
-      <p><%= link_to "see my Drones", owner_drones_path, { class: "btn btn-success" } %></p>
+      <p><%= link_to "Add a Drone", new_owner_drone_path, { class: "btn btn-success" } %></p>
     </div>
 
   </div>
