@@ -4,6 +4,7 @@
       <div class="sidebar hidden-xs">
         <ul>
           <h5>CATEGORIES</h5>
+          <hr>
 <!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
           <li><a href="#all" class="active">ALL CATEGORIES</a></li>
           <li><a href="#fun">EDUCATION</a></li>
@@ -27,27 +28,33 @@
         </div>
       </div>
 
+      <% @jobs.each do |job|%>
       <div class="row">
-        <% @jobs.each do |job|%>
         <div class="col-xs-12">
           <div class="job-details">
             <div class="job-user">
-              <div class="img-user"></div>
-              <h6>2 bids</h6>
-<!-- this h6-content will change to 'place first bid' || the amount of bids placed -->
-              <%= link_to "Place a bid",  new_job_bid_path(job), { class: "btn btn-primary btn-sm" } %> 
+              <%= image_tag "jobs/iris.png", class:"list-avatar"%>
+              <h6><i class="fa fa-gavel"></i> 2 bids</h6>
+              <!-- this h6-content will change to 'place first bid' || the amount of bids placed -->
+              <%= link_to "Place a bid",  new_job_bid_path(job), { class: "btn btn-primary btn-sm js-jobs-new-bid", 'data-job-id' => job.id  } %> 
             </div>
             <div>            
               <h4><%=job.user.first_name%></h4>
               <h6>WEDDING</h6>
-<!-- this h6-content tag will change with the category -->
+              <!-- this h6-content tag will change with the category -->
               <p><%=job.description%></p>
             </div> 
           </div>
         </div>
-        <% end %>
-<!-- show 10max and allow user to show the next 10 etc.  -->
       </div>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 js-jobs-new-bid-form" data-job-id="<%= job.id %>">
+          <%= render 'bids/form', job: job, bid: Bid.new %>
+        </div>
+      </div>
+<!-- show 10max and allow user to show the next 10 etc.  -->
+      <% end %>
+
     </div>
   </div>
 </div>
