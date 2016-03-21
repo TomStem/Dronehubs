@@ -1,0 +1,16 @@
+<div class="tabbing">  
+  <% tabs = ['pilots', 'jobs'] %>
+
+  <div class="discover-tabs">
+    <div>
+      <% tabs.each do |tab| %>
+      <%= link_to send("#{tab}_path") do %>
+      <span class="discover-tab <%= 'active' if active_tab == tab %> ">
+        <%= tab.capitalize %>
+      </span>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

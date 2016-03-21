@@ -1,15 +1,4 @@
-<div class="tab-box">
-  <h2 class="subtitle">
-    <%= link_to pilots_path do %>
-      <span class="tab">Pilots</span>
-    <% end %>
-
-    <%= link_to jobs_path do %>
-      <span class="tab active">Jobs</span>
-    <% end %>
-  </h2>
-</div>
-
+<%= render 'pages/discover_tabs', active_tab: 'jobs' %>
 <div class="jobs-body">
   <div class="row">
     <div class="col-md-2 col-sm-offset-1">
@@ -32,11 +21,35 @@
     </div>
     <!-- this content should change together with the changing href or the class active -->
     <div class="col-md-8">
-      <h5>JOBS > <a href="#all" class="active">ALL CATEGORIES</a></h5>
+      <h5>JOBS > 
+        <a href="#all">ALL CATEGORIES</a>
+        <a href="#education" class="hidden">EDUCATION</a>
+        <a href="#environment" class="hidden">ENVIRONMENT</a>
+        <a href="#family" class="hidden">FAMILY</a>
+        <a href="#festival" class="hidden">FESTIVAL</a>
+        <a href="#fun" class="hidden">FUN</a>
+        <a href="#other" class="hidden">OTHER</a>
+        <a href="#sport" class="hidden">SPORT</a>
+        <a href="#wedding" class="hidden">WEDDING</a>
+      </h5>
+
       <div class="banner-jobs">
-        <div class="banner-content">
+
+        <div class="banner-content" id="all_categories">
           <h1>All categories</h1>
           <p>Find your pilot</p>
+        </div>
+        <div class="banner-content hidden" id="education">
+          <h1>Education</h1>
+          <p>Find your pilot for any educational job</p>
+        </div>
+        <div class="banner-content hidden" id="environment">
+          <h1>Environment</h1>
+          <p>Find your pilot for example in agriculture or forestry</p>
+        </div>
+        <div class="banner-content hidden" id="family">
+          <h1>Family</h1>
+          <p>Find your pilot to capture your family picture orday out</p>
         </div>
       </div>
 

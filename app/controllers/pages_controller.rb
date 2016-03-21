@@ -13,5 +13,6 @@ skip_before_action :authenticate_user!, only: [:home, :terms, :legislation, :dis
   end
 
   def discover
+    @owners = User.where(owner: true)
   end
 end

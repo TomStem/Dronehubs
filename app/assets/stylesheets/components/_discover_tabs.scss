@@ -1,0 +1,41 @@
+.discover-tab{
+  background: #F6FBFA;
+  padding: 5px 15px;
+  border: 2px solid #79B791;
+  text-align: center;
+  margin: 10px;
+  }
+
+.discover-tab.active {
+  background: #F6FBFA;
+  border: 3px solid #79B791;
+  text-decoration: none;
+  text-align: center;
+}
+.tabbing{
+  color: #949796;
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  font: 18px sans-serif;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 21px;
+
+    &:before {
+        border-top: 1px solid #B1E4B8;
+        content:"";
+        margin: 0 auto;
+        position: absolute;
+        top: 50%; left: 0; right: 0; bottom: 0;
+        width: 95%;
+        z-index: -1;
+    }
+
+    span {
+        background: #F6FBFA;
+        padding: 8px 15px;
+        border: 2px solid #B1E4B8;
+    }
+}
