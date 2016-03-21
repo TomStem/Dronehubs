@@ -1,19 +1,23 @@
 .discover-tab{
   background: #F6FBFA;
   padding: 5px 15px;
-  border: 2px solid #79B791;
+  border: 2px solid $gray-light;
   text-align: center;
   margin: 10px;
   }
 
 .discover-tab.active {
   background: #F6FBFA;
-  border: 3px solid #79B791;
+  border: 3px solid $gray;
   text-decoration: none;
   text-align: center;
+  color: $gray;
+  a{
+    color: black;
+  }
 }
 .tabbing{
-  color: #949796;
+  color: $gray-light;
   text-transform: uppercase;
   font-weight: bold;
   position: relative;
@@ -22,9 +26,11 @@
   margin-top: 30px;
   text-align: center;
   font-size: 21px;
-
+    a{
+      color: $gray-light;
+    }
     &:before {
-        border-top: 1px solid #B1E4B8;
+        border-top: 1px solid $gray-light;
         content:"";
         margin: 0 auto;
         position: absolute;
@@ -36,6 +42,6 @@
     span {
         background: #F6FBFA;
         padding: 8px 15px;
-        border: 2px solid #B1E4B8;
+        border: 2px solid $gray-light;
     }
 }

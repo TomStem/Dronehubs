@@ -8,9 +8,13 @@
   user = User.new({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
+  description: Faker::Lorem.sentence(3),
   email: Faker::Internet.email,
   password: Faker::Internet.password,
-  owner: Faker::Boolean.boolean
+  owner: Faker::Boolean.boolean,
+  profile_pic: Faker::Avatar.image,
+  banner_pic: Faker::Placeholdit.image
+
   })
   user.save!
   if !user.owner
@@ -18,35 +22,20 @@
    description: Faker::Lorem.paragraph,
    location: Faker::Address.city,
    date: Faker::Date.forward,
-   user_id: user.id
+   user_id: user.id,
+   title: Faker::Lorem.sentence
   })
   end
 end
 
-education = Category.new({
-  name: "education"
-  })
-environment = Category.new({
-  name: "environment"
-  })
-family = Category.new({
-  name: "family"
-  })
-festival = Category.new({
-  name: "festival"
-  })
-fun = Category.new({
-  name: "fun"
-  })
-other = Category.new({
-  name: "other"
-  })
-sport = Category.new({
-  name: "sport"
-  })
-wedding = Category.new({
-  name: "wedding"
-  })
+Category.create({name: "education"})
+Category.create({name: "environment"})
+Category.create({name: "family"})
+Category.create({name: "festival"})
+Category.create({name: "fun"})
+Category.create({name: "other"})
+Category.create({name: "sport"})
+Category.create({name: "wedding"})
 
 # User.create({
 #   user_id: 1,
