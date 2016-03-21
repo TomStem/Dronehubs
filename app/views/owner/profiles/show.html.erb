@@ -5,94 +5,98 @@
 
 
 <div class="tab-box">
-    <h2 class="subtitle">
-      <a href="#" ><span class="tab active" data-target="#personal">My Profile</span></a>
-     <a href="#"data-target="#profile_jobs"> <span class="tab" data-target="#profile_jobs" >My Jobs(<%= @jobs_amount %>)</span></a>
-   <!--    <p><%= @jobs_amount %></p> -->
-      <a href="#"data-target="#profile_bids"><span class="tab" data-target="#profile_bids">My Bids(<%= @bids_amount %>)</span></a>
-     <!--  <p><%= @bids_amount %></p> -->
-      <a href="#"><span class="tab" data-target="#profile_drones">My Drones</span></a>
-    </h2>
+  <h2 class="subtitle">
+    <a href="#" ><span class="tab active" data-target="#personal">My Profile</span></a>
+    <a href="#"data-target="#profile_jobs"> <span class="tab" data-target="#profile_jobs" >My Jobs(<%= @jobs_amount %>)</span></a>
+    <!--    <p><%= @jobs_amount %></p> -->
+    <a href="#"data-target="#profile_bids"><span class="tab" data-target="#profile_bids">My Bids(<%= @bids_amount %>)</span></a>
+    <!--  <p><%= @bids_amount %></p> -->
+    <a href="#"><span class="tab" data-target="#profile_drones">My Drones</span></a>
+  </h2>
 
-  </div>
+</div>
 
-  <div class="container">
+<div class="container">
 
-    <div class="tab-content" id="personal">
+  <div class="tab-content" id="personal">
 
 
-      <div class="container padded">
+    <div class="container padded">
 
-        <div class="row">
-          <div class="col-xs-12 col-sm-4">
-            <p style="text-align: center;"><%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "border-radius: 50%;" %></p>
-            <h2 style="text-align: center;"><%= @owner.first_name %> <%= @owner.last_name %></h2>
-          </div>
-          <div class="col-xs-12 col-sm-8">
-            <p>description:</p>
-            <!-- should be nice if there is a popup where you can input the description -->
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum dolorem aspernatur quis, sunt. Sapiente illo laboriosam, laborum provident impedit consequuntur assumenda totam, deleniti veniam magnam quo nostrum. Eaque, perferendis aut.</p>
-          </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <p style="text-align: center;">
+            <% if @owner.profile_pic.nil? %>
+            <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "border-radius: 50%;" %>
+            <% end %>
+          </p>
+          <h2 style="text-align: center;"><%= @owner.first_name %> <%= @owner.last_name %></h2>
+        </div>
+        <div class="col-xs-12 col-sm-8">
+          <p>description:</p>
+          <!-- should be nice if there is a popup where you can input the description -->
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum dolorem aspernatur quis, sunt. Sapiente illo laboriosam, laborum provident impedit consequuntur assumenda totam, deleniti veniam magnam quo nostrum. Eaque, perferendis aut.</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="tab-content hidden" id="profile_jobs">
-      <div class="container padded">
-        <% @jobs.each do |job| %>
-          <% if @jobs.nill? %>
-            <h3>jo</h3>
-          <% else %>
-            <p><%= job.description %> <strong>by: <%= job.user.first_name %></strong></p>
-          <% end %>
+  <div class="tab-content hidden" id="profile_jobs">
+    <div class="container padded">
+      <% @jobs.each do |job| %>
+      <% if @jobs.nil? %>
+      <h3>jo</h3>
+      <% else %>
+      <p><%= job.description %> <strong>by: <%= job.user.first_name %></strong></p>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="tab-content hidden" id="profile_bids">
+    <div class="container padded">
+      <ul>
+        <% @owner.drones.each do |drone| %>
+        <% drone.bids.each do |bid| %>
+        <li>€<%= bid.amount %> on job from <%= bid.job.user.first_name %> <strong>status: <%= bid.status %></strong></li>
+        <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tab-content hidden" id="profile_drones">
+    <div class="container padded">
+      <div class="row">
+        <% @owner.drones.each do |drone| %>
+        <div class="col-xs-12 col-md-4">
+          <div class="thumbnail">
+            <% if drone[:photo] == nil %>
+            <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture" %>
+            <% else %>
+            <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
+            <% end %>
+            <div class="caption">
+              <h3><%= drone.brand %> <%= drone.model %></h3>
+              <p>
+                <%= link_to owner_drone_path(drone) do %>
+                <i class="fa fa-search"></i>
+                <% end %>
+                <%= link_to edit_owner_drone_path(drone) do %>
+                <i class="fa fa-pencil"></i>
+                <% end %>
+                <%= link_to owner_drone_path(drone), method: :delete, data: { confirm: "Are you sure you want to delete the #{drone.brand} #{drone.model}?" } do %>
+                <i class="fa fa-trash"></i>
+                <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
         <% end %>
       </div>
     </div>
-
-    <div class="tab-content hidden" id="profile_bids">
-      <div class="container padded">
-        <ul>
-          <% @owner.drones.each do |drone| %>
-          <% drone.bids.each do |bid| %>
-          <li>€<%= bid.amount %> on job from <%= bid.job.user.first_name %> <strong>status: <%= bid.status %></strong></li>
-          <% end %>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-
-    <div class="tab-content hidden" id="profile_drones">
-      <div class="container padded">
-        <div class="row">
-          <% @owner.drones.each do |drone| %>
-          <div class="col-xs-12 col-md-4">
-            <div class="thumbnail">
-              <% if drone[:photo] == nil %>
-              <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture" %>
-              <% else %>
-              <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
-              <% end %>
-              <div class="caption">
-                <h3><%= drone.brand %> <%= drone.model %></h3>
-                <p>
-                  <%= link_to owner_drone_path(drone) do %>
-                  <i class="fa fa-search"></i>
-                  <% end %>
-                  <%= link_to edit_owner_drone_path(drone) do %>
-                  <i class="fa fa-pencil"></i>
-                  <% end %>
-                  <%= link_to owner_drone_path(drone), method: :delete, data: { confirm: "Are you sure you want to delete the #{drone.brand} #{drone.model}?" } do %>
-                  <i class="fa fa-trash"></i>
-                  <% end %>
-                </p>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        </div>
-      </div>
-      <p><%= link_to "Add a Drone", new_owner_drone_path, { class: "btn btn-success" } %></p>
-    </div>
-
+    <p><%= link_to "Add a Drone", new_owner_drone_path, { class: "btn btn-success" } %></p>
   </div>
+
+</div>
 </div>
