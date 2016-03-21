@@ -1,12 +1,6 @@
 class PilotsController < ApplicationController
   def index
-    users = User.all
-    @owners = []
-    users.each do |user|
-      if user.owner == true
-      @owners << user
-      end
-    end
+    @owners = User.where(owner: true)
   end
 
   def show
