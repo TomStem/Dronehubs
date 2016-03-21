@@ -1,10 +1,16 @@
+<div class="tab-box">
+  <h2 class="subtitle">
+    <%= link_to pilots_path do %>
+      <span class="tab active">Pilots</span>
+    <% end %>
+
+    <%= link_to jobs_path do %>
+      <span class="tab">Jobs</span>
+    <% end %>
+  </h2>
+</div>
+
 <div class="owners-body">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h2 class="subtitle"><span>Pilots</span></h2>
-      <br>
-    </div>
-  </div>
   <div class="row">
     <div class="col-md-2 col-sm-offset-1">
       <div class="sidebar hidden-xs">
@@ -12,9 +18,9 @@
           <h5>CATEGORIES</h5>
 <!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
           <li><a href="#all" class="active">ALL CATEGORIES</a></li>
-          <li><a href="#fun">EDUCATION</a></li>
-          <li><a href="#agriculture">ENVIRONMENT</a></li>
-          <li><a href="#fun">FAMILY</a></li>
+          <li><a href="#education">EDUCATION</a></li>
+          <li><a href="#environment">ENVIRONMENT</a></li>
+          <li><a href="#family">FAMILY</a></li>
           <li><a href="#festival">FESTIVAL</a></li>
           <li><a href="#fun">FUN</a></li>
           <li><a href="#other">OTHER</a></li>

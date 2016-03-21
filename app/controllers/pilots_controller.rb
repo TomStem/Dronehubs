@@ -1,4 +1,4 @@
-class OwnersController < ApplicationController
+class PilotsController < ApplicationController
   def index
     users = User.all
     @owners = []

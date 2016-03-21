@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/terms', to: "pages#terms"
   get '/legislation', to: "pages#legislation"
+  get '/discover', to: "pages#discover"
 
 
   devise_for :users
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
     resources :bids, only: [:new, :create]
   end
 
-  resources :owners, only: [:index, :show]
+  resources :pilots, only: [:index, :show]
 
   namespace :inquirer do
     resources :jobs do
