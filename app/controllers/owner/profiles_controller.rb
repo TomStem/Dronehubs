@@ -21,8 +21,21 @@ class Owner::ProfilesController < ApplicationController
   end
 
   def edit
+    @owner = current_user
   end
 
   def update
+    @owner = current_user
+    @owner.update(profile_params)
+    redirect_to owner_profile_path
   end
+
+  private
+
+  def profile_params
+    params.require(:user).permit(:first_name, :last_name, :description, :profile_pic, :profile_pic_cache, :banner_pic, :banner_pic_cache)
+
+  end
+
 end
+
