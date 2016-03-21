@@ -1,6 +1,6 @@
 <h2>Edit your profile</h2>
 
-<%= simple_form_for(:profile, @owner ) do |f| %>
+<%= simple_form_for @owner, url: owner_profile_path do |f| %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= f.input :description %>
