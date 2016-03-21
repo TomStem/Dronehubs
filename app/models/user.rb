@@ -14,4 +14,5 @@ class User < ActiveRecord::Base
   scope :latest, -> { order('created_at')[0..2] }
 
   mount_uploader :profile_pic, PhotoUploader
+  mount_uploader :banner_pic, PhotoUploader
 end
