@@ -23,6 +23,30 @@
   end
 end
 
+education = Category.new({
+  name: "education"
+  })
+environment = Category.new({
+  name: "environment"
+  })
+family = Category.new({
+  name: "family"
+  })
+festival = Category.new({
+  name: "festival"
+  })
+fun = Category.new({
+  name: "fun"
+  })
+other = Category.new({
+  name: "other"
+  })
+sport = Category.new({
+  name: "sport"
+  })
+wedding = Category.new({
+  name: "wedding"
+  })
 
 # User.create({
 #   user_id: 1,
