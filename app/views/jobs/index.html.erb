@@ -61,17 +61,22 @@
               <%= image_tag "jobs/iris.png", class:"list-avatar"%>
               <h5><%=job.user.first_name%></h5>
             </div>
-            <div class="col-xs-12 col-md-2">
-              <h6><i class="fa fa-gavel"></i> 2 bids</h6>
-              <!-- this h6-content will change to 'place first bid' || the amount of bids placed -->
-              <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-sm", data: {'job-id': job.id, toggle: "modal", target: "#modal-bid"}} %> 
-            </div>
-            <div class="col-xs-12 col-md-8">          
+            <div class="col-xs-12 col-md-10">          
               <h4><%=job.title%></h4>
               <h6>WEDDING</h6>
               <!-- this h6-content tag will change with the category -->
-              <p><%=job.description%></p>
-            </div> 
+              <p class="job-description"><%=job.description%></p>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <p class="job-specific">
+                  <i class="fa fa-map-marker"></i> Amsterdam  |  
+                  <i class="fa fa-calendar"></i> 3th of May 2016  |  
+                  <i class="fa fa-gavel"></i> 2 bids  |  
+                  <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': job.id, toggle: "modal", target: "#modal-bid"}} %> 
+                </p>
+              </div> 
+            </div>
           </div>
         </div>
       </div>

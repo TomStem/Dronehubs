@@ -45,10 +45,6 @@
   h1{
     font-size: 20px;
   }
-  p{
-    color: $gray-light;
-    font-size: 15px;
-  }
 }
 .job-user{
   margin: 20px;
@@ -57,5 +53,12 @@
   height: 85px;
   width: 85px;
 }
-
+.job-description p{
+  color: $gray-light;
+  font-size: 15px;
+}
+.job-specific p{
+  color: #79B791;
+  padding-top: 10px;
+}
 
