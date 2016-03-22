@@ -4,6 +4,6 @@ class PilotsController < ApplicationController
   end
 
   def show
-    @owner = user.owner.find(params[:id])
+    @owner = User.find(params[:id])
   end
 end

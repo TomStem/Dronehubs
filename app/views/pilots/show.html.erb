@@ -1,2 +1,33 @@
-<h1>Owners#show</h1>
-<p>Find me in app/views/owners/show.html.erb</p>
+<div class="banner profile" style="background-image: url(<%= @owner.banner_pic %>);">
+  <%= cl_image_tag @owner.profile_pic, height: 150, width: 150, crop: :fill, style: "border-radius: 50%;" %>
+  <h1><%= @owner.first_name %> <%= @owner.last_name %></h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+    <h2 class="subtitle"><span>Description</span></h2>
+    <%= @owner.description %>
+    </div>
+  </div>
+</div>
+
+<div class="container padded">
+  <div class="row">
+  <h2 class="subtitle"><span>Drones</span></h2>
+    <% @owner.drones.each do |drone| %>
+    <div class="col-xs-12 col-md-4">
+      <div class="thumbnail">
+        <% if drone[:photo] == nil %>
+        <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture" %>
+        <% else %>
+        <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
+        <% end %>
+        <div class="caption">
+          <h3><%= drone.brand %> <%= drone.model %></h3>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
