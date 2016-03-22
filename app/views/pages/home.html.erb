@@ -71,18 +71,32 @@
     </div>
   </div>
   <div class="row padded">
-  <% @latest_owners.each do |user| %>
-    <div class="col-xs-12 col-sm-4 col-offset-1">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://unsplash.it/200/300/?random');">
-        <div class="card-category"><%= user.first_name + " " + user.last_name %></div>
-        <div class="card-description">
-          <h2>Some stuff</h2>
-          <p>Very cool stuff, useful and smart</p>
+  <% @latest_owners.each do |owner| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+           <!-- style="background-image: url(' owner.drones.photo ');" -->
+           <% if owner[:banner_pic].nil? %>
+           <%= image_tag "aerial-trees.jpeg", class:"card-image" %>
+           <% else %>
+           <%= image_tag owner.banner_pic, class:"card-image"%>
+           <% end %>
+
+           <% if owner[:profile_pic].nil? %>
+           <%= image_tag "https://robohash.org/my-own-slug.png?size=300x300", class:"card-avatar" %>
+           <% else %>
+           <%= image_tag owner.profile_pic, class:"card-avatar"%>
+           <% end %>
+           <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
+           <%= link_to "", pilot_path(owner), class: "card-link" %>
+           <div class="card-description">
+
+            <h4><%=owner.first_name%></h4>
+            <p>Location: owner.location </p>
+            <p>Tags: owner.categories</p>
+          </div>
+          <!-- this p-content will change with the location and categories when migrated -->
         </div>
-        <img class="card-user avatar" src="user.jpg">
-        <a class="card-link" href="#" ></a>
       </div>
-    </div>
   <% end %>
   <div class="text-center"><%= link_to "Become a pilot",  "#", { class: "btn btn-primary" } %></div>
   </div>
