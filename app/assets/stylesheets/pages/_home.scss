@@ -61,6 +61,23 @@ h2.subtitle {
     }
 }
 
+.cat-box-new {
+    border: 1px solid rgba(102, 101, 100, .5);
+    border-width: 1px;
+    background-color: #fff;
+     display: flex;
+  align-items: center;
+  justify-content: center;
+    &:hover.cat-text {
+     box-shadow: inset 0 0 0 25px #B1E4B8;
+        transition:all 0.3s ease;
+    }
+    p {
+        position: relative;
+        top: 18px;
+    }
+}
+
 a:hover{
     text-decoration: none;
 }
@@ -77,3 +94,25 @@ a:hover{
     font-size: 220px;
     color: #79B791;
 }
+
+.wedding {
+    height: 346px;
+    // margin-right: 5px;
+    background-image: url("jobs/categories-archaeology.jpeg");
+    background-size: cover !important;
+}
+
+.environment {
+    height: 346px;
+    // margin-right: 5px;
+    background-image: url("jobs/categories-agriculture.jpeg");
+    background-size: cover !important;
+}
+
+.family {
+    height: 346px;
+    // margin-right: 5px;
+    background-image: url("jobs/categories-watersport.jpeg");
+    background-size: cover !important;
+}
+
