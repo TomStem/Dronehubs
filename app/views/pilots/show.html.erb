@@ -1,33 +1,52 @@
-<div class="banner profile" style="background-image: url(<%= @owner.banner_pic %>);">
-  <%= cl_image_tag @owner.profile_pic, height: 150, width: 150, crop: :fill, style: "border-radius: 50%;" %>
-  <h1><%= @owner.first_name %> <%= @owner.last_name %></h1>
-</div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-    <h2 class="subtitle"><span>Description</span></h2>
-    <%= @owner.description %>
-    </div>
+<% if @owner[:banner_pic] == "" || @owner[:banner_pic] == nil %>
+<div class="banner profile" style="background-image: asset-url('dutch-landscape.jpg');">
+  <% else %>
+  <div class="banner profile" style="background-image: url(<%= @owner.banner_pic %>);">
+    <% end %>
+    <%= cl_image_tag @owner.profile_pic, height: 150, width: 150, crop: :fill, style: "border-radius: 50%;" %>
+    <h1><%= @owner.first_name %> <%= @owner.last_name %></h1>
   </div>
-</div>
 
-<div class="container padded">
-  <div class="row">
-  <h2 class="subtitle"><span>Drones</span></h2>
-    <% @owner.drones.each do |drone| %>
-    <div class="col-xs-12 col-md-4">
-      <div class="thumbnail">
-        <% if drone[:photo] == nil %>
-        <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture" %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <h2 class="subtitle"><span>Description</span></h2>
+        <% if @owner[:description] == nil %>
+        <p>No description given. Ask the pilot to give one.</p>
         <% else %>
-        <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
+        <%= @owner.description %>
         <% end %>
-        <div class="caption">
-          <h3><%= drone.brand %> <%= drone.model %></h3>
-        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <h2 class="subtitle"><span>Info</span></h2>
+        <p>Name: <%= @owner.first_name %></p>
+        <p>Last name: <%= @owner.last_name %></p>
+        <p>Email: <%= @owner.email %></p>
       </div>
     </div>
-    <% end %>
   </div>
-</div>
+
+  <div class="container padded">
+    <div class="row">
+      <h2 class="subtitle"><span>Drones</span></h2>
+      <% if @owner.drones == [] %>
+      <p>This pilot has no drones (yet)</p>
+      <% else %>
+      <% @owner.drones.each do |drone| %>
+      <div class="col-xs-12 col-md-4">
+        <div class="thumbnail">
+          <% if drone[:photo] == nil %>
+          <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture" %>
+          <% else %>
+          <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
+          <% end %>
+          <div class="caption">
+            <h3><%= drone.brand %> <%= drone.model %></h3>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
