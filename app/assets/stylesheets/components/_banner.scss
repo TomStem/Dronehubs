@@ -35,3 +35,18 @@
 .banner.dashboard {
   height: 30vh;
 }
+.banner-job{
+  background-image: asset-url("jobs/amsterdam-map2.png");
+  height: 40vh;
+  text-align: center;
+  background-size: cover !important;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  h1 {
+    color: grey;
+    font-size: 40px;
+    text-shadow: grey 0em 0em 0.1em;
+    font-weight: bold;
+  }
+}

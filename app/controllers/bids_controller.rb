@@ -12,7 +12,7 @@ class BidsController < ApplicationController
     @bid = Bid.new(bid_params)
     @bid.job = @job
     @bid.save!
-    redirect_to jobs_path
+    redirect_to job_path(@job)
   end
 
   private
