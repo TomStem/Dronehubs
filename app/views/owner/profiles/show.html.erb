@@ -35,10 +35,9 @@
           <h2 style="text-align: center;"><%= @owner.first_name %> <%= @owner.last_name %></h2>
         </div>
         <div class="col-xs-12 col-sm-8">
-          <p>description:</p>
-          <!-- should be nice if there is a popup where you can input the description -->
+          <h4>Description:</h4>
           <p><%= @owner.description %></p>
-          <%= link_to "Edit your Profile", edit_owner_profile_path, class: "btn btn-primary" %>
+          <%= link_to "Edit your Profile", '#', { class: "btn btn-primary new-bid btn-sm", data: { toggle: "modal", target: "#modal-profile"}} %>
         </div>
       </div>
     </div>
@@ -103,3 +102,4 @@
 
 </div>
 </div>
+<%= render 'owner/profiles/modal_edit' %>

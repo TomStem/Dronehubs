@@ -1,2 +1,56 @@
-<h1>Owners#show</h1>
-<p>Find me in app/views/owners/show.html.erb</p>
+<% if @owner.owner? %>
+<% if @owner[:banner_pic] == "" || @owner[:banner_pic] == nil %>
+<div class="banner profile" style="background-image: asset-url('dutch-landscape.jpg');">
+  <% else %>
+  <div class="banner profile" style="background-image: url(<%= @owner.banner_pic %>);">
+    <% end %>
+    <%= cl_image_tag @owner.profile_pic, height: 150, width: 150, crop: :fill, style: "border-radius: 50%;" %>
+    <h1><%= @owner.first_name %> <%= @owner.last_name %></h1>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8">
+        <h2 class="subtitle"><span>Description</span></h2>
+        <% if @owner[:description] == nil %>
+        <p>No description given. Ask the pilot to give one.</p>
+        <% else %>
+        <%= @owner.description %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <h2 class="subtitle"><span>Info</span></h2>
+        <p>Name: <%= @owner.first_name %></p>
+        <p>Last name: <%= @owner.last_name %></p>
+        <p>Email: <%= @owner.email %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container padded">
+    <div class="row">
+      <h2 class="subtitle"><span>Drones</span></h2>
+      <% if @owner.drones == [] %>
+      <p>This pilot has no drones (yet)</p>
+      <% else %>
+      <% @owner.drones.each do |drone| %>
+      <div class="col-xs-12 col-md-4">
+        <div class="thumbnail">
+          <% if drone[:photo] == nil %>
+            <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture" %>
+          <% else %>
+            <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
+          <% end %>
+          <div class="caption">
+            <h3><%= drone.brand %> <%= drone.model %></h3>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  <% else %>
+  <h1>This user is no pilot</h1>
+  <p><%= link_to "get me out of here!", pilots_path, class: "btn btn-danger" %></p>
+  <% end %>

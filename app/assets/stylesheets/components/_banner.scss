@@ -28,8 +28,8 @@
 }
 
 .blacklayer {
-   background-size: cover !important;
-    background: rgba(0,0,0,0.45);
+ background-size: cover !important;
+ background: rgba(0,0,0,0.45);
 }
 
 .banner.dashboard {
@@ -49,4 +49,7 @@
     text-shadow: grey 0em 0em 0.1em;
     font-weight: bold;
   }
+.banner.profile {
+  height: 40vh;
+  flex-direction: column;
 }
