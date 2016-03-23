@@ -1,7 +1,9 @@
 class JobsController < ApplicationController
-  skip_before_action :authenticate_user!
+  before_action :set_drones
+
   def index
     @jobs = Job.all
+
     if params[:search]
       @jobs = Job.search(params[:search]).order("created_at DESC")
     else
@@ -16,5 +18,11 @@ class JobsController < ApplicationController
   def latest
     # get a list of 3 jobs that have been posted latest
     @jobs = Job.latest
+  end
+
+  private
+
+  def set_drones
+    @drones = current_user.drones
   end
 end

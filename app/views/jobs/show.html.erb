@@ -1,26 +1,26 @@
 <div class="banner-job">
-  <h1><%= @job.title %></h1>
 </div>
 
 <div class="row">
   <div class="job-details">
     <div class="job-user">
       <div class="col-xs-12 col-md-2 col-md-offset-2">
-        <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "border-radius: 50%;", class:"list-avatar"%>
-        <h5><%=@job.user.first_name%></h5>
+        <div class="text-center">
+          <%= cl_image_tag @job.user.profile_pic, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
+          <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
+        </div>
       </div>
       <div class="col-xs-12 col-md-8">          
-      <p class="job-description"><%=@job.description%></p>
-        <h6>WEDDING</h6>
-      </div>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <p class="job-specific">
-            <i class="fa fa-map-marker"></i> Amsterdam  |  
-            <i class="fa fa-calendar"></i> 3th of May 2016  |  
+        <h1><%= @job.title %></h1>
+        <h6>TAGS: WEDDING</h6>
+        <p class="job-description"><%=@job.description%></p>
+        <div class="job-specific">
+          <p>
+            <i class="fa fa-map-marker"></i> <%=@job.location%> |  
+            <i class="fa fa-calendar"></i> <%=@job.date%>  |  
             <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %> 
           </p>
-        </div> 
+        </div>  
       </div>
     </div>
   </div>
@@ -30,26 +30,30 @@
   <h2 class="text-center"><i class="fa fa-gavel"></i> Bids</h2>
   <br>
   <hr>
-  <% @job.bids.each do |bid|%>
-  <div class="row">
-    <div class="col-xs-12 col-md-2 col-md-offset-1">
-      <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "border-radius: 50%;", class:"list-avatar"%>
-      <h5>Pilot name</h5>
+  <% if @job.bids.empty? %>
+    <p class="text-center">No bids yet. Be the first to place a bid!</p>
+  <% else %>
+    <% @job.bids.each do |bid|%>
+    <div class="row">
+      <div class="col-xs-12 col-md-2 col-md-offset-1">
+        <%= cl_image_tag bid.drone.user.profile_pic, size: "300x300", alt: "profile picture", style: "border-radius: 50%;", class:"list-avatar"%>
+        <h5> </h5>
+      </div>
+      <div class="col-xs-12 col-md-1">
+        <%= cl_image_tag bid.drone.photo, size: "300x300", alt: "profile picture", style: "border-radius: 50%;", class:"list-avatar"%>
+      </div>
+      <div class="col-xs-12 col-md-2">
+        <h5>Brand: <%=bid.drone.brand%></h5>
+        <h5>Model: <%=bid.drone.model%></h5>
+        <h5>Camera: <%=bid.drone.camera%></h5>
+      </div>
+      <div class="col-xs-12 col-md-5">
+        <h3>€ <%= bid.amount %>,-</h3>
+        <p><%= bid.description %></p>
+      </div>
     </div>
-    <div class="col-xs-12 col-md-1">
-      <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "profile picture", style: "border-radius: 50%;", class:"list-avatar"%>
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <h5>Drone name</h5>
-      <h5>Drone brand</h5>
-      <h5>Drone details </h5>
-    </div>
-    <div class="col-xs-12 col-md-5">
-      <h3>€ <%= bid.amount %>,-</h3>
-      <p><%= bid.description %></p>
-    </div>
-  </div>
-  <hr>
+    <hr>
+    <% end %>
   <% end %>
 </div>
-<%= render 'bids/modal_new' %>
+<%= render 'bids/modal_new', job: @job, drones: @drones %>

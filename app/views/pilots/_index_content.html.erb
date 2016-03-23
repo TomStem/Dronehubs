@@ -45,20 +45,18 @@
            <% end %>
            <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
            <%= link_to "", pilot_path(owner), class: "card-link" %>
-           <div class="card-description">
+             <div class="card-description">
 
-            <h4><%=owner.first_name%></h4>
-            <p>Location: owner.location </p>
-            <p>Tags: owner.categories</p>
+              <h4><%=owner.first_name%></h4>
+              <p>Location: owner.location </p>
+              <p>Tags: owner.categories</p>
+            </div>
+            <!-- this p-content will change with the location and categories when migrated -->
           </div>
-          <!-- this p-content will change with the location and categories when migrated -->
         </div>
+        <!-- show 10max and allow user to show the next 10 etc.  -->
+        <% end %>
       </div>
-      <!-- show 10max and allow user to show the next 10 etc.  -->
-      <% end %>
     </div>
   </div>
-
-</div>
-</div>
 </div>
