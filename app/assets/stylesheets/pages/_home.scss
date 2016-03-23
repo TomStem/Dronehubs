@@ -91,7 +91,7 @@ a:hover{
 }
 
 .steps i {
-    font-size: 220px;
+    font-size: 150px;
     color: #79B791;
 }
 
@@ -116,3 +116,12 @@ a:hover{
     background-size: cover !important;
 }
 
+.panel-radius {
+    border-radius: 30px;
+}
+
+.panel-radius-top
+    {
+     border-top-right-radius: 30px;
+     border-top-left-radius: 30px;
+    }
