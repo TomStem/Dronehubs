@@ -3,11 +3,11 @@
     <div class="row">
             <div class="col-xs-3">
                 <ul class="list-unstyled">
-                    <li>Site<li>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Legislation</a></li>
-                    <li><a href="/jobs">Jobs</a></li>
+                    <li>Menu<li>
+                    <li><%= link_to t(".home", default: "Home"), root_path, class: "" %></li>
+                    <li><%= link_to t(".about", default: "About"), about_path, class: "" %></li>
+                    <li><%= link_to t(".discover", default: "Discover"), discover_path, class: "" %></li>
+                    <li><%= link_to t(".legislation", default: "Legislation"), legislation_path, class: "" %></li>
                 </ul>
             </div>
             <vr></vr>
