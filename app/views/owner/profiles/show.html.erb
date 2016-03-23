@@ -43,7 +43,7 @@
           <tr>
             <td><%= job[:job].title %></td>
             <td><%= job[:job].user.first_name %></td>
-            <td><%= job[:drone].brand %> <%= job[:drone].model %></td>
+            <td><%= cl_image_tag job[:drone].photo , height: 100, witdh: 100 %> <%= job[:drone].brand %> <%= job[:drone].model %></td>
           </tr>
           <% end %>
         </table>
