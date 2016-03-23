@@ -2,7 +2,7 @@
 <div class="modal fade" id="modal-bid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <%= simple_form_for([Job.first, Bid.new]) do |f| %>
+      <%= simple_form_for([job, Bid.new]) do |f| %>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Place a bid</h4>
@@ -12,7 +12,7 @@
 
         <%= f.input :amount %>
         <%= f.input :description %>
-        <%= f.input :drone_id, as: :select, :collection => @drones %>
+        <%= f.input :drone_id, collection: @drones, :label_method => :model, :value_method => :id %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

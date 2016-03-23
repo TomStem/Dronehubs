@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   def index
     @jobs = Job.all
+
     if params[:search]
       @jobs = Job.search(params[:search]).order("created_at DESC")
     else
@@ -10,6 +11,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @drones = current_user.drones
   end
 
   def latest
