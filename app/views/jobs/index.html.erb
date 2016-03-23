@@ -69,8 +69,8 @@
             <div class="row">
               <div class="col-xs-12">
                 <p class="job-specific">
-                  <i class="fa fa-map-marker"></i> Amsterdam  |  
-                  <i class="fa fa-calendar"></i> 3th of May 2016  |  
+                  <i class="fa fa-map-marker"></i> <%=job.location%>  |  
+                  <i class="fa fa-calendar"></i>   <%=job.date%>  |  
                   <i class="fa fa-gavel"></i> 2 bids  |  
                   <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': job.id, toggle: "modal", target: "#modal-bid"}} %> 
                 </p>
@@ -86,4 +86,4 @@
   </div>
 </div>
 
-<%= render 'bids/modal_new', job: job%>
+<%= render 'bids/modal_new', job: Job.first, drones: @drones %>

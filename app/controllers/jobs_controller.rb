@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+  before_action :set_drones
+
   def index
     @jobs = Job.all
 
@@ -11,11 +13,16 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    @drones = current_user.drones
   end
 
   def latest
     # get a list of 3 jobs that have been posted latest
     @jobs = Job.latest
+  end
+
+  private
+
+  def set_drones
+    @drones = current_user.drones
   end
 end
