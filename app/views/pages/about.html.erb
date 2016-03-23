@@ -1,0 +1,79 @@
+<div class="container padded">
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Meet our team</h2>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                                       
+                    <div class="team-wrapper">
+                        <%= image_tag "tom.jpg", class: "img-responsive", style: "height:300px; width:360px;"%>
+                    <div class="description">
+                       <h3>Tom Stemerding</h3>
+                        <h5> <strong>Co founder + developer</strong></h5>
+                        <p>
+                            Pellentesque elementum dapibus convallis. 
+                            Vivamus eget finibus massa.
+                        </p>
+                        <hr />
+                        <a href="#" class="btn btn-danger btn-block">See Full Profile + </a> 
+                    </div>
+                     </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                                       
+                    <div class="team-wrapper">
+                        <%= image_tag "Iris.jpg", class: "img-responsive", style: "height:300px; width:360px;"%>
+                    <div class="description">
+                       <h3>Iris Kramer</h3>
+                        <h5> <strong>Co founder + developer</strong></h5>
+                        <p>
+                            Pellentesque elementum dapibus convallis. 
+                            Vivamus eget finibus massa.
+                        </p>
+                        <hr />
+                        <a href="#" class="btn btn-warning btn-block">See Full Profile + </a> 
+                    </div>
+                     </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                                       
+                    <div class="team-wrapper">
+                        <%= image_tag "roy.jpeg", class: "img-responsive", style: "height:300px; width:360px;"%> 
+                    <div class="description">
+                       <h3>Roy van Arkel</h3>
+                        <h5> <strong>Co founder + developer</strong></h5>
+                        <p>
+                            Pellentesque elementum dapibus convallis. 
+                            Vivamus eget finibus massa.
+                        </p>
+                        <hr />
+                        <a href="#" class="btn btn-success btn-block">See Full Profile + </a> 
+                    </div>
+                     </div>
+                </div>
+            </div>
+        
+    </div>
+<div id="map" style="width: 100%;height: 500px;"></div>
+    <script>
+      function initMap() {
+        var myLatLng = {lat: 52.34304, lng: 4.82928};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'B.Amsterdam!'
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>

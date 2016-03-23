@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/terms', to: "pages#terms"
   get '/legislation', to: "pages#legislation"
   get '/discover', to: "pages#discover"
+  get '/about', to: "pages#about"
 
 
   devise_for :users

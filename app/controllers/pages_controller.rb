@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-skip_before_action :authenticate_user!, only: [:home, :terms, :legislation, :discover]
+skip_before_action :authenticate_user!, only: [:home, :terms, :legislation, :discover, :about]
 
   def home
     @latest_jobs = Job.latest
