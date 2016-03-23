@@ -52,6 +52,10 @@
         </div>
       </div>
 
+      <div class="job-action">
+      <%= link_to "Create a job", '#', { class: "btn btn-primary new-job btn-sm", data: {'job-id': @job, toggle: "modal", target: "#modal-job"}} %> 
+      </div>
+ 
       <% @jobs.each do |job|%>
       <div class="row">
         <div class="job-details">
@@ -71,7 +75,7 @@
                 <p class="job-specific">
                   <i class="fa fa-map-marker"></i> <%=job.location%>  |  
                   <i class="fa fa-calendar"></i>   <%=job.date%>  |  
-                  <i class="fa fa-gavel"></i> 2 bids  |  
+                  <i class="fa fa-gavel"></i> job.bids.count bids  |  
                   <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': job.id, toggle: "modal", target: "#modal-bid"}} %> 
                 </p>
               </div> 
@@ -85,5 +89,7 @@
     </div>
   </div>
 </div>
+
+<%= render 'inquirer/jobs/modal_new'%>
 
 <%= render 'bids/modal_new', job: Job.first, drones: @drones %>
