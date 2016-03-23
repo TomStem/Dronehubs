@@ -33,7 +33,37 @@
 }
 
 .banner.dashboard {
-  height: 30vh;
+  height: auto;
+  padding: 50px 0;
+  padding-bottom: 70px;
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  .banner-content-buttons {
+    margin-top: 20px;
+    .edit-profile {
+      background: white none repeat scroll 0% 0%;
+      border: 2px solid white;
+      color: black;
+      padding: 9px 17px;
+    }
+    .edit-profile:hover{
+      opacity: 0.8;
+    }
+    .see-profile {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      padding: 9px 17px;
+      margin-left: 10px;
+    }
+    .see-profile:hover {
+      opacity: 0.8;
+      background-color: rgba(0,0,0,0.2);
+    }
+  }
 }
 .banner-job{
   background-image: asset-url("jobs/amsterdam-map2.png");

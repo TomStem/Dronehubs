@@ -12,7 +12,7 @@ class Owner::ProfilesController < ApplicationController
     @owner.drones.each do |drone|
       drone.bids.each do |bid|
         if bid.status == "accepted"
-          @jobs << bid.job
+          @jobs << { job: bid.job, drone: bid.drone }
           @jobs_amount += 1
         end
       end
