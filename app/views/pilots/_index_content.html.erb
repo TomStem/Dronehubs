@@ -1,5 +1,6 @@
+<!-- <div class="banner pilots" id="all_categories"></div> -->
 <div class="owners-body">
-  <div class="row">
+  <div class="container">
     <div class="col-md-2 col-sm-offset-1">
       <div class="sidebar hidden-xs">
         <ul>
@@ -19,43 +20,48 @@
     </div>
     <!-- this content should change together with the changing href or the class active -->
     <div class="col-md-8">
-      <h5>PILOTS > <a href="#all" class="active">ALL CATEGORIES</a></h5>
-      <div class="banner-owners">
-        <div class="banner-content">
+      <h5>PILOTS > 
+        <a href="#all" class="active">ALL CATEGORIES</a>
+        <%= link_to "How to become a pilot", '#', { class: "btn btn-primary btn-xs cta-discover"} %>
+      </h5>
+      <div class="banner pilots">
+        <div class="banner-content" id="all_categories">
           <h1>All categories</h1>
           <p>Good luck in finding the perfect pilot for the job!</p>
         </div>
       </div>
 
-      <div class="row">
-        <% owners.each do |owner| %>
-        <div class="col-xs-12 col-sm-4">
-          <div class="card">
-           <!-- style="background-image: url(' owner.drones.photo ');" -->
-           <% if owner[:banner_pic].nil? %>
-           <%= image_tag "aerial-trees.jpeg", class:"card-image" %>
-           <% else %>
-           <%= image_tag owner.banner_pic, class:"card-image"%>
-           <% end %>
+      <div class="kill-padding-card">
+        <div class="row">
+          <div class="card-grid">
+            <% owners.each do |owner| %>
+            <div class="col-xs-12 col-sm-4">
+              <div class="card">
+               <!-- style="background-image: url(' owner.drones.photo ');" -->
+               <% if owner[:banner_pic].nil? %>
+               <%= image_tag "aerial-trees.jpeg", class:"card-image" %>
+               <% else %>
+               <%= image_tag owner.banner_pic, class:"card-image"%>
+               <% end %>
 
-           <% if owner[:profile_pic].nil? %>
-           <%= image_tag "https://robohash.org/my-own-slug.png?size=300x300", class:"card-avatar" %>
-           <% else %>
-           <%= image_tag owner.profile_pic, class:"card-avatar"%>
-           <% end %>
-           <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
-           <%= link_to "", pilot_path(owner), class: "card-link" %>
-             <div class="card-description">
-
-              <h4><%=owner.first_name%></h4>
-              <p>Location: owner.location </p>
-              <p>Tags: owner.categories</p>
+               <% if owner[:profile_pic].nil? %>
+               <%= image_tag "https://robohash.org/my-own-slug.png?size=300x300", class:"card-avatar" %>
+               <% else %>
+               <%= image_tag owner.profile_pic, class:"card-avatar"%>
+               <% end %>
+               <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
+               <%= link_to "", pilot_path(owner), class: "card-link" %>
+               <div class="card-description">
+                <h5>Specialised: owner.categories</h5>
+                <hr>
+                <p><%=owner.first_name%> is based in owner.location</p>
+              </div>
+              <!-- this p-content will change with the location and categories when migrated -->
             </div>
-            <!-- this p-content will change with the location and categories when migrated -->
           </div>
+          <!-- show 10max and allow user to show the next 10 etc.  -->
+          <% end %>
         </div>
-        <!-- show 10max and allow user to show the next 10 etc.  -->
-        <% end %>
       </div>
     </div>
   </div>
