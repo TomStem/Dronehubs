@@ -96,21 +96,21 @@ a:hover{
 }
 
 .wedding {
-    height: 346px;
+    height: 246px;
     // margin-right: 5px;
     background-image: url("jobs/categories-archaeology.jpeg");
     background-size: cover !important;
 }
 
 .environment {
-    height: 346px;
+    height: 246px;
     // margin-right: 5px;
     background-image: url("jobs/categories-agriculture.jpeg");
     background-size: cover !important;
 }
 
 .family {
-    height: 346px;
+    height: 246px;
     // margin-right: 5px;
     background-image: url("jobs/categories-watersport.jpeg");
     background-size: cover !important;
@@ -125,3 +125,7 @@ a:hover{
      border-top-right-radius: 30px;
      border-top-left-radius: 30px;
     }
+
+.cat-box-new-container {
+    padding: 5px;
+}
