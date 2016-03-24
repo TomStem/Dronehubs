@@ -1,16 +1,18 @@
-<div class="tabbing">  
+<div class="banner discover"></div>
+
+<div class="tab-box tab-profile">  
   <% tabs = ['pilots', 'jobs'] %>
 
   <div class="discover-tabs">
-    <div>
+    <h2 class="subtitle">
       <% tabs.each do |tab| %>
-      <%= link_to send("#{tab}_path") do %>
-      <span class="discover-tab <%= 'active' if active_tab == tab %> ">
-        <%= tab.capitalize %>
-      </span>
+        <%= link_to send("#{tab}_path") do %>
+        <span class="discover-tab <%= 'active' if active_tab == tab %> ">
+          <%= tab.capitalize %>
+        </span>
+        <% end %>
       <% end %>
-      <% end %>
-    </div>
+    </h2>
   </div>
 </div>
 

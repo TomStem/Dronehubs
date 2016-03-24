@@ -3,10 +3,6 @@
   h4{
     margin: 20px 0;
   }
-  h5{
-    margin: 20px 0;
-    font-weight: bold;
-  }
   h6{
     margin-bottom: 5px;
   }
@@ -14,27 +10,6 @@
     margin: 10px 0;
     list-style: none;
   }
-}
-.banner-owners {
-  color: white;
-  text-align: left;
-  height: 230px;
-  background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  margin-bottom: 20px;
-  background-image: asset-url('owners/pilot.jpeg');
-  h1 {
-    font-size: 50px;
-    font-weight: bold;
-  }
-  p {
-    font-size: 20px;
-  }
-}
-.banner-content{
-  padding-left: 10px;
 }
 .owner-details {
   display: flex;
@@ -72,4 +47,3 @@
     padding: 5px 5px;
   }
 }
-

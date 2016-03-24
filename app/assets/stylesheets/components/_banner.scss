@@ -1,13 +1,13 @@
 .banner {
   color: white;
-  background-image: asset-url("dutch-landscape.jpg");
-  text-align: center;
-  height: 80vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-  background-size: cover !important;
   display: flex;
+  text-align: center;
   align-items: center;
   justify-content: center;
+  height: 80vh;
+  background-size: cover !important;
+  background-image: asset-url("dutch-landscape.jpg");
 }
 .banner h1 {
   font-size: 50px;
@@ -16,7 +16,7 @@
 }
 .banner-content p{
   font-size: 20px;
-  font-weight: lighter;
+  font-weight: 400;
   color: white;
   margin-bottom: 20px;
 }
@@ -65,11 +65,47 @@
     }
   }
 }
-.banner-job{
-  background-image: asset-url("jobs/amsterdam-map2.png");
+.banner.jobs {
+  text-align: left;
+  justify-content: flex-start;
+  height: 230px;
+  margin-bottom: 20px;
+  background-image: asset-url('jobs/unsplash_banner.jpeg');
+  background-position: 30% 50%;
+  .banner-content{
+    padding-left: 50px;
+  }
+}
+.banner.pilots {
+  text-align: left;
+  justify-content: flex-start;
+  height: 230px;
+  margin-bottom: 20px;
+  background-image: asset-url('owners/pilot.jpeg');
+  .banner-content{
+    padding-left: 50px;
+  }
+}
+.banner.job{
   height: 40vh;
+  background-image: asset-url("jobs/amsterdam-map2.png");
 }
 .banner.profile {
   height: 40vh;
   flex-direction: column;
 }
+.banner.discover{
+  height: 10vh;
+  background-image: asset-url("jobs/unsplash_banner.jpeg");
+  background-position: 50% 0%;
+}
+// .banner.jobs#all_categories{
+//   height: 20vh;
+//   background-image: asset-url("jobs/unsplash_banner.jpeg");
+//   background-position: 50% 10%;
+// }
+// .banner.pilots#all_categories{
+//   height: 20vh;
+//   background-image: asset-url("owners/pilot.jpeg");
+//   background-position: 50% 10%;
+// }

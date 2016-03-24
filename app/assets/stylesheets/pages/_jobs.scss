@@ -14,54 +14,64 @@
     list-style: none;
   }
 }
-.banner-jobs {
-  color: white;
-  text-align: left;
-  height: 230px;
-  background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  margin-bottom: 20px;
-  background-image: asset-url('jobs/unsplash_banner.jpeg');
-  background-position: 30% 50%;
-  h1 {
-    font-size: 50px;
-    font-weight: bold;
-  }
-  p {
-    font-size: 20px;
-  }
-}
-.banner-content{
-  padding-left: 10px;
-}
 .job-details {
+  margin: 5px 15px;
   display: flex;
   align-items: center;
-  padding-left: 0;
   background-color: white;
-  border: 1px solid #79B791;
-  h1{
-    font-size: 20px;
-  }
+  border: 1px solid rgba(47, 47, 47, 0.15);
+
 }
 .job-user{
-  margin: 20px;
+  padding: 5px 15px;
 }
-.list-avatar{
-  height: 85px;
-  width: 85px;
+.job-user-block{
+  padding-top: 10px;
 }
-.job-description p{
+.user-block-avatar{
+  display: table-cell;
+}
+.user-block-description{
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 14px;
+  padding-left: 10px;
+  a{
+    margin: 0;
+  }
+  p{
+    margin: 0;
+  }
+}
+.job-description-block{
+  h2{
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: 700;
+  }
+  h2 a{
+    color: black;
+  }
+  h6 a{
+    color: black;
+  }
+  p{
   color: $gray-light;
   font-size: 15px;
+  }
 }
-.job-specific p{
+.job-footer{
+  display: block;
   color: #79B791;
   padding-top: 10px;
 }
-.job-action{
-  text-align: right;
-  padding-bottom: 10px;
+.job-footer-spec{
+  display: inline-block;
+  font-size: 13px;
+}
+.job-footer-bid{
+  display: inline-block;
+  float: right!important;
+  margin-right: 8px;
+  font-size: 15px;
 }
