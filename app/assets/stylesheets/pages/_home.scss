@@ -88,6 +88,11 @@ a:hover{
 
 .flex {
     display: block;
+    text-shadow: black 0em 0em 0.1em;
+}
+
+.cat-list p {
+    text-shadow: black 0em 0em 0.1em;
 }
 
 .steps i {
@@ -98,21 +103,42 @@ a:hover{
 .wedding {
     height: 246px;
     // margin-right: 5px;
-    background-image: url("jobs/categories-archaeology.jpeg");
+    background-image: url("wedding.jpg");
+    background-size: cover !important;
+}
+
+.music {
+    height: 246px;
+    // margin-right: 5px;
+    background-image: url("music.jpg");
+    background-size: cover !important;
+}
+
+.education {
+    height: 246px;
+    // margin-right: 5px;
+    background-image: url("edu.jpeg");
     background-size: cover !important;
 }
 
 .environment {
     height: 246px;
     // margin-right: 5px;
-    background-image: url("jobs/categories-agriculture.jpeg");
+    background-image: url("envi.jpg");
+    background-size: cover !important;
+}
+
+.sport {
+    height: 246px;
+    // margin-right: 5px;
+    background-image: url("sport.jpg");
     background-size: cover !important;
 }
 
 .family {
     height: 246px;
     // margin-right: 5px;
-    background-image: url("jobs/categories-watersport.jpeg");
+    background-image: url("family.jpg");
     background-size: cover !important;
 }
 
