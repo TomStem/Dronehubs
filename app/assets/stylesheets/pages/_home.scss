@@ -101,45 +101,52 @@ a:hover{
 }
 
 .wedding {
+
     height: 246px;
     // margin-right: 5px;
-    background-image: url("wedding.jpg");
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("wedding.jpg");
     background-size: cover !important;
+    color: white;
 }
 
 .music {
     height: 246px;
     // margin-right: 5px;
-    background-image: url("music.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("music.jpg");
     background-size: cover !important;
+    color: white;
 }
 
 .education {
     height: 246px;
     // margin-right: 5px;
-    background-image: url("edu.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("edu.jpeg");
     background-size: cover !important;
+    color: white;
 }
 
 .environment {
     height: 246px;
     // margin-right: 5px;
-    background-image: url("envi.jpg");
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),  url("envi.jpg");
     background-size: cover !important;
+    color: white;
 }
 
 .sport {
     height: 246px;
     // margin-right: 5px;
-    background-image: url("sport.jpg");
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),  url("sport.jpg");
     background-size: cover !important;
+    color: white;
 }
 
 .family {
     height: 246px;
     // margin-right: 5px;
-    background-image: url("family.jpg");
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),  url("family.jpg");
     background-size: cover !important;
+    color: white;
 }
 
 .panel-radius {
@@ -154,7 +161,11 @@ a:hover{
 
 .cat-box-new-container {
     padding: 5px;
-    z-index: -1;
-    background-color: white;
-    opacity: 0.75;
+    &:hover {
+     opacity: 0.9;
+    }
+}
+
+.img-cirle {
+    border-radius: 50px;
 }

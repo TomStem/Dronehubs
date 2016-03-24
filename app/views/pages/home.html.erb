@@ -49,20 +49,20 @@
   </div>
   <div class="row">
     <div class="col-md-4">
-      <div class="icon panel panel-default panel-radius">
-        <div class="panel-heading text-center steps panel-radius-top"><i class="fa fa-search"></i></div>
+      <div class="panel panel-default">
+        <div class="panel-heading text-center steps"><i class="fa fa-search img-circle"></i></div>
         <div class="panel-body text-center">Find</div>
       </div>
     </div> 
     <div class="col-md-4">
-      <div class="panel panel-default panel-radius">
-        <div class="panel-heading text-center steps panel-radius-top"><i class="fa fa-money"></i></div>
+      <div class="panel panel-default">
+        <div class="panel-heading text-center steps"><i class="fa fa-money"></i></div>
         <div class="panel-body text-center">Make a bid</div>
       </div>
     </div> 
     <div class="col-md-4">
-      <div class="panel panel-default panel-radius">
-        <div class="panel-heading text-center steps panel-radius-top"><i class="fa fa-check"></i></div>
+      <div class="panel panel-default">
+        <div class="panel-heading text-center steps"><i class="fa fa-check"></i></div>
         <div class="panel-body text-center">Make the arragement</div>
       </div>
     </div>  
@@ -105,7 +105,7 @@
                <%= image_tag owner.profile_pic, class:"card-avatar"%>
                <% end %>
                <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
-               <%= link_to "", pilot_path(owner), class: "card-link" %>
+               <%= link_to "", pilot_path(owner), class: "card-link-home" %>
                <div class="card-description">
 
               <h4><%=owner.first_name + " " + owner.last_name%></h4>
