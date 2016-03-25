@@ -51,21 +51,29 @@
     <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading text-center steps"><i class="fa fa-search img-circle"></i></div>
-        <div class="panel-body text-center">Find</div>
+        <div class="panel-body text-center">Discover jobs or pilots near you</div>
       </div>
     </div> 
     <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading text-center steps"><i class="fa fa-money"></i></div>
-        <div class="panel-body text-center">Make a bid</div>
+        <div class="panel-body text-center">Connect through DroneHubs</div>
       </div>
     </div> 
     <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-heading text-center steps"><i class="fa fa-check"></i></div>
-        <div class="panel-body text-center">Make the arragement</div>
+        <div class="panel-body text-center">Meet up and drone on!</div>
       </div>
     </div>  
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-1">
+      <%= link_to "How to create a job", about_path, { class: "btn btn-primary btn-sm cta-discover"} %>
+    </div>
+    <div class="col-xs-4">
+      <%= link_to "How to become a pilot", about_path, { class: "btn btn-primary btn-sm cta-discover"} %>
+    </div>
   </div>
 </div>
 
@@ -76,25 +84,39 @@
     </div>
   </div>
   <div class="row">
-    <%= link_to root_path  do %>
+    <%= link_to jobs_path  do %>
       <div class="col-md-8">
         <div class="cat-box-new-container">
           <div class="environment cat-box-new ">
             <ul class="cat-list list-unstyled">
-              <li><i class="flex fa fa-5x fa-leaf" %></i></li>
-              <li><p class="text-center">Environment</p></li>
+              <li class= "text-center"><i class="flex fa fa-5x fa-leaf" %></i></li>
+              <li><p class="text-center">Jobs for the environment</p></li>
             </ul>
           </div>
         </div>
       </div>    
     <% end %>
+    <%= link_to jobs_path  do %>
+      <div class="col-md-4">
+        <div class="cat-box-new-container">
+          <div class="family cat-box-new">
+            <ul class="cat-list list-unstyled">
+              <li class= "text-center"><i class="flex fa fa-5x fa-users" %></i></li>
+              <li><p class="text-center">Jobs for families</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
     <% @latest_owners.each do |owner| %>
         <div class="col-xs-12 col-sm-4">
           <div class="cat-box-new-container">
             <div class="card-home">
                <!-- style="background-image: url(' owner.drones.photo ');" -->
                <% if owner[:banner_pic].nil? %>
-               <%= image_tag "aerial-trees.jpeg", class:"card-image" %>
+               <%= image_tag "aerial-trees.jpg", class: "card-image" %>
                <% else %>
                <%= image_tag owner.banner_pic, class:"card-image"%>
                <% end %>
@@ -106,60 +128,47 @@
                <% end %>
                <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
                <%= link_to "", pilot_path(owner), class: "card-link-home" %>
-               <div class="card-description">
+              <div class="card-description">
 
-              <h4><%=owner.first_name + " " + owner.last_name%></h4>
+                  <h4><%=owner.first_name + " " + owner.last_name + " @ " + "owner.location"%></h4>
+              </div>
             </div>
           </div>
-          <!-- this p-content will change with the location and categories when migrated -->
         </div>
-      </div>
-  <% end %>
-    <%= link_to root_path  do %>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= link_to jobs_path  do %>
       <div class="col-md-4">
         <div class='cat-box-new-container'>
           <div class='education cat-box-new'>
             <ul class="cat-list list-unstyled">
-              <li><i class="flex fa fa-5x fa-graduation-cap" %></i></li>
-              <li><p class="text-center">Education</p></li>
+              <li class= "text-center"><i class=" fa fa-5x fa-graduation-cap" %></i></li>
+              <li><p class="text-center">Jobs for educational purpose</p></li>
             </ul>
           </div>
         </div>
       </div>
     <% end %>
-  </div>
-  <div class="row">
-    <%= link_to root_path  do %>
+    <%= link_to jobs_path  do %>
       <div class="col-md-4">
         <div class="cat-box-new-container">
           <div class="music cat-box-new">
             <ul class="cat-list list-unstyled">
-              <li><i class="flex fa fa-5x fa-music" %></i></li>
-              <li><p class="text-center">Music</p></li>
+              <li class= "text-center"><i class="flex fa fa-5x fa-music" %></i></li>
+              <li><p class="text-center">Jobs for music events</p></li>
             </ul>
           </div>
         </div>
       </div>
     <% end %>
-    <%= link_to root_path  do %>
+    <%= link_to jobs_path  do %>
       <div class="col-md-4">
         <div class="cat-box-new-container">
-          <div class="family cat-box-new">
+          <div class="fun cat-box-new">
             <ul class="cat-list list-unstyled">
-              <li><i class="flex fa fa-5x fa-users" %></i></li>
-              <li><p class="text-center">Family</p></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <%= link_to root_path  do %>
-      <div class="col-md-4">
-        <div class="cat-box-new-container">
-          <div class="family cat-box-new">
-            <ul class="cat-list list-unstyled">
-              <li><i class="flex fa fa-5x fa-smile-o" %></i></li>
-              <li><p class="text-center">Fun</p></li>
+              <li class= "text-center"><i class="flex fa fa-5x fa-smile-o" %></i></li>
+              <li><p class="text-center">Jobs for fun</p></li>
             </ul>
           </div>
         </div>
@@ -167,25 +176,25 @@
     <% end %>
   </div>
   <div class="row">
-    <%= link_to root_path  do %>
+    <%= link_to jobs_path  do %>
       <div class="col-md-4">
         <div class="cat-box-new-container">
           <div class="sport cat-box-new">
             <ul class="cat-list list-unstyled">
-              <li><i class="flex fa fa-5x fa-futbol-o" %></i></li>
-              <li><p class="text-center">Sport</p></li>
+              <li class= "text-center"><i class="flex fa fa-5x fa-futbol-o" %></i></li>
+              <li><p class="text-center">Jobs for sport events</p></li>
             </ul>
           </div>
         </div>
       </div>
     <% end %>
-    <%= link_to root_path  do %>
+    <%= link_to jobs_path  do %>
       <div class="col-md-8">
         <div class="cat-box-new-container">
           <div class="wedding cat-box-new">
             <ul class="cat-list list-unstyled">
-              <li><i class="flex fa fa-5x fa-heart-o" %></i></li>
-              <li><p class="text-center">Wedding</p></li>
+              <li class= "text-center"><i class="flex fa fa-5x fa-heart-o" %></i></li>
+              <li><p class="text-center">Jobs for weddings</p></li>
             </ul>
           </div>
         </div>
