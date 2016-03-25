@@ -1,0 +1,112 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h2 class="subtitle"><span>The pilot next door</span></h2>
+    </div>
+  </div>
+  <div class="row padded">
+  <% @latest_owners.each do |owner| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+           <!-- style="background-image: url(' owner.drones.photo ');" -->
+           <% if owner[:banner_pic].nil? %>
+           <%= image_tag "aerial-trees.jpeg", class:"card-image" %>
+           <% else %>
+           <%= image_tag owner.banner_pic, class:"card-image"%>
+           <% end %>
+
+           <% if owner[:profile_pic].nil? %>
+           <%= image_tag "https://robohash.org/my-own-slug.png?size=300x300", class:"card-avatar" %>
+           <% else %>
+           <%= image_tag owner.profile_pic, class:"card-avatar"%>
+           <% end %>
+           <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
+           <%= link_to "", pilot_path(owner), class: "card-link" %>
+           <div class="card-description">
+
+            <h4><%=owner.first_name%></h4>
+            <p>Location: owner.location </p>
+            <p>Tags: owner.categories</p>
+          </div>
+          <!-- this p-content will change with the location and categories when migrated -->
+        </div>
+      </div>
+  <% end %>
+  <div class="text-center"><%= link_to "Become a pilot",  "#", { class: "btn btn-primary" } %></div>
+  </div>
+</div>
+
+<div class="container padded">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h2 class="subtitle"><span>Categories</span></h2>
+    </div>
+  </div>
+  <div class="row padded">
+    <%= link_to root_path  do %>
+      <div class="cat-box col-xs-12 col-md-3 col-md-offset-1">
+        <ul class="cat-list list-unstyled">
+          <li><i class="flex fa fa-5x fa-graduation-cap" ></i></li>
+          <li><p class="text-center">Education</p></li>
+        </ul>
+      </div>
+    <% end %>
+    <%= link_to root_path  do %>
+    <div class="cat-box col-xs-12 col-md-3">
+      <ul class="cat-list list-unstyled">
+        <li><i class="flex fa fa-5x fa-leaf" %></i></li>
+        <li><p class="text-center">Environment</p></li>
+      </ul>
+    </div>
+    <% end %>
+    <%= link_to root_path  do %>
+    <div class="cat-box col-xs-12 col-md-3">
+      <ul class="cat-list list-unstyled">
+        <li><i class="flex fa fa-5x fa-users" %></i></li>
+        <li><p class="text-center">Family</p></li>
+      </ul>
+    </div>
+    <% end %>
+    <%= link_to root_path  do %>
+    <div class="cat-box col-xs-12 col-md-3">
+      <ul class="cat-list list-unstyled">
+        <li><i class="flex fa fa-5x fa-music" %></i></li>
+        <li><p class="text-center">Music</p></li>
+      </ul>
+    </div>
+    <% end %>
+    <%= link_to root_path  do %>
+    <div class="cat-box col-xs-12 col-md-3 col-md-offset-1">
+      <ul class="cat-list list-unstyled">
+        <li><i class="flex fa fa-5x fa-smile-o" %></i></li>
+        <li><p class="text-center">Fun</p></li>
+      </ul>
+    </div>
+    <% end %>
+    <%= link_to root_path  do %>
+    <div class="cat-box col-xs-12 col-md-3">
+      <ul class="cat-list list-unstyled">
+        <li><i class="flex fa fa-5x fa-futbol-o" %></i></li>
+        <li><p class="text-center">Sport</p></li>
+      </ul>
+    </div>
+    <% end %>
+    <%= link_to root_path  do %>
+    <div class="cat-box col-xs-12 col-md-3">
+      <ul class="cat-list list-unstyled">
+        <li><i class="flex fa fa-5x fa-heart-o" %></i></li>
+        <li><p class="text-center">Wedding</p></li>
+      </ul>
+    </div>
+    <% end %>
+    <%= link_to root_path  do %>
+    <div class="cat-box col-xs-12 col-md-3">
+      <ul class="cat-list list-unstyled">
+        <li><i class="flex fa fa-5x fa-ellipsis-h" %></i></li>
+        <li><p class="text-center">Other</p></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+</div>

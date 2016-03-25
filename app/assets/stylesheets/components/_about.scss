@@ -5,3 +5,34 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.07);
     background-color: #fff;
 }
+
+.step-circle {
+   width: 50px;
+  border-radius: 50%;
+}
+
+.thumbnail-about {
+    display: block;
+    min-height: 265px;
+    padding: 20px;
+    margin-bottom: 22px;
+    line-height: 1.4;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    -webkit-transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out;
+}
+
+.thumbnail-about-job {
+    display: block;
+    min-height: 310px;
+    padding: 20px;
+    margin-bottom: 22px;
+    line-height: 1.4;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    -webkit-transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out;
+}

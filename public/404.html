@@ -3,14 +3,45 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
+   <style>
   body {
-    background-color: #EFEFEF;
+    background-color: #F6FBFA;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
   }
+
+  .btn-primary {
+    color: #fff;
+    background-color: #79B791;
+    border-color: #68ae83;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.4;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+a {
+    color: #79B791;
+    text-decoration: none;
+}
 
   div.dialog {
     width: 95%;
@@ -23,7 +54,7 @@
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
+    border-top: #58A576 solid 4px;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
@@ -33,7 +64,7 @@
 
   h1 {
     font-size: 100%;
-    color: #730E15;
+    color: #58A576;
     line-height: 1.5em;
   }
 
@@ -61,7 +92,8 @@
       <h1>The page you were looking for doesn't exist.</h1>
       <p>You may have mistyped the address or the page may have moved.</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p>If you are the application owner check the logs for more information.<br><br>
+    <a href="/" class="btn btn-primary">Go back</a></p>
   </div>
 </body>
 </html>
