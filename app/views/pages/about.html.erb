@@ -1,141 +1,77 @@
 <div class="container padded">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h2>About DroneHubs</h2>
-      <p>Drone hubs </p>
+        <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2>Meet our team</h2>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-sm-4">
+                                       
+                    <div class="team-wrapper">
+                        <%= image_tag "tom.jpg", class: "img-responsive"%>
+                    <div class="description">
+                       <h3>Tom Stemerding</h3>
+                        <h5> <strong>Co founder + developer</strong></h5>
+                        <p>
+                            Pellentesque elementum dapibus convallis. 
+                            Vivamus eget finibus massa.
+                        </p>
+                        <hr />
+                    </div>
+                     </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-sm-4">
+                                       
+                    <div class="team-wrapper">
+                        <%= image_tag "Iris.jpg", class: "img-responsive"%>
+                    <div class="description">
+                       <h3>Iris Kramer</h3>
+                        <h5> <strong>Co founder + developer</strong></h5>
+                        <p>
+                            Pellentesque elementum dapibus convallis. 
+                            Vivamus eget finibus massa.
+                        </p>
+                        <hr />
+                    </div>
+                     </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-sm-4">
+                                       
+                    <div class="team-wrapper">
+                        <%= image_tag "roy.jpeg", class: "img-responsive"%> 
+                    <div class="description">
+                       <h3>Roy van Arkel</h3>
+                        <h5> <strong>Co founder + developer</strong></h5>
+                        <p>
+                            Pellentesque elementum dapibus convallis. 
+                            Vivamus eget finibus massa.
+                        </p>
+                        <hr />
+                    </div>
+                     </div>
+                </div>
+            </div>
+        
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h2>How to create jobs</h2>
-      <ul>
-        <li>
-          1. <%= link_to t(".sign_up", default: "Sign up today"), new_user_registration_path %>
-        </li>
-        <li>
-          2. Create jobs.
-          list the requirements for your job and be featured amongst the on the <%= link_to "jobs forum", jobs_path %>
-        </li>
-        <li>
-          3. Get in touch with the right pilot for your job. Check out the pilots that placed a bid on your job or reach out to pilots directly through the <%= link_to "pilots forum", pilots_path %>
-        </li>
-        <li>
-          4. Evaluate the bids from pilots and accept the right one for your job
-        </li>
-        <li>
-          5. Discuss the important details with the pilot and arrange the job 
-        </li>
-        <li>
-          6. Get the final product and pay your pilot!
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h2>How to become a pilot</h2>
-      <ul>
-        <li>
-          1. <%= link_to t(".sign_up", default: "Sign up as a pilot"), new_user_registration_path %>
-        </li>
-        <li>
-          2. Create a profile, select your specialties and showcase your skills
-        </li>
-        <li>
-          3. Check out the available jobs
-        </li>
-        <li>
-          4. Place a bid to the job you like
-        </li>
-        <li>
-          5. Job accepted? Discuss the important details, such as the <%= link_to "laws", legislation_path %>.
-        </li>
-        <li>
-          6. Fly your drone!
-        </li>
-        <li>
-          7. Process the products
-        </li>
-        <li>
-          8. Get paid
-        </li>
-      </ul>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12 text-center">
-    <h2>Meet our team</h2>
-    <br>
-    <br>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-4 col-sm-4">
-
-    <div class="team-wrapper">
-      <%= image_tag "tom.jpg", class: "img-responsive"%>
-      <div class="description">
-       <h3>Tom Stemerding</h3>
-       <h5> <strong>Co founder + developer</strong></h5>
-       <p>
-        Pellentesque elementum dapibus convallis. 
-        Vivamus eget finibus massa.
-      </p>
-      <hr />
-    </div>
-  </div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-4 col-sm-4">
-
-  <div class="team-wrapper">
-    <%= image_tag "Iris.jpg", class: "img-responsive"%>
-    <div class="description">
-     <h3>Iris Kramer</h3>
-     <h5> <strong>Co founder + developer</strong></h5>
-     <p>
-      Pellentesque elementum dapibus convallis. 
-      Vivamus eget finibus massa.
-    </p>
-    <hr />
-  </div>
-</div>
-</div>
-<div class="col-xs-12 col-sm-12 col-md-4 col-sm-4">
-
-  <div class="team-wrapper">
-    <%= image_tag "roy.jpeg", class: "img-responsive"%> 
-    <div class="description">
-     <h3>Roy van Arkel</h3>
-     <h5> <strong>Co founder + developer</strong></h5>
-     <p>
-      Pellentesque elementum dapibus convallis. 
-      Vivamus eget finibus massa.
-    </p>
-    <hr />
-  </div>
-</div>
-</div>
-</div>
-
-</div>
 <div id="map" style="width: 100%;height: 500px;"></div>
-<script>
-  function initMap() {
-    var myLatLng = {lat: 52.34304, lng: 4.82928};
+    <script>
+      function initMap() {
+        var myLatLng = {lat: 52.34304, lng: 4.82928};
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 17,
-      center: myLatLng,
-      scrollwheel:  false
-    });
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: myLatLng,
+          scrollwheel:  false
+        });
 
-    var marker = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      title: 'B.Amsterdam!'
-    });
-  }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-async defer></script>
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'B.Amsterdam!'
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
