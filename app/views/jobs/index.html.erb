@@ -31,7 +31,7 @@
         <a href="#other" class="hidden">OTHER</a>
         <a href="#sport" class="hidden">SPORT</a>
         <a href="#wedding" class="hidden">WEDDING</a> -->
-        <%= link_to "Create a new job", '#', { class: "btn btn-primary btn-xs cta-discover", data: {'job-id': @job, toggle: "modal", target: "#modal-job"}} %> 
+        <%= link_to "How to create a job", about_path, { class: "btn btn-primary btn-xs cta-discover"} %> 
       </h5>
 
       <div class="banner jobs">
@@ -108,7 +108,5 @@
     </div>
   </div>
 </div>
-
-<%= render 'inquirer/jobs/modal_new'%>
 
 <%= render 'bids/modal_new', job: Job.first, drones: @drones %>
