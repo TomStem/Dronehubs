@@ -3,20 +3,47 @@
 #
 
 #Creating 20 fake users
-
-20.times do 
   user = User.new({
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
-  description: Faker::Lorem.sentence(3),
-  email: Faker::Internet.email,
-  password: Faker::Internet.password,
-  owner: Faker::Boolean.boolean,
-  profile_pic: Faker::Avatar.image,
-  banner_pic: Faker::Placeholdit.image
-
+  first_name: "Roy",
+  last_name: "van Arkel",
+  description: "I'm a beginning aerial photographer",
+  email: "royvanarkel@msn.com",
+  password: "wachtwoord",
+  owner: true,
+  profile_pic: "v1458662374/alrcdlz61kscgbchsfgj.jpg",
+  banner_pic: "v1458662375/htehjxqk66wc37gf66dz.jpg"
   })
   user.save!
+
+  Drone.create({
+    brand: "Hubsan",
+    model: "H107D"
+    camera: "720p"
+    photo: "v1457627823/qp7vymfuuz7mlxg2bpgz.jpg"
+    user_id: user.id
+    })
+
+  user1 = User.new({
+  first_name: "Tom",
+  last_name: "Stemerding",
+  description: "",
+  email: "tom@stemerdingmail.nl",
+  password: "wachtwoord",
+  owner: true,
+  profile_pic: "v1458664478/luqi9z22mfwsppnvul0v.jpg",
+  banner_pic: "v1458664521/xofwrclccr5yxbwyfywj.jpg"
+  })
+
+  user1.save!
+
+  Drone.create({
+    brand: "Apple",
+    model: "iDrone"
+    camera: "720p"
+    photo: "v1457627400/u7pvpxntkmoveltvook4.png"
+    user_id: user1.id
+    })
+
   if !user.owner
    Job.create({
    description: Faker::Lorem.paragraph,
