@@ -3,7 +3,7 @@
 #
 
 #Creating 20 fake users
-  user = User.new({
+user = User.new({
   first_name: "Roy",
   last_name: "van Arkel",
   description: "I'm a beginning aerial photographer",
@@ -11,49 +11,93 @@
   password: "wachtwoord",
   owner: true,
   profile_pic: "v1458662374/alrcdlz61kscgbchsfgj.jpg",
-  banner_pic: "v1458662375/htehjxqk66wc37gf66dz.jpg"
+  banner_pic: "v1458662375/htehjxqk66wc37gf66dz.jpg",
+  location: "Katwijk"
   })
-  user.save!
+user.save!
 
-  Drone.create({
-    brand: "Hubsan",
-    model: "H107D"
-    camera: "720p"
-    photo: "v1457627823/qp7vymfuuz7mlxg2bpgz.jpg"
-    user_id: user.id
-    })
+Drone.create({
+  brand: "Hubsan",
+  model: "H107D"
+  camera: "720p"
+  photo: "v1457627823/qp7vymfuuz7mlxg2bpgz.jpg"
+  user_id: user.id
+  })
 
-  user1 = User.new({
+user1 = User.new({
   first_name: "Tom",
   last_name: "Stemerding",
-  description: "",
   email: "tom@stemerdingmail.nl",
   password: "wachtwoord",
   owner: true,
   profile_pic: "v1458664478/luqi9z22mfwsppnvul0v.jpg",
-  banner_pic: "v1458664521/xofwrclccr5yxbwyfywj.jpg"
+  banner_pic: "v1458664521/xofwrclccr5yxbwyfywj.jpg",
+  location: "Amsterdam"
   })
 
-  user1.save!
+user1.save!
 
-  Drone.create({
-    brand: "Apple",
-    model: "iDrone"
-    camera: "720p"
-    photo: "v1457627400/u7pvpxntkmoveltvook4.png"
-    user_id: user1.id
-    })
-
-  if !user.owner
-   Job.create({
-   description: Faker::Lorem.paragraph,
-   location: Faker::Address.city,
-   date: Faker::Date.forward,
-   user_id: user.id,
-   title: Faker::Lorem.sentence
+Drone.create({
+  brand: "Apple",
+  model: "iDrone"
+  camera: "720p"
+  photo: "v1457627400/u7pvpxntkmoveltvook4.png"
+  user_id: user1.id
   })
-  end
-end
+
+user2 = User.new({
+  first_name: "Iris",
+  last_name: "Kramer",
+  email: "ick.kramer@gmail.com",
+  password: "wachtwoord",
+  owner: true,
+  profile_pic: "v1458915983/Iris_ocfcfx.jpg",
+  location: "Ilpendam"
+  })
+
+user2.save!
+
+Drone.create({
+  brand: "DJI",
+  model: "Phantom 4",
+  camera: "4k",
+  photo: "v1457621849/shyoisusvn1ip1f7bpdd.jpg",
+  user_id: user2.id
+  })
+
+user3 = User.new({
+  first_name: "Peter",
+  last_name: "Jansen",
+  email: "peter@jansen.com",
+  password: "wachtwoord",
+  owner: false
+  })
+
+user3.save!
+
+Job.create({
+  description: "I need some picture taken from the air during the football match",
+  location: "Amsterdam",
+  date: "Sat, 02 Apr 2016",
+  user_id: user3.id,
+  title: "Need a drone during a football match"
+  })
+
+user4 = User.new({
+  first_name: "Harm",
+  last_name: "Brandsma",
+  email: "boerharm@hotmail.com",
+  password: "wachtwoord",
+  owner: false
+  })
+
+Job.create({
+  description: "My crops needs to be inspected, has someone a drone that can do that?",
+  location: "Beemster",
+  date: "Mon, 04 Apr 2016",
+  user_id: user4.id,
+  title: "Farm inspection"
+  })
 
 Category.create({name: "education"})
 Category.create({name: "environment"})
