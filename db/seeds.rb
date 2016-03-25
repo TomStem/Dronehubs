@@ -18,9 +18,9 @@ user.save!
 
 Drone.create({
   brand: "Hubsan",
-  model: "H107D"
-  camera: "720p"
-  photo: "v1457627823/qp7vymfuuz7mlxg2bpgz.jpg"
+  model: "H107D",
+  camera: "720p",
+  photo: "v1457627823/qp7vymfuuz7mlxg2bpgz.jpg",
   user_id: user.id
   })
 
