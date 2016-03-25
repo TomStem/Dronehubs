@@ -10,17 +10,19 @@
           <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
         </div>
       </div>
-      <div class="col-xs-12 col-md-8">          
+      <div class="col-xs-12 col-md-8">
         <h3><%= @job.title %></h3>
         <h6>TAGS: WEDDING</h6>
         <p class="job-description"><%=@job.description%></p>
         <div class="job-specific">
           <p>
-            <i class="fa fa-map-marker"></i> <%=@job.location%> |  
-            <i class="fa fa-calendar"></i> <%=@job.date%>  |  
-            <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %> 
+            <i class="fa fa-map-marker"></i> <%=@job.location%> |
+            <i class="fa fa-calendar"></i> <%=@job.date%>  |
+            <% if current_user.owner == true %>
+            <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %>
+            <% end %>
           </p>
-        </div>  
+        </div>
       </div>
     </div>
   </div>
@@ -31,7 +33,13 @@
   <br>
   <hr>
   <% if @job.bids.empty? %>
+    <% if current_user.owner == true %>
     <p class="text-center">No bids yet. Be the first to place a bid!</p>
+    <% elsif @job.user == current_user %>
+    <p class="text-center">There are no bids on your job yet.</p>
+    <% else %>
+    <p class="text-center">There are no bids on this job.</p>
+    <% end %>
   <% else %>
     <% @job.bids.each do |bid|%>
     <div class="row">
@@ -52,6 +60,11 @@
         <h3>€ <%= bid.amount %>,-</h3>
         <p><%= bid.description %></p>
       </div>
+      <% if @job.user == current_user %>
+        <div class="col-xs-12 col-md-1">
+          <%= link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid), method: :patch, class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
     <hr>
     <% end %>
