@@ -38,7 +38,7 @@ module Inquirer
     private
 
     def job_params
-      params.require(:job).permit(:description, :location, :date, :user_id)
+      params.require(:job).permit(:description, :location, :date, :user_id, :title)
     end
   end
 end

@@ -6,6 +6,7 @@
       <%= simple_form_for([ :inquirer, @job]) do |f| %>
       <%= f.error_notification %>
 
+      <%= f.input :title %>
       <%= f.input :description %>
       <%= f.input :location %>
       <%= f.input :date %>

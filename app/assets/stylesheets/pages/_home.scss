@@ -18,7 +18,7 @@ h2.subtitle {
     text-align: center;
 
     &:before {
-        border-top: 1px solid #79B791;
+        border-top: 1px solid #949796;
         content:"";
         margin: 0 auto;
         position: absolute;
@@ -30,7 +30,7 @@ h2.subtitle {
     span {
         background: #F6FBFA;
         padding: 5px 15px;
-        border: 2px solid #79B791;
+        border: 2px solid #949796;
     }
 }
 
@@ -128,7 +128,7 @@ a:hover{
 .environment {
     height: 246px;
     // margin-right: 5px;
-    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),  asset-url("envi.jpg");
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),  asset-url("agriculture1.jpg");
     background-size: cover !important;
     color: white;
 }
@@ -145,6 +145,13 @@ a:hover{
     height: 246px;
     // margin-right: 5px;
     background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),  asset-url("family.jpg");
+    background-size: cover !important;
+    color: white;
+}
+.fun {
+    height: 246px;
+    // margin-right: 5px;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),  asset-url("fun.jpg");
     background-size: cover !important;
     color: white;
 }
