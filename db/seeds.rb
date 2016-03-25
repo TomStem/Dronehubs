@@ -39,9 +39,9 @@ user1.save!
 
 Drone.create({
   brand: "Apple",
-  model: "iDrone"
-  camera: "720p"
-  photo: "v1457627400/u7pvpxntkmoveltvook4.png"
+  model: "iDrone",
+  camera: "720p",
+  photo: "v1457627400/u7pvpxntkmoveltvook4.png",
   user_id: user1.id
   })
 
