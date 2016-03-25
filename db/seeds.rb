@@ -14,7 +14,6 @@
   owner: Faker::Boolean.boolean,
   profile_pic: Faker::Avatar.image,
   banner_pic: Faker::Placeholdit.image
-
   })
   user.save!
   if !user.owner
