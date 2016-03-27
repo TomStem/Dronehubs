@@ -5,11 +5,12 @@
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+  color: white;
 }
 
 /* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {
-  position: fixed;
+  position: absolute;
   left: 0px;
   top: 0px;
   z-index: 1;
@@ -19,6 +20,7 @@
 /* Navbar logo */
 .navbar-wagon-brand img {
   width: 120px;
+  margin-top: 35px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -41,6 +43,7 @@
   font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
+  text-shadow: black 0em 0em 0.1em;
 }
 .navbar-wagon-link:hover {
   color: $dronegreenb;
@@ -107,7 +110,7 @@
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
-  color: #999999 !important;
+  color: white !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
