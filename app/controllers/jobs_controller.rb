@@ -6,6 +6,7 @@ class JobsController < ApplicationController
 
     if params[:search]
       @jobs = Job.search(params[:search]).order("created_at DESC")
+      @jobs = Job.where(:category => params[:category])
     else
       @jobs = Job.all.order("created_at DESC")
     end
