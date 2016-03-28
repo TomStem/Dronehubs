@@ -8,14 +8,13 @@
   margin: 5px 15px;
 }
 .card {
-  height: 250px;
   border-radius: 1px;
-  border: 1px solid #949796;
+  border: 1px solid rgba(148, 151, 150, 0.33);
   background-color: white;
   overflow: hidden;
-  margin: 0 3% 25px 0;
+  margin: 0 15px 15px 0;
   position: relative;
-  box-shadow: 2px 2px 3px rgba(0,0,0,0.28);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.02);
   h5{
     margin: 5px 0;
     font-weight: bold;
@@ -47,6 +46,7 @@
 }
 .card-description {
   margin-left: 5px;
+  padding: 20px;
 }
 .card-link {
   position: absolute;
