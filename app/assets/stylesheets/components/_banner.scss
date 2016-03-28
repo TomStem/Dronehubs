@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   height: 80vh;
+  min-height: 450px;
   background-size: cover !important;
   background-image: asset-url("dutch-landscape.jpg");
 }
@@ -69,6 +70,8 @@
   text-align: left;
   justify-content: flex-start;
   height: 230px;
+  min-height: 230px;
+  margin-top: 30px;
   margin-bottom: 20px;
   background-image: asset-url('jobs/unsplash_banner.jpeg');
   background-position: 30% 50%;
@@ -80,6 +83,8 @@
   text-align: left;
   justify-content: flex-start;
   height: 230px;
+  min-height: 230px;
+  margin-top: 30px;
   margin-bottom: 20px;
   background-image: asset-url('owners/pilot.jpeg');
   .banner-content{
@@ -95,8 +100,9 @@
   flex-direction: column;
 }
 .banner.discover{
-  height: 10vh;
-  background-image: asset-url("jobs/unsplash_banner.jpeg");
+  height: 150px;
+  min-height: 100px;
+  background-image: asset-url("dutch-landscape.jpg");
   background-position: 50% 0%;
 }
 // .banner.jobs#all_categories{
