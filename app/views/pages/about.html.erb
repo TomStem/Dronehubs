@@ -1,112 +1,112 @@
-<div class="container padded">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h2 class="subtitle"><span>How to become a pilot</span></h2>
-    </div>
-  </div>
-  <div class="row padded">
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail-about text-center">
-        <%= image_tag "1.jpeg", class: "step-circle" %>
-        <div class="caption">
-          <h3>Join us</h3><br>
-          <p><%= link_to "Sign up as a pilot", new_user_registration_path, class:"btn btn-primary" %></p>
-          <p><%= link_to "Update your profile", edit_owner_profile_path %></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail-about text-center">
-        <%= image_tag "2.jpeg", class: "step-circle" %>
-        <div class="caption">
-          <h3>Discover</h3><br>
-          <p><%= link_to "Check out the available jobs", jobs_path %></p>
-          <p>Place a bid on a job</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail-about text-center">
-        <%= image_tag "3.jpeg", class: "step-circle" %>
-        <div class="caption">
-          <h3>Job accepted?</h3><br>
-          <p>Discuss the details and the <%= link_to "law", legislation_path %></p>
-          <p>Fly your drone!</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail-about text-center">
-        <%= image_tag "4.jpeg", class: "step-circle" %>
-        <div class="caption">
-          <h3>Finish up</h3><br>
-          <p>Process the products</p>
-          <p>Get paid</p>
-        </div>
-      </div>
-    </div>
+<div class="banner discover"></div>
+
+<div class="tab-box tab-profile">  
+  <div class="discover-tabs">
+    <h2 class="subtitle">
+      <a href="#"data-target="#become_pilot"> <span class="tab discover-tab active" data-target="#become_pilot">How to become a pilot</span></a>
+      <a href="#"data-target="#make_job"> <span class="tab discover-tab" data-target="#make_job">How to create jobs</span></a>
+    </h2>
   </div>
 </div>
 
 <div class="container padded">
-  <div class="row">
-    <div class="col-md-12 text-center">
-    <h2 class="subtitle"><span>How to create jobs</span></h2>
+  <div class="tab-content" id="become_pilot">
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail-about text-center">
+          <%= image_tag "1.jpeg", class: "step-circle" %>
+          <div class="caption">
+            <h3>Join us</h3><br>
+            <p>Sign up and <%= link_to "update your profile", edit_owner_profile_path %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail-about text-center">
+          <%= image_tag "2.jpeg", class: "step-circle" %>
+          <div class="caption">
+            <h3>Discover</h3><br>
+            <p><%= link_to "Check out the available jobs", jobs_path %></p>
+            <p>Place a bid on a job</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail-about text-center">
+          <%= image_tag "3.jpeg", class: "step-circle" %>
+          <div class="caption">
+            <h3>Job accepted?</h3><br>
+            <p>Discuss the details and the <%= link_to "law", legislation_path %></p>
+            <p>Fly your drone!</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail-about text-center">
+          <%= image_tag "4.jpeg", class: "step-circle" %>
+          <div class="caption">
+            <h3>Finish up</h3><br>
+            <p>Process the products</p>
+            <p>Get paid</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="row padded">
     <p class=" text-center"><%= link_to "Sign up today", new_user_registration_path, class:"btn btn-primary" %></p>
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail-about-job text-center">
-        <%= image_tag "1.jpg", class: "step-circle" %>
-        <div class="caption">
-          <h3>Create jobs</h3><br>
-          <p>Set your requirements</p>
-          <p>Be listed on the <%= link_to "jobs forum", jobs_path %></p>
+  </div>
+</div>
+
+<div class="container padded">
+  <div class="tab-content hidden" id="make_job">
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail-about-job text-center">
+          <%= image_tag "1.jpg", class: "step-circle" %>
+          <div class="caption">
+            <h3>Create jobs</h3><br>
+            <p>Set your requirements</p>
+            <p>Be listed on the <%= link_to "jobs forum", jobs_path %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail-about-job text-center">
+          <%= image_tag "2.jpg", class: "step-circle" %>
+          <div class="caption">
+            <h3>Your pilot</h3><br>
+            <p>Get in touch with a the right pilot</p>
+            <p>Check out placed bids or contact a pilot through the <%= link_to "pilots forum", pilots_path %></p>
+          </div>
+        </div>
+      </div>  
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail-about-job text-center">
+          <%= image_tag "3.jpg", class: "step-circle" %>
+          <div class="caption">
+            <h3>Check up</h3><br>
+            <p>Evaluate the bids from pilots</p>
+            <p>Accept the right one for your job</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail-about-job text-center">
+          <%= image_tag "4.jpg", class: "step-circle" %>
+          <div class="caption">
+            <h3>Agree</h3><br>
+            <p>Discuss the important details with the pilot and arrange the job</p>
+            <p>Get the final product and pay your pilot!</p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail-about-job text-center">
-        <%= image_tag "2.jpg", class: "step-circle" %>
-        <div class="caption">
-          <h3>Your pilot</h3><br>
-          <p>Get in touch with a the right pilot</p>
-          <p>Check out placed bids or contact a pilot through the <%= link_to "pilots forum", pilots_path %></p>
-        </div>
-      </div>
-    </div>  
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail-about-job text-center">
-        <%= image_tag "3.jpg", class: "step-circle" %>
-        <div class="caption">
-          <h3>Check up</h3><br>
-          <p>Evaluate the bids from pilots</p>
-          <p>Accept the right one for your job</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-3">
-      <div class="thumbnail-about-job text-center">
-        <%= image_tag "4.jpg", class: "step-circle" %>
-        <div class="caption">
-          <h3>Agree</h3><br>
-          <p>Discuss the important details with the pilot and arrange the job</p>
-          <p>Get the final product and pay your pilot!</p>
-        </div>
-      </div>
-    </div>
+    <p class=" text-center"><%= link_to "Sign up today", new_user_registration_path, class:"btn btn-primary" %></p>
   </div>  
 </div>
 
+
+<h2 class="subtitle"><span>Meet our team</span></h2>
 <div class="container padded">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h2 class="subtitle"><span>Meet our team</span></h2>
-      <br>
-      <br>
-    </div>
-  </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-4 col-sm-4">                    
       <div class="team-wrapper">
@@ -153,23 +153,25 @@
   </div>
 </div>
 
+
 <div id="map" style="width: 100%;height: 500px;"></div>
-    <script>
-      function initMap() {
-        var myLatLng = {lat: 52.34304, lng: 4.82928};
+<script>
+  function initMap() {
+    var myLatLng = {lat: 52.34304, lng: 4.82928};
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 17,
-          center: myLatLng,
-          scrollwheel:  false
-        });
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 17,
+      center: myLatLng,
+      scrollwheel:  false
+    });
 
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'B.Amsterdam!'
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-        async defer></script>
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'B.Amsterdam!'
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+async defer></script>
+</div>
