@@ -3,7 +3,7 @@
     <div class="row">
             <div class="col-xs-3">
                 <ul class="list-unstyled">
-                    <li>Menu<li>
+                    <li class="footer-title">Menu<li>
                     <li><%= link_to t(".home", default: "Home"), root_path %></li>
                     <li><%= link_to t(".about", default: "About"), about_path %></li>
                     <li><%= link_to t(".discover", default: "Discover"), discover_path %></li>
@@ -13,7 +13,7 @@
             <vr></vr>
             <div class="col-xs-3">
                 <ul class="list-unstyled">
-                    <li>Users<li>
+                    <li class="footer-title">Users<li>
                     <li><%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path %></li>
                     <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path %></li>
                 </ul>
