@@ -1,28 +1,25 @@
 <div class="banner job">
 </div>
-
-<div class="row">
-  <div class="job-details">
-    <div class="job-user">
-      <div class="col-xs-12 col-md-2 col-md-offset-1">
-        <div class="text-center">
-          <%= cl_image_tag @job.user.profile_pic, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
-          <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
-        </div>
+<div class="container job-details">
+  <div class="row">
+    <div class="col-xs-12 col-md-2 col-md-offset-1">
+      <div class="text-center">
+        <%= cl_image_tag @job.user.profile_pic, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
+        <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
       </div>
-      <div class="col-xs-12 col-md-8">
-        <h3><%= @job.title %></h3>
-        <h6>TAGS: WEDDING</h6>
-        <p class="job-description"><%=@job.description%></p>
-        <div class="job-specific">
-          <p>
-            <i class="fa fa-map-marker"></i> <%=@job.location%> |
-            <i class="fa fa-calendar"></i> <%=@job.date%>  |
-            <% if current_user.owner == true %>
-            <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %>
-            <% end %>
-          </p>
-        </div>
+    </div>
+    <div class="col-xs-12 col-md-8">
+      <h3><%= @job.title %></h3>
+      <h6>TAGS: WEDDING</h6>
+      <p class="job-description"><%=@job.description%></p>
+      <div class="job-specific">
+        <p>
+          <i class="fa fa-map-marker"></i> <%=@job.location%> |
+          <i class="fa fa-calendar"></i> <%=@job.date%>  |
+          <% if current_user.owner == true %>
+          <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>
@@ -33,41 +30,41 @@
   <br>
   <hr>
   <% if @job.bids.empty? %>
-    <% if current_user.owner == true %>
-    <p class="text-center">No bids yet. Be the first to place a bid!</p>
-    <% elsif @job.user == current_user %>
-    <p class="text-center">There are no bids on your job yet.</p>
-    <% else %>
-    <p class="text-center">There are no bids on this job.</p>
-    <% end %>
+  <% if current_user.owner == true %>
+  <p class="text-center">No bids yet. Be the first to place a bid!</p>
+  <% elsif @job.user == current_user %>
+  <p class="text-center">There are no bids on your job yet.</p>
   <% else %>
-    <% @job.bids.each do |bid|%>
-    <div class="row">
-      <div class="col-xs-12 col-md-2 col-md-offset-1">
-        <%= cl_image_tag bid.drone.user.profile_pic, size: "85x85", alt: "profile picture", style: "border-radius: 50%;"%>
-        <h5><%=bid.drone.user.first_name%> <%=bid.drone.user.last_name%></h5>
-      </div>
-      <div class="col-xs-12 col-md-1">
-        <%= cl_image_tag bid.drone.photo, size: "85x85", alt: "profile picture", style: "border-radius: 50%;"%>
-      </div>
-      <div class="col-xs-12 col-md-2">
-        <h4>Drone</h4>
-        <h5>Brand: <%=bid.drone.brand%></h5>
-        <h5>Model: <%=bid.drone.model%></h5>
-        <h5>Camera: <%=bid.drone.camera%></h5>
-      </div>
-      <div class="col-xs-12 col-md-5">
-        <h3>€ <%= bid.amount %>,-</h3>
-        <p><%= bid.description %></p>
-      </div>
-      <% if @job.user == current_user %>
-        <div class="col-xs-12 col-md-1">
-          <%= link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid), method: :patch, class: "btn btn-primary" %>
-        </div>
-      <% end %>
+  <p class="text-center">There are no bids on this job.</p>
+  <% end %>
+  <% else %>
+  <% @job.bids.each do |bid|%>
+  <div class="row">
+    <div class="col-xs-12 col-md-2 col-md-offset-1">
+      <%= cl_image_tag bid.drone.user.profile_pic, size: "85x85", alt: "profile picture", style: "border-radius: 50%;"%>
+      <h5><%=bid.drone.user.first_name%> <%=bid.drone.user.last_name%></h5>
     </div>
-    <hr>
+    <div class="col-xs-12 col-md-1">
+      <%= cl_image_tag bid.drone.photo, size: "85x85", alt: "profile picture", style: "border-radius: 50%;"%>
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <h4>Drone</h4>
+      <h5>Brand: <%=bid.drone.brand%></h5>
+      <h5>Model: <%=bid.drone.model%></h5>
+      <h5>Camera: <%=bid.drone.camera%></h5>
+    </div>
+    <div class="col-xs-12 col-md-5">
+      <h3>€ <%= bid.amount %>,-</h3>
+      <p><%= bid.description %></p>
+    </div>
+    <% if @job.user == current_user %>
+    <div class="col-xs-12 col-md-1">
+      <%= link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid), method: :patch, class: "btn btn-primary" %>
+    </div>
     <% end %>
+  </div>
+  <hr>
+  <% end %>
   <% end %>
 </div>
 <%= render 'bids/modal_new', job: @job, drones: @drones %>
