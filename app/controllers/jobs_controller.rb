@@ -33,3 +33,4 @@ class JobsController < ApplicationController
     @drones = current_user.drones
   end
 end
+
