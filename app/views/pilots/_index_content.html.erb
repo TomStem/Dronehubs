@@ -1,8 +1,8 @@
 <!-- <div class="banner pilots" id="all_categories"></div> -->
 <div class="owners-body">
   <div class="container">
-    <div class="col-xs-2 col-md-2 col-md-offset-1">
-      <div class="sidebar hidden-xs hidden-sm">
+    <div class="col-xs-2">
+      <div class="sidebar hidden-xs">
        <ul>
           <h5>CATEGORIES</h5>
           <!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
@@ -14,7 +14,7 @@
       </div>
     </div>
     <!-- this content should change together with the changing href or the class active -->
-    <div class="col-xs-12 col-md-8">
+    <div class="col-xs-12 col-sm-10">
       <h5>PILOTS > 
         <% if @selected_category %>
             <span><%= @selected_category.name.upcase %></span>
