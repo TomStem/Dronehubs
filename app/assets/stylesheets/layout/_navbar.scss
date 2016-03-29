@@ -1,3 +1,12 @@
+
+.devise-sessions-new,
+.devise-sessions-create,
+.devise-registrations-new,
+.devise-passwords-new {
+  .navbar-wagon {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
 /* Main class */
 .navbar-wagon {
   position: absolute;
@@ -21,7 +30,7 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 80px;
+  width: 150px;
 }
 
 /* Navbar right section (with form, links, button) */

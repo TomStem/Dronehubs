@@ -1,6 +1,10 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
+
+User.destroy_all
+Category.destroy_all
+Bid.destroy_all
+Job.destroy_all
 
 #Creating 20 fake users
 user = User.new({
@@ -75,7 +79,7 @@ user3 = User.new({
 
 user3.save!
 
-Job.create({
+job1 = Job.create({
   description: "I need some picture taken from the air during the football match",
   location: "Amsterdam",
   date: "Sat, 02 Apr 2016",
@@ -90,25 +94,33 @@ user4 = User.new({
   password: "wachtwoord",
   owner: false
   })
-
 user4.save!
 
-Job.create({
+
+job2 = Job.create({
+
   description: "My crops needs to be inspected, has someone a drone that can do that?",
   location: "Beemster",
   date: "Mon, 04 Apr 2016",
-  user_id: user4.id,
+  user: user4,
   title: "Farm inspection"
   })
 
-Category.create({name: "education"})
-Category.create({name: "environment"})
-Category.create({name: "family"})
-Category.create({name: "festival"})
-Category.create({name: "fun"})
-Category.create({name: "other"})
-Category.create({name: "sport"})
-Category.create({name: "wedding"})
+education = Category.create({name: "education"})
+environment = Category.create({name: "environment"})
+family = Category.create({name: "family"})
+festival = Category.create({name: "festival"})
+fun = Category.create({name: "fun"})
+other = Category.create({name: "other"})
+sport = Category.create({name: "sport"})
+wedding = Category.create({name: "wedding"})
+
+JobCategory.create(job: job2, category: environment)
+JobCategory.create(job: job2, category: other)
+JobCategory.create(job: job2, category: education)
+JobCategory.create(job: job1, category: fun)
+JobCategory.create(job: job1, category: other)
+UserCategory.create(user: user, category:fun)
 
 # User.create({
 #   user_id: 1,

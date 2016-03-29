@@ -1,13 +1,22 @@
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <h2>Forgot your password?</h2>
-  <%= f.error_notification %>
+<div class="container padded">
+  <div class="row padded">
+    <div class="col-sx-12">
+      <div class="wrapper-session">
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <h2>Forgot your password?</h2>
+          <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+          <div class="form-inputs">
+            <%= f.input :email, required: true, autofocus: true %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Send me reset password instructions", class: "btn btn-primary" %>
+          </div><br />
+          <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path %></li>
+                    <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path %></li>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div><br />
-  <%= render "devise/shared/links" %>
-<% end %>
+</div>

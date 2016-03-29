@@ -2,27 +2,26 @@
 <%= render 'pages/discover_tabs', active_tab: 'jobs' %>
 <div class="jobs-body">
   <div class="container">
-    <div class="col-xs-2 col-md-2 col-md-offset-1">
-      <div class="sidebar hidden-xs hidden-sm">
+    <div class="col-xs-2">
+      <div class="sidebar hidden-xs">
         <ul>
           <h5>CATEGORIES</h5>
           <!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
-          <li><a href="#all" class="active">ALL CATEGORIES</a></li>
-          <li><a href="#education">EDUCATION</a></li>
-          <li><a href="#environment">ENVIRONMENT</a></li>
-          <li><a href="#family">FAMILY</a></li>
-          <li><a href="#festival">FESTIVAL</a></li>
-          <li><a href="#fun">FUN</a></li>
-          <li><a href="#other">OTHER</a></li>
-          <li><a href="#sport">SPORT</a></li>
-          <li><a href="#wedding">WEDDING</a></li>
+          <li><%= link_to "ALL CATEGORIES", jobs_path %></li>
+          <% Category.all.each do |c| %>
+            <li class="<%=  @selected_category == c ? "cat_active" : "cat" %>"><%= link_to c.name.upcase, jobs_path(category: c.name) %></li>
+          <% end %>
         </ul>
       </div>
     </div>
     <!-- this content should change together with the changing href or the class active -->
-    <div class="col-xs-12 col-md-8">
+    <div class="col-xs-12 col-sm-10">
       <h5>JOBS > 
-        <a href="#all">ALL CATEGORIES</a>
+         <% if @selected_category %>
+            <span><%= @selected_category.name.upcase %></span>
+          <% else %> 
+            <span>ALL CATEGORIES</span>
+          <% end %> 
 <!--         <a href="#education" class="hidden">EDUCATION</a>
         <a href="#environment" class="hidden">ENVIRONMENT</a>
         <a href="#family" class="hidden">FAMILY</a>
@@ -31,13 +30,21 @@
         <a href="#other" class="hidden">OTHER</a>
         <a href="#sport" class="hidden">SPORT</a>
         <a href="#wedding" class="hidden">WEDDING</a> -->
-        <%= link_to "How to create a job", about_path, { class: "btn btn-primary cta-discover"} %> 
+        <%= link_to "How to create a job", about_path, { class: "btn btn-primary cta-discover hidden-xs"} %> 
       </h5>
 
+      <% if @selected_category %>
+        <div class="banner jobs" style="background-image: url('<%= image_path(@selected_category.name + ".jpg") %>')">
+      <% else %> 
       <div class="banner jobs">
+      <% end %> 
 
         <div class="banner-content" id="all_categories">
-          <h1>All categories</h1>
+          <% if @selected_category %>
+            <h1><%= @selected_category.name.capitalize %></h1>
+          <% else %> 
+            <h1>All categories</h1>
+          <% end %> 
           <p>Find your pilot</p>
         </div>
 <!--         <div class="banner-content hidden" id="education">
@@ -56,7 +63,7 @@
 
       <% @jobs.each do |job|%>
       <div class="row">
-        <div class="jobs-details">
+        <div class="job-details">
           <div class="job-user">
             <div class="col-xs-12">
               <div class="job-user-block">
@@ -65,7 +72,7 @@
                 </div>
                 <div class="user-block-description">
                   <a href=""><%=job.user.first_name%> <%=job.user.last_name%></a>
-                  <p><%=job.created_at%></p>
+                  <p><%=job.created_at.strftime('%A, %b %d') %></p>
                 </div>
               </div>
               <div class="job-description-block">

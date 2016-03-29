@@ -14,15 +14,15 @@
                 <div class="col-md-8">
                   <div class="form-group">
                     <label class="sr-only" for="location">Location</label>
-                    <%= text_field_tag :search, params[:search],  placeholder: "Where?", class: "form-control", :input_html => {:minlength => 4 } %>
+                    <%= text_field_tag :search, params[:search],  placeholder: "Location", class: "form-control", :input_html => {:minlength => 4 } %>
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
                     <label class="sr-only" for="choice">What ?</label>
                     <select id="choice" name="what" class="form-control">
-                      <option value="pilot">Pilot</option>
                       <option value="job">Job</option>
+                      <option value="pilot">Pilot</option>
                     </select>
                   </div>
                 </div>
@@ -70,10 +70,10 @@
   <div class="padding-top">
     <div class="row">
       <div class="col-xs-4 col-xs-offset-1">
-        <%= link_to "How to create a job", about_path, { class: "btn btn-primary btn-md cta-discover"} %>
+        <%= link_to "How to create a job", "/about#make_job", { class: "btn btn-primary btn-md cta-discover"} %>
       </div>
       <div class="col-xs-4">
-        <%= link_to "How to become a pilot", about_path, { class: "btn btn-primary btn-md cta-discover"} %>
+        <%= link_to "How to become a pilot", "/about#become_pilot", { class: "btn btn-primary btn-md cta-discover"} %>
       </div>
     </div>
   </div>
@@ -86,7 +86,7 @@
     </div>
   </div> -->
   <div class="row">
-    <%= link_to jobs_path  do %>
+    <%= link_to jobs_path(:category=>"environment") do %>
     <div class="col-md-8">
       <div class="cat-box-new-container">
         <div class="environment cat-box-new ">
@@ -98,7 +98,7 @@
       </div>
     </div>    
     <% end %>
-    <%= link_to jobs_path  do %>
+    <%= link_to jobs_path(:category=>"family") do %>
     <div class="col-md-4">
       <div class="cat-box-new-container">
         <div class="family cat-box-new">
@@ -151,19 +151,19 @@
     </div>
   </div>
   <% end %>
-  <%= link_to jobs_path  do %>
+  <%= link_to jobs_path(category: "music")  do %>
   <div class="col-md-4">
     <div class="cat-box-new-container">
       <div class="music cat-box-new">
         <ul class="cat-list list-unstyled">
           <li class= "text-center"><i class="flex fa fa-5x fa-music" %></i></li>
-          <li><p class="text-center">Jobs for music events</p></li>
+          <li><p class="text-center">Jobs for festivals</p></li>
         </ul>
       </div>
     </div>
   </div>
   <% end %>
-  <%= link_to jobs_path  do %>
+  <%= link_to jobs_path(category: "fun")  do %>
   <div class="col-md-4">
     <div class="cat-box-new-container">
       <div class="fun cat-box-new">
@@ -177,10 +177,10 @@
   <% end %>
 </div>
 <div class="row">
-  <%= link_to jobs_path  do %>
+  <%= link_to jobs_path(category: "sport")  do %>
   <div class="col-md-4">
     <div class="cat-box-new-container">
-      <div class="sport cat-box-new">
+    <div class="sport cat-box-new">
         <ul class="cat-list list-unstyled">
           <li class= "text-center"><i class="flex fa fa-5x fa-futbol-o" %></i></li>
           <li><p class="text-center">Jobs for sport events</p></li>
@@ -189,7 +189,7 @@
     </div>
   </div>
   <% end %>
-  <%= link_to jobs_path  do %>
+  <%= link_to jobs_path(category: "wedding")  do %>
   <div class="col-md-8">
     <div class="cat-box-new-container">
       <div class="wedding cat-box-new">
