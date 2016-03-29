@@ -3,25 +3,25 @@
 <script>
   function initMap() {
     var styles = [
-      {
-        stylers: [
-          { hue: "#79B791" },
-          { saturation: -20 }
-        ]
-      },{
-        featureType: "road",
-        elementType: "geometry",
-        stylers: [
-          { lightness: 100 },
-          { visibility: "simplified" }
-        ]
-      },{
-        featureType: "road",
-        elementType: "labels",
-        stylers: [
-          { visibility: "off" }
-        ]
-      }
+    {
+      stylers: [
+      { hue: "#79B791" },
+      { saturation: -20 }
+      ]
+    },{
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [
+      { lightness: 100 },
+      { visibility: "simplified" }
+      ]
+    },{
+      featureType: "road",
+      elementType: "labels",
+      stylers: [
+      { visibility: "off" }
+      ]
+    }
     ];
 
     var myLatLng = {lat: 52.34304, lng: 4.82928};
@@ -69,45 +69,62 @@ async defer></script>
 </div>
 
 <div class="container bid-details">
-  <h3 class="text-center"><i class="fa fa-gavel"></i> Bids</h3>
-  <br>
-  <hr>
-  <% if @job.bids.empty? %>
-  <% if current_user.owner == true %>
-  <p class="text-center">No bids yet. Be the first to place a bid!</p>
-  <% elsif @job.user == current_user %>
-  <p class="text-center">There are no bids on your job yet.</p>
-  <% else %>
-  <p class="text-center">There are no bids on this job.</p>
-  <% end %>
-  <% else %>
-  <% @job.bids.each do |bid|%>
-  <div class="row">
-    <div class="col-xs-12 col-md-2 col-md-offset-1">
-      <%= cl_image_tag bid.drone.user.profile_pic, size: "85x85", alt: "profile picture", style: "border-radius: 50%;"%>
-      <h5><%=bid.drone.user.first_name%> <%=bid.drone.user.last_name%></h5>
-    </div>
-    <div class="col-xs-12 col-md-1">
-      <%= cl_image_tag bid.drone.photo, size: "85x85", alt: "profile picture", style: "border-radius: 50%;"%>
-    </div>
-    <div class="col-xs-12 col-md-2">
-      <h4>Drone</h4>
-      <h5>Brand: <%=bid.drone.brand%></h5>
-      <h5>Model: <%=bid.drone.model%></h5>
-      <h5>Camera: <%=bid.drone.camera%></h5>
-    </div>
-    <div class="col-xs-12 col-md-5">
-      <h3>€ <%= bid.amount %>,-</h3>
-      <p><%= bid.description %></p>
-    </div>
-    <% if @job.user == current_user %>
-    <div class="col-xs-12 col-md-1">
-      <%= link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid), method: :patch, class: "btn btn-primary" %>
-    </div>
+  <h2 class="subtitle"><span><i class="fa fa-gavel"></i>Bids<i class="fa fa-gavel fa-rotate-90"></i></span></h2>
+
+  <div class="bid-list">
+    <% if @job.bids.empty? %>
+    <% if current_user.owner == true %>
+    <p class="text-center">No bids yet. Be the first to place a bid!</p>
+    <% elsif @job.user == current_user %>
+    <p class="text-center">There are no bids on your job yet.</p>
+    <% else %>
+    <p class="text-center">There are no bids on this job.</p>
     <% end %>
+    <% else %>
+    <% @job.bids.each do |bid|%>
+
+
+    <div class="row">
+      <div class="job-user-block">
+        <div class="user-block-avatar">
+          <%= cl_image_tag bid.drone.user.profile_pic, size: "32x32", crop: :fill, style: "border-radius: 50%; margin-left: 15px;" %>    
+        </div>
+        <div class="user-block-description">
+          <a href=""><%=bid.drone.user.first_name%> <%=bid.drone.user.last_name%></a>
+          <p><%=bid.created_at%></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="bid-description-block">
+        <div class="col-xs-2">
+          <h3>€ <%= bid.amount %>,-</h3>
+        </div>
+        <div class="col-xs-3">
+          <div class="user-block-avatar">
+            <%= cl_image_tag bid.drone.photo, size: "85x85", alt: "profile picture", style: "border-radius: 50%; padding: 5px;"%>
+          </div>
+          <div class="user-block-description">           
+            <h5>BRAND: <span style="font-weight: 500;"><%=bid.drone.brand%></span></h5> 
+            <h5>MODEL: <span style="font-weight: 500;"><%=bid.drone.model%></span></h5>
+            <h5>CAMERA: <span style="font-weight: 500;"><%=bid.drone.camera%></span></h5>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <h4>DESCRIPTION</h4>
+          <p><%= bid.description %></p>
+        </div>
+        <% if @job.user == current_user %>
+        <div class="col-xs-2">
+          <%= link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid), method: :patch, class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <hr>
   <% end %>
   <% end %>
+</div>
 </div>
 <%= render 'bids/modal_new', job: @job, drones: @drones %>
