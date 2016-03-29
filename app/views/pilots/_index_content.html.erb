@@ -6,28 +6,37 @@
         <ul>
           <h5>CATEGORIES</h5>
           <!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
-          <li><a href="#all" class="active">ALL CATEGORIES</a></li>
-          <li><a href="#education">EDUCATION</a></li>
-          <li><a href="#environment">ENVIRONMENT</a></li>
-          <li><a href="#family">FAMILY</a></li>
-          <li><a href="#festival">FESTIVAL</a></li>
-          <li><a href="#fun">FUN</a></li>
-          <li><a href="#other">OTHER</a></li>
-          <li><a href="#sport">SPORT</a></li>
-          <li><a href="#wedding">WEDDING</a></li>
+          <li><%= link_to "ALL CATEGORIES", pilots_path %></li>
+          <% Category.all.each do |c| %>
+            <li class="<%=  @selected_category == c ? "cat_active" : "cat" %>"><%= link_to c.name.upcase, pilots_path(category: c.name) %></li>
+          <% end %>
         </ul>
       </div>
     </div>
     <!-- this content should change together with the changing href or the class active -->
     <div class="col-xs-12 col-sm-10">
       <h5>PILOTS > 
-        <a href="#all" class="active">ALL CATEGORIES</a>
-        <%= link_to "How to become a pilot", about_path, { class: "btn btn-primary cta-discover hidden-xs"} %>
+        <% if @selected_category %>
+            <span><%= @selected_category.name.upcase %></span>
+          <% else %> 
+            <span>ALL CATEGORIES</span>
+          <% end %> 
+       <%= link_to "How to become a pilot", about_path, { class: "btn btn-primary cta-discover"} %>
       </h5>
+
+      <% if @selected_category %>
+        <div class="banner pilots" style="background-image: url('<%= image_path(@selected_category.name + ".jpg") %>')">
+      <% else %> 
       <div class="banner pilots">
+      <% end %> 
+
         <div class="banner-content" id="all_categories">
-          <h1>All categories</h1>
-          <p>Good luck in finding the perfect pilot for the job!</p>
+          <% if @selected_category %>
+            <h1><%= @selected_category.name.capitalize %></h1>
+          <% else %> 
+            <h1>All categories</h1>
+          <% end %> 
+          <p>Find your pilot</p>
         </div>
       </div>
 

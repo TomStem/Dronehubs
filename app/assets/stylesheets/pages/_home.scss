@@ -124,7 +124,7 @@ a:hover{
 .music {
     height: 246px;
     // margin-right: 5px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), asset-url("music.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), asset-url("festival.jpg");
     background-size: cover !important;
     color: white;
 }
@@ -132,7 +132,7 @@ a:hover{
 .education {
     height: 246px;
     // margin-right: 5px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), asset-url("edu.jpeg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), asset-url("education.jpg");
     background-size: cover !important;
     color: white;
 }
@@ -140,7 +140,7 @@ a:hover{
 .environment {
     height: 246px;
     // margin-right: 5px;
-    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),  asset-url("agriculture1.jpg");
+    background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),  asset-url("environment.jpg");
     background-size: cover !important;
     color: white;
 }
@@ -180,6 +180,7 @@ a:hover{
 
 .cat-box-new-container {
     padding: 5px;
+    padding-bottom: 50px;
     &:hover {
      opacity: 0.9;
     }
