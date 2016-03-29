@@ -2,13 +2,19 @@ class JobsController < ApplicationController
   before_action :set_drones
 
   def index
-    @jobs = Job.all
-
-    if params[:search]
-      @jobs = Job.search(params[:search]).order("created_at DESC")
-      @jobs = Job.where(:category => params[:category])
+    if params[:what] != "pilot"
+      if params[:search]
+        # Search is location based 
+        @jobs = Job.search(params[:search]).order("created_at DESC")
+      elsif params[:category]
+        # Search is category based 
+        @selected_category = Category.find_by(name: params[:category])
+        @jobs = Job.select{|j| j.categories.map{|c| c.name}.include?(params[:category])}
+      else
+        @jobs = Job.all.order("created_at DESC")
+      end
     else
-      @jobs = Job.all.order("created_at DESC")
+      redirect_to pilots_path(search: params[:search])
     end
   end
 
