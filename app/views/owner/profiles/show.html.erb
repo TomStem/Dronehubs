@@ -79,15 +79,15 @@
         <div class="row">
           <% @owner.drones.each do |drone| %>
           <div class="col-xs-12 col-md-4">
-            <div class="thumbnail">
+            <div class="card">
               <% if drone[:photo] == nil %>
-              <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture" %>
+              <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture", class: "card-image drone" %>
               <% else %>
-              <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
+              <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill, class: "card-image drone" %>
               <% end %>
-              <div class="caption">
+              <div class="card-description drone">
                 <h3><%= drone.brand %> <%= drone.model %></h3>
-                <p>
+                <div class="drone-icons"><p>
                   <%= link_to owner_drone_path(drone) do %>
                   <i class="fa fa-search fa-2x" data-toggle="tooltip" data-placement="bottom" title="Details of this drone"></i>
                   <% end %>
@@ -97,7 +97,7 @@
                   <%= link_to owner_drone_path(drone), method: :delete, data: { confirm: "Are you sure you want to delete the #{drone.brand} #{drone.model}?" } do %>
                   <i class="fa fa-trash fa-2x" data-toggle="tooltip" data-placement="bottom" title="Delete this drone"></i>
                   <% end %>
-                </p>
+                </p></div>
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@
         </div>
       </div>
       <div class="padding-bottom text-center">
-        
+
       <p><%= link_to "Add a Drone", new_owner_drone_path, { class: "btn btn-lg btn-success" } %></p>
       </div>
     </div>
