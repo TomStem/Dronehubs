@@ -4,9 +4,13 @@ class Owner::ProfilesController < ApplicationController
     @bids_amount = 0
     @jobs_amount = 0
     @jobs = []
+    @bids = []
 
     @owner.drones.each do |drone|
       @bids_amount += drone.bids.size
+      drone.bids.each do |bid|
+        @bids << bid
+      end
     end
 
     @owner.drones.each do |drone|
@@ -33,7 +37,7 @@ class Owner::ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:user).permit(:first_name, :last_name, :description, :profile_pic, :profile_pic_cache, :banner_pic, :banner_pic_cache)
+    params.require(:user).permit(:first_name, :last_name, :description, :location, :profile_pic, :profile_pic_cache, :banner_pic, :banner_pic_cache)
 
   end
 

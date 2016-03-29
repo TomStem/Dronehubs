@@ -18,21 +18,68 @@
 
 <div class="tab-box tab-profile">
   <h2 class="subtitle">
-   <!--  <a href="#" ><span class="tab active" data-target="#personal">My Profile</span></a> -->
-   <a href="#"data-target="#profile_jobs"> <span class="tab active" data-target="#profile_jobs" >My Jobs(<%= @jobs_amount %>)</span></a>
-   <!--    <p><%= @jobs_amount %></p> -->
-   <a href="#"data-target="#profile_bids"><span class="tab" data-target="#profile_bids">My Bids(<%= @bids_amount %>)</span></a>
-   <!--  <p><%= @bids_amount %></p> -->
-   <a href="#"><span class="tab" data-target="#profile_drones">My Drones</span></a>
+    <a href="#"><span class="tab active" data-target="#profile_drones">My Drones</span></a>
+
+    <% if @jobs == [] || @jobs.nil? %>
+      <a href="#"data-target="#profile_jobs"> <span class="tab hidden" data-target="#profile_jobs" >My Jobs(<%= @jobs_amount %>)</span></a>
+    <% else %>
+      <a href="#"data-target="#profile_jobs"> <span class="tab" data-target="#profile_jobs" >My Jobs(<%= @jobs_amount %>)</span></a>
+    <% end %>
+
+    <% if @bids == [] %>
+      <a href="#"data-target="#profile_bids"><span class="tab hidden" data-target="#profile_bids">My Bids(<%= @bids_amount %>)</span></a>
+    <% else %>
+      <a href="#"data-target="#profile_bids"><span class="tab" data-target="#profile_bids">My Bids(<%= @bids_amount %>)</span></a>
+    <% end %>
+
  </h2>
 
 </div>
 <div class="wrapper profile-wrapper">
   <div class="container">
 
-    <div class="tab-content" id="profile_jobs">
+    <div class="tab-content" id="profile_drones">
       <div class="container padded">
-        <p>Down here you can see the jobs that accepted your bid</p>
+        <div class="row">
+          <% if @owner.drones.nil? || @owner.drones == [] %>
+            <h2>you don't have any drones add the moment. Add a few!</h2>
+          <% else %>
+          <% @owner.drones.each do |drone| %>
+          <div class="col-xs-12 col-md-4">
+            <div class="card">
+              <% if drone[:photo] == nil %>
+              <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture", class: "card-image drone" %>
+              <% else %>
+              <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill, class: "card-image drone" %>
+              <% end %>
+              <div class="card-description drone">
+                <h3><%= drone.brand %> <%= drone.model %></h3>
+                <div class="drone-icons"><p>
+                  <%= link_to owner_drone_path(drone) do %>
+                  <i class="fa fa-search fa-2x" data-toggle="tooltip" data-placement="bottom" title="Details of this drone"></i>
+                  <% end %>
+                  <%= link_to edit_owner_drone_path(drone), remote: true do %>
+                    <i class="fa fa-pencil fa-2x" data-toggle="tooltip" data-placement="bottom" title="Edit this drone"></i>
+                  <% end %>
+                  <%= link_to owner_drone_path(drone), method: :delete, data: { confirm: "Are you sure you want to delete the #{drone.brand} #{drone.model}?" } do %>
+                  <i class="fa fa-trash fa-2x" data-toggle="tooltip" data-placement="bottom" title="Delete this drone"></i>
+                  <% end %>
+                </p></div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="padding-bottom text-center">
+
+      <p><%= link_to "Add a Drone", new_owner_drone_path, { class: "btn btn-lg btn-success" } %></p>
+      </div>
+    </div>
+
+    <div class="tab-content hidden" id="profile_jobs">
+      <div class="container padded">
         <table class="table">
           <tr>
             <th>Job title</th>
@@ -41,9 +88,9 @@
           </tr>
           <% @jobs.each do |job| %>
           <tr>
-            <td><%= job[:job].title %></td>
+            <td><%= link_to job[:job].title, job_path(job[:job]) %></td>
             <td><%= job[:job].user.first_name %></td>
-            <td><%= cl_image_tag job[:drone].photo , height: 100, witdh: 100 %> <%= job[:drone].brand %> <%= job[:drone].model %></td>
+            <td><div class="job-drone"><%= cl_image_tag job[:drone].photo , height: 100, witdh: 100, crop: :fill %> <span><%= job[:drone].brand %> <%= job[:drone].model %></span></div></td>
           </tr>
           <% end %>
         </table>
@@ -52,7 +99,6 @@
 
     <div class="tab-content hidden" id="profile_bids">
       <div class="container padded">
-        <p>Here you can see the bids you made</p>
         <table class="table">
           <tr>
             <th>Amount</th>
@@ -64,7 +110,7 @@
           <% drone.bids.each do |bid| %>
           <tr>
             <td>€<%= bid.amount %></td>
-            <td><%= bid.job.title %></td>
+            <td><%= link_to bid.job.title, job_path(bid.job) %></td>
             <td><%= bid.job.user.first_name %></td>
             <td><%= bid.status %></td>
           </tr>
@@ -74,43 +120,9 @@
       </div>
     </div>
 
-    <div class="tab-content hidden" id="profile_drones">
-      <div class="container padded">
-        <div class="row">
-          <% @owner.drones.each do |drone| %>
-          <div class="col-xs-12 col-md-4">
-            <div class="thumbnail">
-              <% if drone[:photo] == nil %>
-              <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture" %>
-              <% else %>
-              <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill %>
-              <% end %>
-              <div class="caption">
-                <h3><%= drone.brand %> <%= drone.model %></h3>
-                <p>
-                  <%= link_to owner_drone_path(drone) do %>
-                  <i class="fa fa-search fa-2x" data-toggle="tooltip" data-placement="bottom" title="Details of this drone"></i>
-                  <% end %>
-                  <%= link_to edit_owner_drone_path(drone) do %>
-                  <i class="fa fa-pencil fa-2x" data-toggle="tooltip" data-placement="bottom" title="Edit this drone"></i>
-                  <% end %>
-                  <%= link_to owner_drone_path(drone), method: :delete, data: { confirm: "Are you sure you want to delete the #{drone.brand} #{drone.model}?" } do %>
-                  <i class="fa fa-trash fa-2x" data-toggle="tooltip" data-placement="bottom" title="Delete this drone"></i>
-                  <% end %>
-                </p>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="padding-bottom text-center">
-        
-      <p><%= link_to "Add a Drone", new_owner_drone_path, { class: "btn btn-lg btn-success" } %></p>
-      </div>
-    </div>
 
   </div>
 </div>
 </div>
 <%= render 'owner/profiles/modal_edit' %>
+<%= render 'owner/drones/modal_edit_drone' %>
