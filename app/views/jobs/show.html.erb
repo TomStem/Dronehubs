@@ -91,7 +91,7 @@ async defer></script>
         </div>
         <div class="user-block-description">
           <a href=""><%=bid.drone.user.first_name%> <%=bid.drone.user.last_name%></a>
-          <p><%=bid.created_at%></p>
+          <p><%=bid.created_at.strftime('%A, %b %d') %></p>
         </div>
       </div>
     </div>
