@@ -91,6 +91,8 @@ user4 = User.new({
   owner: false
   })
 
+user4.save!
+
 Job.create({
   description: "My crops needs to be inspected, has someone a drone that can do that?",
   location: "Beemster",
