@@ -40,31 +40,41 @@
 </div>
 
 <div class="container padded">
-  <div id="how"></div>
-<!--  <div class="row padded">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h2 class="subtitle"><span>How it works</span></h2>
-    </div>
-  </div> -->
   <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading text-center steps"><i class="fa fa-search img-circle"></i></div>
-        <div class="panel-body text-center">Discover jobs or pilots near you</div>
+    <div class="col-sm-4">
+      <div class="how-it-works-home text-center">
+        <div class="head-circle  how-it-works-circle">
+          <i class="fa fa-search img-circle"></i>
+        </div>
+        <div class="how-it-works-home-description">
+          <h3>Discover</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi perspiciatis aliquam eius recusandae, nihil sunt sequi accusamus neque velit magni consequatur. Repellendus tempore temporibus neque quibusdam harum quae, ipsam obcaecati! Check out jobs or pilots near you.</p>
+        </div>
       </div>
-    </div> 
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading text-center steps"><i class="fa fa-cloud"></i></div>
-        <div class="panel-body text-center">Connect through DroneHubs</div>
+    </div>
+    <div class="col-sm-4">
+      <div class="how-it-works-home text-center">
+        <div class="head-circle how-it-works-circle">
+          <i class="fa fa-cloud img-circle"></i>
+        </div>
+        <div class="how-it-works-home-description">
+          <h3>Connect</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro aut, quibusdam deleniti autem qui consequatur quis ea sed debitis, repellendus, doloremque maxime. Ad magnam non ut, vitae illum nobis assumenda. Connect through DroneHubs</p>
+        </div>
       </div>
-    </div> 
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading text-center steps"><i class="fa fa-check"></i></div>
-        <div class="panel-body text-center">Meet up and drone on!</div>
+    </div>
+    <div class="col-sm-4">
+      <div class="how-it-works-home text-center">
+        <div class="head-circle how-it-works-circle">
+          <%= image_tag "drone-icon.png", alt:"drone icon"%>
+          <!-- <i class="fa fa-check img-circle"></i> -->
+        </div>
+        <div class="how-it-works-home-description">
+          <h3>Drone on</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, ut, placeat. Accusantium facilis dolorem nulla, ipsa, velit facere quae, ea nam beatae reiciendis vitae impedit rerum numquam tenetur iure inventore. Meet up and get the job done.</p>
+        </div>
       </div>
-    </div>  
+    </div>
   </div>
 
   <div class="padding-top">
@@ -180,7 +190,7 @@
   <%= link_to jobs_path(category: "sport")  do %>
   <div class="col-md-4">
     <div class="cat-box-new-container">
-    <div class="sport cat-box-new">
+      <div class="sport cat-box-new">
         <ul class="cat-list list-unstyled">
           <li class= "text-center"><i class="flex fa fa-5x fa-futbol-o" %></i></li>
           <li><p class="text-center">Jobs for sport events</p></li>

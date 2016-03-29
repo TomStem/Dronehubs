@@ -86,23 +86,47 @@
 
 // how it works cards with circles
 .how-it-works {
-    display: block;
-    min-height: 275px;
-    padding: 20px;
-    margin-bottom: 50px;
-    margin-top: 45px;
-    line-height: 1.4;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    -webkit-transition: border 0.2s ease-in-out;
-    transition: border 0.2s ease-in-out;
+  min-height: 275px;
+  padding: 20px;
+  margin-bottom: 50px;
+  margin-top: 45px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.how-it-works-description 
+h3{
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: 300;
+}
+p{
+  opacity: 0.7;
+  font-weight: 300;
+}
+.how-it-works-home {
+  min-height: 235px;
+  padding: 20px;
+  margin: 50px 5px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+.how-it-works-home-description 
+h3{
+  text-transform: uppercase;
+  font-size: 35px;
+  font-weight: 300;
+}
+p{
+  opacity: 0.7;
+  font-weight: 300;
 }
 .head-circle {
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  padding: 8px;
+  padding: 11px;
   margin: auto;
   background: #79B791;
   text-align: center;
@@ -113,7 +137,7 @@
     margin: 0px;
   }
 }
-.head-circle.how-it-works-home{
+.head-circle.how-it-works-circle{
   width: 100px;
   height: 100px;
   padding: 8px;
@@ -122,5 +146,9 @@
     font-size: 50px;
     color: white;
     padding-top: 14px;
+  }
+  img{
+    width: 64px;
+    padding-top: 11px;
   }
 }
