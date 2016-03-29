@@ -7,3 +7,14 @@
   padding-top: 11px;
   margin-top: -11px;
 }
+
+.job-drone {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  img {
+    height: 100px;
+    width: 100px;
+    border-radius: 2px;
+  }
+}

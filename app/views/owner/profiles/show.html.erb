@@ -84,9 +84,9 @@
           </tr>
           <% @jobs.each do |job| %>
           <tr>
-            <td><%= job[:job].title %></td>
+            <td><%= link_to job[:job].title, job_path(job[:job]) %></td>
             <td><%= job[:job].user.first_name %></td>
-            <td><%= cl_image_tag job[:drone].photo , height: 100, witdh: 100 %> <%= job[:drone].brand %> <%= job[:drone].model %></td>
+            <td><div class="job-drone"><%= cl_image_tag job[:drone].photo , height: 100, witdh: 100, crop: :fill %> <span><%= job[:drone].brand %> <%= job[:drone].model %></span></div></td>
           </tr>
           <% end %>
         </table>
@@ -95,7 +95,6 @@
 
     <div class="tab-content hidden" id="profile_bids">
       <div class="container padded">
-        <p>Here you can see the bids you made</p>
         <table class="table">
           <tr>
             <th>Amount</th>
@@ -107,7 +106,7 @@
           <% drone.bids.each do |bid| %>
           <tr>
             <td>€<%= bid.amount %></td>
-            <td><%= bid.job.title %></td>
+            <td><%= link_to bid.job.title, job_path(bid.job) %></td>
             <td><%= bid.job.user.first_name %></td>
             <td><%= bid.status %></td>
           </tr>
