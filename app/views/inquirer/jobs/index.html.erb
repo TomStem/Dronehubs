@@ -57,24 +57,25 @@
                     </span>
                   </p>
                 </div>
-                <div class="job-footer-bid">  <p>
-                  <span>
-                    <i class="fa fa-gavel"></i> <%= job.bids.count %> bids  |
-                  </span>
-                  <span>
-                    <%= link_to "Edit job", edit_inquirer_job_path(job), { class: "btn btn-default" } %>
-                    <%= link_to "Delete job", inquirer_job_path(job),  class: "btn btn-default" ,
-                    method: :delete,
-                    data: { confirm: "Are you sure?" }%>
-                  </span>
-                </p>
+                <div class="job-footer-bid">  
+                  <p>
+                    <span>
+                      <i class="fa fa-gavel"></i> <%= job.bids.count %> bids  |
+                    </span>
+                    <span>
+                      <%= link_to "Edit job", edit_inquirer_job_path(job), { class: "btn btn-default" } %>
+                      <%= link_to "Delete job", inquirer_job_path(job),  class: "btn btn-default" ,
+                      method: :delete,
+                      data: { confirm: "Are you sure?" }%>
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <% end %>
     <%= link_to "Create a new job", '#', { class: "btn btn-primary btn-xs cta-discover", data: {'job-id': @job, toggle: "modal", target: "#modal-job"}} %>
   </div>

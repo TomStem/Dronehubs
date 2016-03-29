@@ -1,5 +1,6 @@
 .jobs-body{
   margin-top: 50px;
+  margin-bottom: 50px; 
   h4{
     margin: 20px 0;
   }
@@ -14,17 +15,31 @@
     list-style: none;
   }
 }
+// .job-details {
+//   align-items: center;
+//   background-color: white;
+//   width: 100%;
+// }
+// .jobs-details {
+//   margin: 5px 15px;
+//   display: flex;
+//   align-items: center;
+//   background-color: white;
+//   border: 1px solid rgba(47, 47, 47, 0.15);
+// }
+
 .job-details {
-  align-items: center;
-  background-color: white;
-  width: 100%;
-}
-.jobs-details {
-  margin: 5px 15px;
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border: 1px solid rgba(47, 47, 47, 0.15);
+    margin: 5px 15px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgba(47,47,47,0.15);
 }
 .job-user{
   padding: 5px 15px;
@@ -78,4 +93,8 @@
   float: right!important;
   margin-right: 8px;
   font-size: 15px;
+}
+
+.cat_active a{
+  color: black;
 }
