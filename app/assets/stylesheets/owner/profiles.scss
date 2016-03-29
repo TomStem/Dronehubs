@@ -10,8 +10,9 @@
 
 .job-drone {
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
+  justify-content: flex-start;
   img {
     height: 100px;
     width: 100px;

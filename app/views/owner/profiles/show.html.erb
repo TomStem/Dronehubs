@@ -55,8 +55,8 @@
                   <%= link_to owner_drone_path(drone) do %>
                   <i class="fa fa-search fa-2x" data-toggle="tooltip" data-placement="bottom" title="Details of this drone"></i>
                   <% end %>
-                  <%= link_to edit_owner_drone_path(drone) do %>
-                  <i class="fa fa-pencil fa-2x" data-toggle="tooltip" data-placement="bottom" title="Edit this drone"></i>
+                  <%= link_to edit_owner_drone_path(drone), remote: true do %>
+                    <i class="fa fa-pencil fa-2x" data-toggle="tooltip" data-placement="bottom" title="Edit this drone"></i>
                   <% end %>
                   <%= link_to owner_drone_path(drone), method: :delete, data: { confirm: "Are you sure you want to delete the #{drone.brand} #{drone.model}?" } do %>
                   <i class="fa fa-trash fa-2x" data-toggle="tooltip" data-placement="bottom" title="Delete this drone"></i>
@@ -121,3 +121,4 @@
 </div>
 </div>
 <%= render 'owner/profiles/modal_edit' %>
+<%= render 'owner/drones/modal_edit_drone' %>
