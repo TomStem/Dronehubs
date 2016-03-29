@@ -1,4 +1,5 @@
 class Owner::DronesController < ApplicationController
+  respond_to :js, only: [:edit]
   def index
     @drones = current_user.drones
   end
