@@ -1,5 +1,48 @@
-<div class="banner job">
-</div>
+<div class="transparent-top"></div>
+<div id="map" style="width: 100%;height: 400px;"></div>
+<script>
+  function initMap() {
+    var styles = [
+      {
+        stylers: [
+          { hue: "#79B791" },
+          { saturation: -20 }
+        ]
+      },{
+        featureType: "road",
+        elementType: "geometry",
+        stylers: [
+          { lightness: 100 },
+          { visibility: "simplified" }
+        ]
+      },{
+        featureType: "road",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+
+    var myLatLng = {lat: 52.34304, lng: 4.82928};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: myLatLng,
+      scrollwheel:  false,
+      styles: styles
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'B.Amsterdam!'
+    });
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+async defer></script>
+
 <div class="container job-details">
   <div class="row">
     <div class="col-xs-12 col-md-2 col-md-offset-1">

@@ -157,12 +157,35 @@
 <div id="map" style="width: 100%;height: 500px;"></div>
 <script>
   function initMap() {
+    var styles = [
+      {
+        stylers: [
+          { hue: "#79B791" },
+          { saturation: -20 }
+        ]
+      },{
+        featureType: "road",
+        elementType: "geometry",
+        stylers: [
+          { lightness: 100 },
+          { visibility: "simplified" }
+        ]
+      },{
+        featureType: "road",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+
     var myLatLng = {lat: 52.34304, lng: 4.82928};
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 17,
       center: myLatLng,
-      scrollwheel:  false
+      scrollwheel:  false,
+      styles: styles
     });
 
     var marker = new google.maps.Marker({
