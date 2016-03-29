@@ -4,9 +4,13 @@ class Owner::ProfilesController < ApplicationController
     @bids_amount = 0
     @jobs_amount = 0
     @jobs = []
+    @bids = []
 
     @owner.drones.each do |drone|
       @bids_amount += drone.bids.size
+      drone.bids.each do |bid|
+        @bids << bid
+      end
     end
 
     @owner.drones.each do |drone|
