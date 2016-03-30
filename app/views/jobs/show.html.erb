@@ -43,27 +43,29 @@
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
 async defer></script>
 
-<div class="container job-details">
+<div class="container">
   <div class="row">
-    <div class="col-xs-12 col-md-2 col-md-offset-1">
-      <div class="text-center">
-        <%= cl_image_tag @job.user.profile_pic, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
-        <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
+    <div class="job-details">
+      <div class="col-xs-12 col-md-2 col-md-offset-1">
+        <div class="text-center">
+          <%= cl_image_tag @job.user.profile_pic, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
+          <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
+        </div>
       </div>
-    </div>
-    <div class="col-xs-12 col-md-8">
-      <h3><%= @job.title %></h3>
-      <h6>TAGS: WEDDING</h6>
-      <p class="job-description"><%=@job.description%></p>
-      <div class="job-specific">
-        <p>
-          <i class="fa fa-map-marker"></i> <%=@job.location%> |
-          <i class="fa fa-calendar"></i> <%=@job.date%>  |
-          <% if current_user.owner == true %>
-          <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %>
-          <% end %>
-        </p>
-      </div>
+      <div class="col-xs-12 col-md-8">
+        <h3><%= @job.title %></h3>
+        <h6>TAGS: WEDDING</h6>
+        <p class="job-description"><%=@job.description%></p>
+        <div class="job-specific">
+          <p>
+            <i class="fa fa-map-marker"></i> <%=@job.location%> |
+            <i class="fa fa-calendar"></i> <%=@job.date%>  |
+            <% if current_user.owner == true %>
+            <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %>
+            <% end %>
+          </p>
+        </div>
+      </div>  
     </div>
   </div>
 </div>
