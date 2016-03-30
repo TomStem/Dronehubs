@@ -1,5 +1,8 @@
+<div class="container padded">
 <h1><%= @drone.brand %> <%= @drone.model %></h1>
+<%= cl_image_tag @drone.photo, height: 500, fill: :crop %>
 <p>Brand: <%= @drone.brand %></p>
 <p>Model: <%= @drone.model %></p>
 <p>Camera: <%= @drone.camera %></p>
 <p><%= link_to "Back", owner_profile_path %></p>
+</div>

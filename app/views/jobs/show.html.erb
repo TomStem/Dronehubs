@@ -23,16 +23,13 @@
       ]
     }
     ];
-
     var myLatLng = {lat: 52.34304, lng: 4.82928};
-
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 11,
       center: myLatLng,
       scrollwheel:  false,
       styles: styles
     });
-
     var marker = new google.maps.Marker({
       position: myLatLng,
       map: map,
@@ -43,29 +40,29 @@
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
 async defer></script>
 
-<div class="container">
+<div class="container job-details">
   <div class="row">
-    <div class="job-details">
-      <div class="col-xs-12 col-md-2 col-md-offset-1">
-        <div class="text-center">
-          <%= cl_image_tag @job.user.profile_pic, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
-          <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
-        </div>
+    <div class="col-xs-12 col-md-2 col-md-offset-1">
+      <div class="text-center">
+        <%= cl_image_tag @job.user.profile_pic, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
+        <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
       </div>
-      <div class="col-xs-12 col-md-8">
-        <h3><%= @job.title %></h3>
-        <h6>TAGS: WEDDING</h6>
-        <p class="job-description"><%=@job.description%></p>
-        <div class="job-specific">
-          <p>
-            <i class="fa fa-map-marker"></i> <%=@job.location%> |
-            <i class="fa fa-calendar"></i> <%=@job.date%>  |
-            <% if current_user.owner == true %>
-            <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %>
-            <% end %>
-          </p>
-        </div>
-      </div>  
+    </div>
+    <div class="col-xs-12 col-md-8">
+      <h3><%= @job.title %></h3>
+      <h6>TAGS: WEDDING</h6>
+      <p class="job-description"><%=@job.description%></p>
+      <div class="job-specific">
+        <p>
+          <i class="fa fa-map-marker"></i> <%=@job.location%> |
+          <i class="fa fa-calendar"></i> <%=@job.date%>  |
+          <% if !current_user.nil? %>
+          <% if current_user.owner == true %>
+          <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %>
+          <% end %>
+          <% end %>
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -75,13 +72,15 @@ async defer></script>
 
   <div class="bid-list">
     <% if @job.bids.empty? %>
-    <% if current_user.owner == true %>
-    <p class="text-center">No bids yet. Be the first to place a bid!</p>
-    <% elsif @job.user == current_user %>
-    <p class="text-center">There are no bids on your job yet.</p>
-    <% else %>
-    <p class="text-center">There are no bids on this job.</p>
-    <% end %>
+      <% if !current_user.nil? %>
+        <% if current_user.owner == true %>
+          <p class="text-center">No bids yet. Be the first to place a bid!</p>
+        <% elsif @job.user == current_user %>
+          <p class="text-center">There are no bids on your job yet.</p>
+        <% else %>
+          <p class="text-center">There are no bids on this job.</p>
+        <% end %>
+      <% end %>
     <% else %>
     <% @job.bids.each do |bid|%>
 
@@ -90,7 +89,7 @@ async defer></script>
       <div class="job-user-block">
         <div class="job-user-block-profile">
           <div class="user-block-avatar">
-            <%= cl_image_tag bid.drone.user.profile_pic, size: "32x32", alt: "profile picture", crop: :fill, style: "border-radius: 50%; margin-left: 15px;" %>  
+            <%= cl_image_tag bid.drone.user.profile_pic, size: "32x32", alt: "profile picture", crop: :fill, style: "border-radius: 50%; margin-left: 15px;" %>
           </div>
           <div class="user-block-description">
             <a href=""><%=bid.drone.user.first_name%> <%=bid.drone.user.last_name%></a>
@@ -109,11 +108,11 @@ async defer></script>
           <p><%= bid.description %></p>
         </div>
         <div class="bids-drone-description">
-        <div class="job-user-block-drone">          
+        <div class="job-user-block-drone">
           <div class="bid-drone-block-avatar">
             <%= cl_image_tag bid.drone.photo, size: "60x60", alt: "drone", style: "border-radius: 50%; padding: 5px;"%>
           </div>
-          <div class="bid-drone-block-description">           
+          <div class="bid-drone-block-description">
             <div>
               <span class="bid-drone-label">BRAND - </span><span class="bid-drone-value"><%=bid.drone.brand%></span>
             </div>
@@ -131,7 +130,7 @@ async defer></script>
         </div>
         <% end %>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -140,3 +139,5 @@ async defer></script>
 </div>
 </div>
 <%= render 'bids/modal_new', job: @job, drones: @drones %>
+Status API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help

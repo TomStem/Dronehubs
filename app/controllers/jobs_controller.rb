@@ -1,13 +1,14 @@
 class JobsController < ApplicationController
   before_action :set_drones
+  skip_before_action :authenticate_user!
 
   def index
     if params[:what] != "pilot"
       if params[:search]
-        # Search is location based 
+        # Search is location based
         @jobs = Job.search(params[:search]).order("created_at DESC")
       elsif params[:category]
-        # Search is category based 
+        # Search is category based
         @selected_category = Category.find_by(name: params[:category])
         @jobs = Job.joins(:categories).where(categories: { id: @selected_category.id })
       else
@@ -30,7 +31,7 @@ class JobsController < ApplicationController
   private
 
   def set_drones
-    @drones = current_user.drones
+    # @drones = current_user.drones
   end
 end
 

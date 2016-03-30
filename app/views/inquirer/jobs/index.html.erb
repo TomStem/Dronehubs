@@ -14,6 +14,7 @@
   </div>
 </div>
 
+<% @owner = current_user %>
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
@@ -57,7 +58,7 @@
                     </span>
                   </p>
                 </div>
-                <div class="job-footer-bid">  
+                <div class="job-footer-bid">
                   <p>
                     <span>
                       <i class="fa fa-gavel"></i> <%= job.bids.count %> bids  |
@@ -75,9 +76,10 @@
           </div>
         </div>
       </div>
-    </div>
     <% end %>
     <%= link_to "Create a new job", '#', { class: "btn btn-primary btn-xs cta-discover", data: {'job-id': @job, toggle: "modal", target: "#modal-job"}} %>
+    </div>
   </div>
 </div>
-<%= render 'inquirer/jobs/modal_new'%>
+<%= render 'inquirer/jobs/modal_new' %>
+<%= render 'owner/profiles/modal_edit' %>
