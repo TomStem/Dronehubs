@@ -31,7 +31,11 @@ class Owner::ProfilesController < ApplicationController
   def update
     @owner = current_user
     @owner.update(profile_params)
-    redirect_to owner_profile_path
+    if @owner.owner == true
+      redirect_to owner_profile_path
+    else
+      redirect_to inquirer_jobs_path
+    end
   end
 
   private
