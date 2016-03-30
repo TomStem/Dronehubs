@@ -121,6 +121,19 @@ JobCategory.create(job: job2, category: education)
 JobCategory.create(job: job1, category: fun)
 JobCategory.create(job: job1, category: other)
 UserCategory.create(user: user, category:fun)
+UserCategory.create(user: user, category:family)
+UserCategory.create(user: user, category:other)
+UserCategory.create(user: user, category:wedding)
+UserCategory.create(user: user, category:education)
+UserCategory.create(user: user1, category:fun)
+UserCategory.create(user: user1, category:wedding)
+UserCategory.create(user: user1, category:education)
+UserCategory.create(user: user2, category:environment)
+UserCategory.create(user: user2, category:festival)
+UserCategory.create(user: user2, category:fun)
+UserCategory.create(user: user2, category:wedding)
+UserCategory.create(user: user2, category:education)
+
 
 # User.create({
 #   user_id: 1,
