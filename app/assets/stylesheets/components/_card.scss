@@ -72,7 +72,6 @@
 .card-link:hover{
   opacity: 0.1;
 }
-
 .card-link-home {
   position: absolute;
   top: 0;
@@ -85,18 +84,78 @@
   opacity: 0.1;
 }
 
-.head-circle {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    padding: 8px;
-    margin: auto;
-    background: #79B791;
-    text-align: center;
-    h3{
-      color: white;
-      font-size: 29px;
-      margin: 0px;
-    }
+// how it works cards with circles
+.how-it-works {
+  min-height: 275px;
+  padding: 20px;
+  margin-bottom: 50px;
+  margin-top: 45px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
 }
-
+.how-it-works-description 
+h3{
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: 300;
+}
+p{
+  opacity: 0.8;
+  font-weight: 300;
+  font-size: 18px;
+}
+a{
+  color: black;
+}
+.how-it-works-home {
+  min-height: 235px;
+  padding: 20px;
+  margin: 50px 5px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+.how-it-works-home-description 
+h3{
+  text-transform: uppercase;
+  font-size: 35px;
+  font-weight: 300;
+}
+p{
+  opacity: 0.9;
+  font-weight: 300;
+}
+a{
+  color: black;
+}
+.head-circle {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  padding: 9px;
+  margin: auto;
+  background: #79B791;
+  text-align: center;
+  margin-top: -45px;
+  h3{
+    color: white;
+    font-size: 34px;
+    margin: 0px;
+  }
+}
+.head-circle.how-it-works-circle{
+  width: 100px;
+  height: 100px;
+  padding: 8px;
+  margin-top: -77px;
+  .fa{
+    font-size: 50px;
+    color: white;
+    padding-top: 14px;
+  }
+  img{
+    width: 64px;
+    padding-top: 11px;
+  }
+}

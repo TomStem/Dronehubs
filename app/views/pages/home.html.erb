@@ -40,40 +40,49 @@
 </div>
 
 <div class="container padded">
-  <div id="how"></div>
-<!--  <div class="row padded">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h2 class="subtitle"><span>How it works</span></h2>
-    </div>
-  </div> -->
   <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading text-center steps"><i class="fa fa-search img-circle"></i></div>
-        <div class="panel-body text-center">Discover jobs or pilots near you</div>
+    <div class="col-sm-4">
+      <div class="how-it-works-home text-center">
+        <div class="head-circle  how-it-works-circle">
+          <i class="fa fa-search img-circle"></i>
+        </div>
+        <div class="how-it-works-home-description">
+          <h3>Discover</h3>
+          <p>On our platform you can find out about recently placed jobs or pilots near you through the search bar above or the <%= link_to "discover", jobs_path%> page where you can personalise your search through various categories.</p>
+        </div>
       </div>
-    </div> 
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading text-center steps"><i class="fa fa-cloud"></i></div>
-        <div class="panel-body text-center">Connect through DroneHubs</div>
+    </div>
+    <div class="col-sm-4">
+      <div class="how-it-works-home text-center">
+        <div class="head-circle how-it-works-circle">
+          <i class="fa fa-cloud img-circle"></i>
+        </div>
+        <div class="how-it-works-home-description">
+          <h3>Connect</h3>
+          <p>It might have been difficult to find local drone pilots through the web... With Dronehubs you can finally connect to these other droners or get advise from the expert pilots.</p>
+        </div>
       </div>
-    </div> 
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading text-center steps"><i class="fa fa-check"></i></div>
-        <div class="panel-body text-center">Meet up and drone on!</div>
+    </div>
+    <div class="col-sm-4">
+      <div class="how-it-works-home text-center">
+        <div class="head-circle how-it-works-circle">
+          <%= image_tag "drone-icon.png", alt:"drone icon"%>
+        </div>
+        <div class="how-it-works-home-description">
+          <h3>Drone on</h3>
+          <p>Finally you are able to discuss prices on our public forum and be sure to get the right price for your job. Once you have agreed to the right pilot and drone you will meet up and get the job done.</p>
+        </div>
       </div>
-    </div>  
+    </div>
   </div>
 
   <div class="padding-top">
     <div class="row">
       <div class="col-xs-4 col-xs-offset-1">
-        <%= link_to "How to create a job", "/about#make_job", { class: "btn btn-primary btn-md cta-discover"} %>
+        <%= link_to "How to create a job", "/about#make_job", { class: "btn btn-primary btn-lg cta-discover"} %>
       </div>
       <div class="col-xs-4">
-        <%= link_to "How to become a pilot", "/about#become_pilot", { class: "btn btn-primary btn-md cta-discover"} %>
+        <%= link_to "How to become a pilot", "/about#become_pilot", { class: "btn btn-primary btn-lg cta-discover"} %>
       </div>
     </div>
   </div>
@@ -180,7 +189,7 @@
   <%= link_to jobs_path(category: "sport")  do %>
   <div class="col-md-4">
     <div class="cat-box-new-container">
-    <div class="sport cat-box-new">
+      <div class="sport cat-box-new">
         <ul class="cat-list list-unstyled">
           <li class= "text-center"><i class="flex fa fa-5x fa-futbol-o" %></i></li>
           <li><p class="text-center">Jobs for sport events</p></li>
