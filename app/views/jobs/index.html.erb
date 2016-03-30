@@ -60,7 +60,7 @@
           <p>Find your pilot to capture your family picture orday out</p>
         </div> -->
       </div>
-
+    <% if !@jobs.empty? %>
       <% @jobs.each do |job|%>
       <div class="row">
         <div class="job-details">
@@ -85,7 +85,7 @@
                 <div class="job-footer-spec">
                   <p>
                     <span>
-                      TAGS: WEDDING |
+                      TAGS: <%= category_human_names(job) %> |
                     </span>
                     <span>
                         <i class="fa fa-map-marker"></i> <%=job.location%> |  
@@ -111,6 +111,9 @@
       </div>
       <!-- show 10max and allow user to show the next 10 etc.  -->
       <% end %>
+   <% else %>
+    <p>No jobs yet</p>
+  <% end %>
 
     </div>
   </div>

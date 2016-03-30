@@ -10,7 +10,7 @@ class JobsController < ApplicationController
       elsif params[:category]
         # Search is category based
         @selected_category = Category.find_by(name: params[:category])
-        @jobs = Job.select{|j| j.categories.map{|c| c.name}.include?(params[:category])}
+        @jobs = Job.joins(:categories).where(categories: { id: @selected_category.id })
       else
         @jobs = Job.all.order("created_at DESC")
       end

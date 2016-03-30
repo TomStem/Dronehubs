@@ -78,10 +78,10 @@
 
   <div class="padding-top">
     <div class="row">
-      <div class="col-xs-4 col-xs-offset-1">
+      <div class="col-xs-12 col-md-4 col-md-offset-1">
         <%= link_to "How to create a job", "/about#make_job", { class: "btn btn-primary btn-lg cta-discover"} %>
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-12 col-md-4 ">
         <%= link_to "How to become a pilot", "/about#become_pilot", { class: "btn btn-primary btn-lg cta-discover"} %>
       </div>
     </div>
@@ -125,6 +125,8 @@
     <div class="col-xs-12 col-sm-4">
       <div class="cat-box-new-container">
         <div class="card-home">
+        <div class="pilot-label">PILOT</div>
+        <div class="triangle-l"></div>
          <!-- style="background-image: url(' owner.drones.photo ');" -->
          <% if owner[:banner_pic].nil? %>
          <%= image_tag "aerial-trees.jpg", class: "card-image" %>
@@ -140,7 +142,7 @@
          <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
          <%= link_to "", pilot_path(owner), class: "card-link-home" %>
          <div class="card-description">
-
+            <%= owner.first_name + " " + owner.last_name %>
          </div>
        </div>
      </div>

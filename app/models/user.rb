@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   has_many :user_categories, dependent: :destroy
   has_many :categories, through: :user_categories
 
-  scope :latest, -> { order('created_at')[0..2] }
+  scope :owners, -> { where(owner: true) }
+  scope :latest, -> { order('created_at').limit(3) }
 
   mount_uploader :profile_pic, PhotoUploader
   mount_uploader :banner_pic, PhotoUploader

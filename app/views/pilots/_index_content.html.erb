@@ -61,9 +61,9 @@
                <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
                <%= link_to "", pilot_path(owner), class: "card-link" %>
                <div class="card-description">
-                <h5>Specialised: owner.categories</h5>
+                <h5>Specialised: <%= category_human_names(owner) %></h5>
                 <hr>
-                <p><%=owner.first_name%> is based in owner.location</p>
+                <p><%=owner.first_name%> is based in <%= owner.location %></p>
               </div>
               <!-- this p-content will change with the location and categories when migrated -->
             </div>
