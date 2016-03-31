@@ -52,7 +52,7 @@ async defer></script>
         </div>
         <div class="col-xs-12 col-md-8">
           <h3><%= @job.title %></h3>
-          <h6>TAGS: WEDDING</h6>
+          <h6>TAGS: <%= category_human_names(@job) %></h6>
           <p class="job-description"><%=@job.description%></p>
           <div class="job-specific">
             <p>
