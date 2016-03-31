@@ -202,6 +202,7 @@ a:hover{
     margin-top: 30px;
     border-radius: 0 2px 2px 0;
     letter-spacing: 1px;
+    z-index: 1;
 }
 
 .triangle-l {
@@ -211,7 +212,7 @@ a:hover{
     height: 0px;
     width: 0px;
     position: relative;
-    left: -15px;
-    top: 30px;
+    left: -20px;
+    top:49px;
     z-index: -1;
 }
