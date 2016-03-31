@@ -31,7 +31,9 @@ class JobsController < ApplicationController
   private
 
   def set_drones
-    # @drones = current_user.drones
+    if !current_user.nil?
+      @drones = current_user.drones
+    end
   end
 end
 

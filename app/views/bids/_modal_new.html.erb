@@ -12,7 +12,7 @@
 
         <%= f.input :amount %>
         <%= f.input :description %>
-        <%= f.input :drone_id %>
+        <%= f.input :drone_id, collection: drones, :label_method => :model, :value_method => :id %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -22,4 +22,4 @@
     </div>
   </div>
 </div>
-<!-- collection: drones, :label_method => :model, :value_method => :id -->
+
