@@ -43,6 +43,8 @@
   height: 170px;
   background-size: cover !important;
   padding: 5px 5px;
+  position: relative;
+  top: -20px;
   &.drone {
     height: 250px;
     max-width: 300px;
@@ -55,6 +57,7 @@
 .card-description {
   margin-left: 5px;
   padding: 20px;
+  margin-top: -35px;
   &.drone {
     display: flex;
     justify-content: space-between;
