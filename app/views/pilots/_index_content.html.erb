@@ -43,6 +43,7 @@
       <div class="kill-padding-card">
         <div class="row">
           <div class="card-grid">
+          <% if !owners.empty? %>
             <% owners.each do |owner| %>
             <div class="col-xs-12 col-sm-4">
               <div class="card">
@@ -70,6 +71,9 @@
           </div>
           <!-- show 10max and allow user to show the next 10 etc.  -->
           <% end %>
+          <% else %>
+            <p>No pilots in this category yet</p>
+        <% end %>
         </div>
       </div>
     </div>

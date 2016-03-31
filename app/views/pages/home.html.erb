@@ -142,7 +142,8 @@
          <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
          <%= link_to "", pilot_path(owner), class: "card-link-home" %>
          <div class="card-description">
-            <%= owner.first_name + " " + owner.last_name %>
+            <%= owner.first_name + " " + owner.last_name %><br>
+                <h5>based in <%= owner.location %></h5>
          </div>
        </div>
      </div>
