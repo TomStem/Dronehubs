@@ -61,11 +61,19 @@ user2 = User.new({
 
 user2.save!
 
-Drone.create({
+d1 = Drone.create({
   brand: "DJI",
   model: "Phantom 4",
   camera: "4k",
-  photo: "v1457621849/shyoisusvn1ip1f7bpdd.jpg",
+  photo: "http://asset1.djicdn.com/uploads/product_store_photo/image/18141/large_p1.jpg",
+  user_id: user2.id
+  })
+
+d2 = Drone.create({
+  brand: "Hubsan",
+  model: "x4",
+  camera: "720p",
+  photo: "https://www.toprc.nl/product_images/o/535/H107CPlus__47776_zoom.jpg",
   user_id: user2.id
   })
 
@@ -80,11 +88,36 @@ user3 = User.new({
 user3.save!
 
 job1 = Job.create({
-  description: "I need some picture taken from the air during the football match",
+  description: "I need some picture taken from the air while I am getting my sheep back inside",
   location: "Amsterdam",
   date: "Sat, 02 Apr 2016",
   user_id: user3.id,
   title: "Need a drone during a football match"
+  })
+
+Bid.create({
+  bid_id: 1,
+  description: "I'm the best for the job",
+  job: job1,
+  drone_id: d1
+  })
+
+job2 = Job.create({
+
+  description: "I want to know how my property looks like from the air",
+  location: "Amsterdam",
+  date: "Mon, 23 Apr 2016",
+  user: user3,
+  title: "Property overview"
+  })
+
+job3 = Job.create({
+
+  description: "I want a drone following me whole day, to a capture my work day",
+  location: "Amsterdam",
+  date: "Mon, 23 Mar 2016",
+  user: user3,
+  title: "Capture my day"
   })
 
 user4 = User.new({
@@ -97,13 +130,22 @@ user4 = User.new({
 user4.save!
 
 
-job2 = Job.create({
+job4 = Job.create({
 
   description: "My crops needs to be inspected, has someone a drone that can do that?",
-  location: "Beemster",
+  location: "Amsterdam",
   date: "Mon, 04 Apr 2016",
   user: user4,
   title: "Farm inspection"
+  })
+
+job5 = Job.create({
+
+  description: "I lost a sheep, can someone help me track it",
+  location: "Amsterdam",
+  date: "Fri, 01 Apr 2016",
+  user: user4,
+  title: "Sheep lost"
   })
 
 education = Category.create({name: "education"})
@@ -120,6 +162,10 @@ JobCategory.create(job: job2, category: other)
 JobCategory.create(job: job2, category: education)
 JobCategory.create(job: job1, category: fun)
 JobCategory.create(job: job1, category: other)
+JobCategory.create(job: job3, category: environment)
+JobCategory.create(job: job3, category: fun)
+JobCategory.create(job: job4, category: environment)
+JobCategory.create(job: job4, category: other)
 UserCategory.create(user: user, category:fun)
 UserCategory.create(user: user, category:family)
 UserCategory.create(user: user, category:other)
