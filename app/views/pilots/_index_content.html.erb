@@ -60,11 +60,6 @@
                   <div class="card-description">
                     <div class="pilot-block-profile">
                       <div class="user-block-avatar">
-                        <% if owner[:profile_pic].nil? %>
-                        <%= image_tag "https://robohash.org/my-own-slug.png?size=300x300", class:"card-avatar" %>
-                        <% else %>
-                        <%= image_tag owner.profile_pic, class:"card-avatar"%>
-                        <% end %>
                         <%= cl_image_tag owner.profile_pic.url, size: "35x35", crop: :fill, style: "border-radius: 50%; object-fit: cover;" %>
                       </div>
                       <div class="user-block-description">
