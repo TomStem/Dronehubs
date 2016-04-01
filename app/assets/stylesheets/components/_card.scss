@@ -30,11 +30,10 @@
   }
 }
 
-.card-home {
-  height: 246px;
+.card-home {  
   position: relative;
   border-radius: 1px;
-  border: 1px solid #949796;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: white;
 }
 
@@ -42,9 +41,7 @@
   width: 100%;
   height: 170px;
   background-size: cover !important;
-  padding: 5px 5px;
   position: relative;
-  top: -20px;
   &.drone {
     height: 250px;
     max-width: 300px;
@@ -57,11 +54,13 @@
 .card-description {
   margin-left: 5px;
   padding: 20px;
-  margin-top: -35px;
   &.drone {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+  }
+  h5 {
+    opacity: .4;
   }
 }
 .card-link {

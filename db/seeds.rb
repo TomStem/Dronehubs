@@ -1,179 +1,222 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
+puts "cleaning db..."
+
 User.destroy_all
 Category.destroy_all
 Bid.destroy_all
 Job.destroy_all
 
-#Creating 20 fake users
-user = User.new({
+########################################
+
+puts "creating pilots..."
+
+# ROY
+
+roy = User.new({
   first_name: "Roy",
   last_name: "van Arkel",
   description: "I'm a beginning aerial photographer",
   email: "royvanarkel@msn.com",
   password: "wachtwoord",
   owner: true,
-  profile_pic: "v1458662374/alrcdlz61kscgbchsfgj.jpg",
-  banner_pic: "v1458662375/htehjxqk66wc37gf66dz.jpg",
   location: "Katwijk"
   })
-user.save!
+roy[:profile_pic] = "v1458662374/alrcdlz61kscgbchsfgj.jpg"
+roy[:banner_pic] = "v1458662375/htehjxqk66wc37gf66dz.jpg"
+roy.save!
 
-Drone.create({
+roy_drone = Drone.new({
   brand: "Hubsan",
   model: "H107D",
   camera: "720p",
-  photo: "v1457627823/qp7vymfuuz7mlxg2bpgz.jpg",
-  user_id: user.id
-  })
+  user: roy
+})
 
-user1 = User.new({
+roy_drone[:photo] = "v1459500057/oudkgcnlhatmixz33qjj.jpg"
+roy_drone.save!
+
+########################################
+
+# TOM
+
+tom = User.new({
   first_name: "Tom",
   last_name: "Stemerding",
   email: "tom@stemerdingmail.nl",
   password: "wachtwoord",
   owner: true,
-  profile_pic: "v1458664478/luqi9z22mfwsppnvul0v.jpg",
-  banner_pic: "v1458664521/xofwrclccr5yxbwyfywj.jpg",
   location: "Amsterdam"
   })
 
-user1.save!
+tom[:profile_pic] = "v1459349729/rs8ykgrrzrykcjnjimdf.jpg"
+tom[:banner_pic] = "v1459349730/c5r4baglse4iq3f224tk.jpg"
+tom.save!
 
-Drone.create({
+tom_drone = Drone.new({
   brand: "Apple",
   model: "iDrone",
   camera: "720p",
-  photo: "v1457627400/u7pvpxntkmoveltvook4.png",
-  user_id: user1.id
-  })
+  user: tom
+})
+tom_drone[:photo] = "v1459495152/hjlphode4ebpjvmfomjx.jpg"
+tom_drone.save!
 
-user2 = User.new({
+########################################
+
+# IRIS
+
+iris = User.new({
   first_name: "Iris",
   last_name: "Kramer",
   email: "ick.kramer@gmail.com",
   password: "wachtwoord",
   owner: true,
-  profile_pic: "v1458915983/Iris_ocfcfx.jpg",
   location: "Ilpendam"
   })
+iris[:profile_pic] = "v1459436713/szymrug7ntwrjtjyhaed.jpg"
+iris[:banner_pic] = "v1459436714/a3kxcbwhnieknt59s2pu.jpg" 
+iris.save!
 
-user2.save!
-
-Drone.create({
+iris_drone1 = Drone.new({
   brand: "DJI",
   model: "Phantom 4",
   camera: "4k",
-  photo: "v1457621849/shyoisusvn1ip1f7bpdd.jpg",
-  user_id: user2.id
-  })
+  user: iris
+})
+iris_drone1[:photo] = "v1459436624/cgqywxydh0dtme1u9vea.jpg"
+iris_drone1.save!
 
-user3 = User.new({
+iris_drone2 = Drone.new({
+  brand: "Hubsan",
+  model: "x4",
+  camera: "720p",
+  user: iris
+})
+iris_drone2[:photo] = "v1459500057/oudkgcnlhatmixz33qjj.jpg"
+iris_drone2.save!
+
+########################################
+
+
+puts "creating clients & jobs..."
+
+# PETER
+
+client_peter = User.new({
   first_name: "Peter",
   last_name: "Jansen",
   email: "peter@jansen.com",
   password: "wachtwoord",
   owner: false
-  })
+})
+client_peter[:profile_pic] = "v1459418428/pnblt5bsvtkeuvgh0i8x.jpg"
+client_peter[:banner_pic] = "v1459418366/bma5tt1kgoknbcabnlbs.jpg"
+client_peter.save!
 
-user3.save!
-
-job1 = Job.create({
-  description: "I need some picture taken from the air during the football match",
+peter_job_farm = Job.create!({
+  description: "I need some picture taken from the air while I am getting my sheep back inside",
   location: "Amsterdam",
   date: "Sat, 02 Apr 2016",
-  user_id: user3.id,
-  title: "Need a drone during a football match"
-  })
+  user: client_peter,
+  title: "Need a drone at my farm"
+})
 
-user4 = User.new({
+Bid.create!({
+  job: peter_job_farm,
+  drone: tom_drone,
+  amount: 55,
+  description: "I'm the best for the job"
+})
+
+Bid.create!({
+  job: peter_job_farm,
+  drone: roy_drone,
+  amount: 35,
+  description: "I'm available for this job",
+})
+
+peter_job_property = Job.create!({
+  description: "I want to know how my property looks like from the air",
+  location: "Amsterdam",
+  date: "Mon, 23 Apr 2016",
+  user: client_peter,
+  title: "Property overview"
+})
+
+peter_job_workday = Job.create!({
+  description: "I want a drone following me whole day, to a capture my work day",
+  location: "Amsterdam",
+  date: "Mon, 23 Mar 2016",
+  user: client_peter,
+  title: "Capture my day"
+})
+
+########################################
+
+# HARM
+
+client_harm = User.new({
   first_name: "Harm",
   last_name: "Brandsma",
   email: "boerharm@hotmail.com",
   password: "wachtwoord",
   owner: false
   })
-user4.save!
+client_harm[:profile_pic] = "v1459502497/harmoetriessen_vkzrbg.jpg"
+client_harm[:banner_pic] = "v1459418366/bma5tt1kgoknbcabnlbs.jpg"
+client_harm.save!
 
-
-job2 = Job.create({
-
+harm_job_crops = Job.create!({
   description: "My crops needs to be inspected, has someone a drone that can do that?",
-  location: "Beemster",
+  location: "Amsterdam",
   date: "Mon, 04 Apr 2016",
-  user: user4,
+  user: client_harm,
   title: "Farm inspection"
   })
 
-education = Category.create({name: "education"})
-environment = Category.create({name: "environment"})
-family = Category.create({name: "family"})
-festival = Category.create({name: "festival"})
-fun = Category.create({name: "fun"})
-other = Category.create({name: "other"})
-sport = Category.create({name: "sport"})
-wedding = Category.create({name: "wedding"})
+harm_job_farm = Job.create!({
+  description: "I lost a sheep, can someone help me track it",
+  location: "Amsterdam",
+  date: "Fri, 01 Apr 2016",
+  user: client_harm,
+  title: "Sheep lost"
+})
 
-JobCategory.create(job: job2, category: environment)
-JobCategory.create(job: job2, category: other)
-JobCategory.create(job: job2, category: education)
-JobCategory.create(job: job1, category: fun)
-JobCategory.create(job: job1, category: other)
-UserCategory.create(user: user, category:fun)
-UserCategory.create(user: user, category:family)
-UserCategory.create(user: user, category:other)
-UserCategory.create(user: user, category:wedding)
-UserCategory.create(user: user, category:education)
-UserCategory.create(user: user1, category:fun)
-UserCategory.create(user: user1, category:wedding)
-UserCategory.create(user: user1, category:education)
-UserCategory.create(user: user2, category:environment)
-UserCategory.create(user: user2, category:festival)
-UserCategory.create(user: user2, category:fun)
-UserCategory.create(user: user2, category:wedding)
-UserCategory.create(user: user2, category:education)
+########################################
 
+puts "creating categories..."
 
-# User.create({
-#   user_id: 1,
-#   first_name: "Iris",
-#   last_name: "Kramer",
-#   email: "irisemail@email.com",
-#   password: "somepassword",
-#   owner: false
-#   })
+# CATEGORIES
 
-# User.create({
-#   user_id: 2,
-#   first_name: "Iris",
-#   last_name: "Kramer",
-#   email: "irisemail@email.com",
-#   password: "somepassword",
-#   owner: true
-#   })
+education = Category.create!({name: "education"})
+environment = Category.create!({name: "environment"})
+family = Category.create!({name: "family"})
+festival = Category.create!({name: "festival"})
+fun = Category.create!({name: "fun"})
+other = Category.create!({name: "other"})
+sport = Category.create!({name: "sport"})
+wedding = Category.create!({name: "wedding"})
 
-# Job.create({
-#   job_id: 1,
-#   description: "I would like a video of the local football match",
-#   location: "Volendam",
-#   date: "Wed, 24 Sep 2016",
-#   user_id: 1
-#   })
+JobCategory.create!(job: peter_job_farm, category: environment)
+JobCategory.create!(job: peter_job_property, category: environment)
+JobCategory.create!(job: peter_job_property, category: other)
+JobCategory.create!(job: peter_job_property, category: family)
+JobCategory.create!(job: peter_job_workday, category: fun)
+JobCategory.create!(job: peter_job_workday, category: other)
+JobCategory.create!(job: harm_job_crops, category: environment)
+JobCategory.create!(job: harm_job_farm, category: environment)
 
-# Drone.create({
-#   drone_id: 1,
-#   brand: "GoPro",
-#   model: "HeroDrone",
-#   camera: "GoPro 1",
-#   user_id: 2,
-#   photo: ""
-#   })
+UserCategory.create!(user: roy, category: wedding)
+UserCategory.create!(user: roy, category: other)
+UserCategory.create!(user: tom, category: sport)
+UserCategory.create!(user: tom, category: fun)
+UserCategory.create!(user: tom, category: festival)
+UserCategory.create!(user: iris, category: environment)
+UserCategory.create!(user: iris, category: family)
+UserCategory.create!(user: iris, category: fun)
+UserCategory.create!(user: iris, category: other)
+UserCategory.create!(user: iris, category: education)
 
-# Bid.create({
-#   bid_id: 1,
-#   description: "I'm the best for the job",
-#   job_id: 1,
-#   drone_id: 1
-#   })
-
+puts "DONE!"

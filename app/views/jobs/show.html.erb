@@ -63,21 +63,20 @@ async defer></script>
 <div class="container bid-details">
   <h2 class="subtitle"><span><i class="fa fa-gavel"></i>Bids<i class="fa fa-gavel fa-rotate-90"></i></span></h2>
 
+  <% if @job.bids.empty? %>
+  <% if !current_user.nil? %>
+  <% if current_user.owner == true %>
+  <p class="text-center">No bids yet. Be the first to place a bid!</p>
+  <% elsif @job.user == current_user %>
+  <p class="text-center">There are no bids on your job yet.</p>
+  <% else %>
+  <p class="text-center">There are no bids on this job.</p>
+  <% end %>
+  <% end %>
+  <% else %>
+
+  <% @job.bids.each do |bid|%>
   <div class="bid-list">
-    <% if @job.bids.empty? %>
-    <% if !current_user.nil? %>
-    <% if current_user.owner == true %>
-    <p class="text-center">No bids yet. Be the first to place a bid!</p>
-    <% elsif @job.user == current_user %>
-    <p class="text-center">There are no bids on your job yet.</p>
-    <% else %>
-    <p class="text-center">There are no bids on this job.</p>
-    <% end %>
-    <% end %>
-    <% else %>
-    <% @job.bids.each do |bid|%>
-
-
     <div class="row">
       <div class="job-user-block">
         <div class="job-user-block-profile">
@@ -91,6 +90,11 @@ async defer></script>
         </div>
         <div class="bid-amount">
           <h3 class="text-right">€ <%= bid.amount %></h3>
+          <% if @job.user == current_user %>
+          <div class="user-accept-bid">
+            <%= link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid), method: :patch, class: "btn btn-primary" %>
+          </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -119,18 +123,14 @@ async defer></script>
                 <li><%=bid.drone.camera%></li>
               </ul>
             </div>
-            <% if @job.user == current_user %>
-            <div class="user-accept-bid">
-              <%= link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid), method: :patch, class: "btn btn-primary" %>
-            </div>
-            <% end %>
           </div>
-
         </div>
       </div>
     </div>
-    <% end %>
-    <% end %>
   </div>
+
+  <% end %>
+  <% end %>
+
 </div>
 <%= render 'bids/modal_new', job: @job, drones: @drones %>
