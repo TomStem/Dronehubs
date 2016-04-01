@@ -1,9 +1,9 @@
 <div class="banner dashboard" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(<%= @owner.banner_pic %>);">
   <div class="banner-content">
     <% if @owner.profile_pic.nil? %>
-    <%= image_tag "http://placehold.it/300x300", alt: "profile picture" %>
+      <%= image_tag "http://placehold.it/300x300", alt: "profile picture" %>
     <% else %>
-    <%= cl_image_tag @owner.profile_pic, height: 300, width: 300, crop: :fill %>
+      <%= cl_image_tag @owner.profile_pic.url, height: 300, width: 300, crop: :fill %>
     <% end %>
     <h1><%= @owner.first_name %> <%= @owner.last_name %></h1>
     <div class="banner-content-description"><%= @owner.description %></div>
@@ -48,9 +48,9 @@
           <div class="col-xs-12 col-md-4">
             <div class="card">
               <% if drone[:photo] == nil %>
-              <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture", class: "card-image drone" %>
+                <%= image_tag "http://placehold.it/300x300", size: "300x300", alt: "drone picture", class: "card-image drone" %>
               <% else %>
-              <%= cl_image_tag drone.photo, height: 300, width: 300, crop: :fill, class: "card-image drone" %>
+                <%= cl_image_tag drone.photo.url, height: 300, width: 300, crop: :fill, class: "card-image drone" %>
               <% end %>
               <div class="card-description drone">
                 <h3><%= drone.brand %> <%= drone.model %></h3>
@@ -90,7 +90,7 @@
           <tr>
             <td><%= link_to job[:job].title, job_path(job[:job]) %></td>
             <td><%= job[:job].user.first_name %></td>
-            <td><div class="job-drone"><%= cl_image_tag job[:drone].photo , height: 100, witdh: 100, crop: :fill %> <span><%= job[:drone].brand %> <%= job[:drone].model %></span></div></td>
+            <td><div class="job-drone"><%= cl_image_tag job[:drone].photo.url , height: 100, witdh: 100, crop: :fill %> <span><%= job[:drone].brand %> <%= job[:drone].model %></span></div></td>
           </tr>
           <% end %>
         </table>

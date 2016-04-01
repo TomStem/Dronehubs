@@ -46,7 +46,7 @@ async defer></script>
       <div class="job-user">
         <div class="col-xs-12 col-md-2 col-md-offset-1">
           <div class="text-center">
-            <%= cl_image_tag @job.user.profile_pic, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
+            <%= cl_image_tag @job.user.profile_pic.url, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
             <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
           </div>
         </div>
@@ -91,11 +91,11 @@ async defer></script>
             <div class="job-user-block">
               <div class="job-user-block-profile">
                 <div class="user-block-avatar">
-                  <%= cl_image_tag bid.drone.user.profile_pic, size: "32x32", alt: "profile picture", crop: :fill, style: "border-radius: 50%; margin-left: 15px;" %>
+                  <%= cl_image_tag bid.drone.user.profile_pic.url, size: "32x32", alt: "profile picture", crop: :fill, style: "border-radius: 50%; margin-left: 15px;" %>
                 </div>
                 <div class="user-block-description">
-                  <a href=""><%=bid.drone.user.first_name%> <%=bid.drone.user.last_name%></a>
-                  <p><%=bid.created_at.strftime('%A, %b %d') %></p>
+                  <%= link_to "#{bid.drone.user.first_name} #{bid.drone.user.last_name}", pilot_path(bid.drone.user) %>
+                  <p><%= l(bid.created_at, format: :date) %></p>
                 </div>
               </div>
               <div class="bid-amount">
@@ -111,7 +111,7 @@ async defer></script>
               <div class="bids-drone-description">
                 <div class="job-user-block-drone">
                   <div class="bid-drone-block-avatar">
-                    <%= cl_image_tag bid.drone.photo, size: "60x60", alt: "drone", style: "border-radius: 50%; padding: 5px;"%>
+                    <%= cl_image_tag bid.drone.photo.url, size: "60x60", alt: "drone", style: "border-radius: 50%; padding: 5px;"%>
                   </div>
                   <div class="bid-drone-block-description">
                     <div>

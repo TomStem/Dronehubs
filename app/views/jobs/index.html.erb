@@ -68,11 +68,11 @@
             <div class="col-xs-12">
               <div class="job-user-block">
                 <div class="user-block-avatar">
-                  <%= cl_image_tag job.user.profile_pic, size: "32x32", crop: :fill, style: "border-radius: 50%;" %>
+                  <%= cl_image_tag job.user.profile_pic.url, size: "32x32", crop: :fill, style: "border-radius: 50%;" %>
                 </div>
                 <div class="user-block-description">
                   <a href=""><%=job.user.first_name%> <%=job.user.last_name%></a>
-                  <p><%=job.created_at%></p>
+                  <p><%= l(job.created_at, format: :date) %></p>
                 </div>
               </div>
               <div class="job-description-block">
