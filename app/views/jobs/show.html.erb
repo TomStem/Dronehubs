@@ -81,7 +81,7 @@ async defer></script>
       <div class="job-user-block">
         <div class="job-user-block-profile">
           <div class="user-block-avatar">
-            <%= cl_image_tag bid.drone.user.profile_pic.url, size: "35x35", alt: "profile picture", crop: :fill, style: "border-radius: 50%;" %>
+            <%= cl_image_tag bid.drone.user.profile_pic.url, size: "35x35", alt: "profile picture", crop: :fill, style: "border-radius: 50%; object-fit: cover;" %>
           </div>
           <div class="user-block-description">
             <a href=""><%=bid.drone.user.first_name%> <%=bid.drone.user.last_name%></a>
@@ -107,7 +107,7 @@ async defer></script>
         <div class="bids-drone-description">
           <div class="job-user-block-drone">
             <div class="bid-drone-block-avatar">
-              <%= cl_image_tag bid.drone.photo.url, size: "95x95", alt: "drone", style: "border-radius: 50%; padding: 5px;"%>
+              <%= cl_image_tag bid.drone.photo.url, size: "95x95", alt: "drone", style: "border-radius: 50%; padding: 5px; object-fit: cover;"%>
             </div>
             <div class="bid-drone-label">
               <ul>

@@ -49,7 +49,7 @@
               <div class="job-user-block">
                 <div class="job-user-block-profile">
                   <div class="user-block-avatar">
-                    <%= cl_image_tag job.user.profile_pic.url, size: "35x35", crop: :fill, style: "border-radius: 50%;" %>
+                    <%= cl_image_tag job.user.profile_pic.url, size: "35x35", crop: :fill, style: "border-radius: 50%; object-fit: cover;" %>
                   </div>
                   <div class="user-block-description">
                     <a href=""><%=job.user.first_name%> <%=job.user.last_name%></a>
