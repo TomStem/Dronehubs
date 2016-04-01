@@ -2,123 +2,101 @@
 <%= render 'pages/discover_tabs', active_tab: 'jobs' %>
 <div class="jobs-body">
   <div class="container">
+
     <div class="col-xs-2">
       <div class="sidebar hidden-xs">
         <ul>
           <h5>CATEGORIES</h5>
-          <!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
           <li><%= link_to "ALL CATEGORIES", jobs_path %></li>
           <% Category.all.each do |c| %>
-            <li class="<%=  @selected_category == c ? "cat_active" : "cat" %>"><%= link_to c.name.upcase, jobs_path(category: c.name) %></li>
+          <li class="<%=  @selected_category == c ? "cat_active" : "cat" %>"><%= link_to c.name.upcase, jobs_path(category: c.name) %></li>
           <% end %>
         </ul>
       </div>
     </div>
-    <!-- this content should change together with the changing href or the class active -->
+
     <div class="col-xs-12 col-md-10">
       <h5>JOBS >
-         <% if @selected_category %>
-            <span><%= @selected_category.name.upcase %></span>
-          <% else %>
-            <span>ALL CATEGORIES</span>
-          <% end %>
-<!--         <a href="#education" class="hidden">EDUCATION</a>
-        <a href="#environment" class="hidden">ENVIRONMENT</a>
-        <a href="#family" class="hidden">FAMILY</a>
-        <a href="#festival" class="hidden">FESTIVAL</a>
-        <a href="#fun" class="hidden">FUN</a>
-        <a href="#other" class="hidden">OTHER</a>
-        <a href="#sport" class="hidden">SPORT</a>
-        <a href="#wedding" class="hidden">WEDDING</a> -->
-        <%= link_to "How to create a job", about_path, { class: "btn btn-primary cta-discover"} %>
-      </h5>
+       <% if @selected_category %>
+       <span><%= @selected_category.name.upcase %></span>
+       <% else %>
+       <span>ALL CATEGORIES</span>
+       <% end %>
+       <%= link_to "How to create a job", about_path, { class: "btn btn-primary cta-discover"} %>
+     </h5>
 
-      <% if @selected_category %>
-        <div class="banner jobs" style="background-image: url('<%= image_path(@selected_category.name + ".jpg") %>')">
+     <% if @selected_category %>
+     <div class="banner jobs" style="background-image: url('<%= image_path(@selected_category.name + ".jpg") %>')">
       <% else %>
       <div class="banner jobs">
-      <% end %>
+        <% end %>
 
         <div class="banner-content" id="all_categories">
           <% if @selected_category %>
-            <h1><%= @selected_category.name.capitalize %></h1>
+          <h1><%= @selected_category.name.capitalize %></h1>
           <% else %>
-            <h1>All categories</h1>
+          <h1>All categories</h1>
           <% end %>
           <p>Find your pilot</p>
         </div>
-<!--         <div class="banner-content hidden" id="education">
-          <h1>Education</h1>
-          <p>Find your pilot for any educational job</p>
-        </div>
-        <div class="banner-content hidden" id="environment">
-          <h1>Environment</h1>
-          <p>Find your pilot for example in agriculture or forestry</p>
-        </div>
-        <div class="banner-content hidden" id="family">
-          <h1>Family</h1>
-          <p>Find your pilot to capture your family picture orday out</p>
-        </div> -->
       </div>
-    <% if !@jobs.empty? %>
+      <% if !@jobs.empty? %>
       <% @jobs.each do |job|%>
       <div class="row">
         <div class="job-details">
           <div class="job-user">
             <div class="col-xs-12">
               <div class="job-user-block">
-                <div class="user-block-avatar">
-                  <%= cl_image_tag job.user.profile_pic.url, size: "32x32", crop: :fill, style: "border-radius: 50%;" %>
-                </div>
-                <div class="user-block-description">
-                  <a href=""><%=job.user.first_name%> <%=job.user.last_name%></a>
-                  <p><%= l(job.created_at, format: :date) %></p>
+                <div class="job-user-block-profile">
+                  <div class="user-block-avatar">
+                    <%= cl_image_tag job.user.profile_pic.url, size: "35x35", crop: :fill, style: "border-radius: 50%; object-fit: cover;" %>
+                  </div>
+                  <div class="user-block-description">
+                    <a href=""><%=job.user.first_name%> <%=job.user.last_name%></a>
+                    <p><%=job.created_at.strftime('%A, %b %d') %></p>
+                  </div>
                 </div>
               </div>
               <div class="job-description-block">
                 <h2><%= link_to job.title, job_path(job) %></h2>
 
-                <p class="job-description"><%=job.description%></p>
-                <h6><%= link_to "Read more...", job_path(job) %></h6>
+                <p><%=job.description%></p>
+                <span><%= link_to "Read more...", job_path(job) %></span>
               </div>
               <div class="job-footer">
                 <div class="job-footer-spec">
-                  <p>
-                    <span>
-                      TAGS: <%= category_human_names(job) %> |
-                    </span>
-                    <span>
-                        <i class="fa fa-map-marker"></i> <%=job.location%> |
-                    </span>
-                    <span>
-                        <i class="fa fa-calendar"></i> <%=job.date%>  |
-                    </span>
-                  </p>
+                <p>
+                      TAGS: <%= category_human_names(job) %> 
+                      <span>*</span>
+                      <i class="fa fa-map-marker"></i> <%=job.location%> 
+                      <span>*</span>
+                      <i class="fa fa-calendar"></i> <%=job.date%>
+                </p>
                 </div>
                 <div class="job-footer-bid">  <p>
-                    <span>
-                        <i class="fa fa-gavel"></i> <%= job.bids.count %> bids  |
-                    </span>
-                    <% if !current_user.nil? && current_user.owner == true %>
-                    <span>
-                        <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': job.id, toggle: "modal", target: "#modal-bid"}} %>
-                    </span>
-                    <% end %>
-                  </p>
-                </div>
+                  <span>
+                    <i class="fa fa-gavel"></i> <%= job.bids.count %> bids  |
+                  </span>
+                  <% if !current_user.nil? && current_user.owner == true %>
+                  <span>
+                    <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': job.id, toggle: "modal", target: "#modal-bid"}} %>
+                  </span>
+                  <% end %>
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- show 10max and allow user to show the next 10 etc.  -->
-      <% end %>
-   <% else %>
-    <p>No jobs yet</p>
-  <% end %>
-
     </div>
+    <!-- show 10max and allow user to show the next 10 etc.  -->
+    <% end %>
+    <% else %>
+    <p>No jobs yet</p>
+    <% end %>
+
   </div>
+</div>
 </div>
 </div>
 

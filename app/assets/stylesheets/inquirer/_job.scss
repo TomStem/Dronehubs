@@ -1,6 +1,16 @@
+.job-specific{
+  color: #79B791;
+  font-size: 14px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+.job-user-block-drone{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 .bid-details{
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding: 40px 0;
 }
 .transparent-top{
@@ -8,8 +18,8 @@
   background-color: #E7EFEA;
 }
 .bid-list{
-  padding: 15px 30px;
-  margin: 50px 0;
+  padding: 15px 40px;
+  margin: 50px 75px;
   background-color: white;
   border: 1px solid rgba(47,47,47,0.15);
   border-shadow: rgba(51, 51, 51, 0.24);
@@ -27,36 +37,48 @@
   padding-top: 10px;
   left: 0;
 }
-
 .bid-drone-block-avatar{
   display: table-cell;
   vertical-align: right;
 }
 .bid-drone-block-description{
-  display: table-cell;
-  vertical-align: right;
   font-size: 14px;
   padding-right: 10px;
 }
 .bid-drone-label{
-  margin-top: 11px;
-  margin-bottom: 11px;
-  font-size: 16px;
-  font-weight: 600;
-  opacity: 0.9;
+  display: table-cell;
+  vertical-align: right;
+  margin-left: auto;
+  ul{
+    padding: 0;
+  }
+  li{
+    list-style: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-right: 5px;
+  }
 }
 .bid-drone-value{
-  margin-top: 11px;
-  margin-bottom: 11px;
-  font-size: 16px;
-  opacity: 0.8;
+  display: table-cell;
+  vertical-align: right;
+  ul{
+    padding: 0;
+  }
+  li{
+    list-style: none;
+    font-size: 16px;
+    opacity: 0.8;
+  }
 }
 .bid-amount{
   display: flex;
   font-weight: 600;
   color: #505253;
   h3{
-    font-size: 30px;
+    font-size: 40px;
     margin-top: 0;
     font-weight: 600;
     color: #505253;    
@@ -72,11 +94,11 @@
 }
 .bids-description{
   display: flex;
-  width: 75%;
+  width: 70%;
 }
 .bids-drone-description{
   display: flex;
-  width: 25%;
+  width: 30%;
   text-align: right;
   align-items: right;
 }

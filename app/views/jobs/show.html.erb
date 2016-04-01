@@ -2,27 +2,13 @@
 <div id="map" style="width: 100%;height: 400px;"></div>
 <script>
   function initMap() {
-    var styles = [
-    {
-      stylers: [
-      { hue: "#79B791" },
-      { saturation: -20 }
-      ]
-    },{
-      featureType: "road",
-      elementType: "geometry",
-      stylers: [
-      { lightness: 100 },
-      { visibility: "simplified" }
-      ]
-    },{
+    var styles = [{"featureType":"road","elementType":"geometry","stylers":[{"lightness":100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#C6E2FF"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#C5E3BF"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#D1D1B8"}]},{
       featureType: "road",
       elementType: "labels",
       stylers: [
       { visibility: "off" }
       ]
-    }
-    ];
+    }];
     var myLatLng = {lat: 52.34304, lng: 4.82928};
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 11,
@@ -40,24 +26,27 @@
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
 async defer></script>
 
-<div class="container padded">
+<div class="container padding-top">
   <div class="row">
     <div class="job-details">
       <div class="job-user">
         <div class="col-xs-12 col-md-2 col-md-offset-1">
           <div class="text-center">
-            <%= cl_image_tag @job.user.profile_pic.url, size: "150x150", crop: :fill, style: "border-radius: 50%;" %>
+            <%= cl_image_tag @job.user.profile_pic.url, size: "125x125", crop: :fill, style: "border-radius: 50%; padding: 5px;" %>
             <h5><%=@job.user.first_name%> <%=@job.user.last_name%></h5>
           </div>
         </div>
         <div class="col-xs-12 col-md-8">
           <h3><%= @job.title %></h3>
-          <h6>TAGS: <%= category_human_names(@job) %></h6>
           <p class="job-description"><%=@job.description%></p>
-          <div class="job-specific">
+          <div class="job-footer-spec">
             <p>
-              <i class="fa fa-map-marker"></i> <%=@job.location%> |
-              <i class="fa fa-calendar"></i> <%=@job.date%>  |
+              TAGS: <%= category_human_names(@job) %> 
+              <span>*</span>
+              <i class="fa fa-map-marker"></i> <%=@job.location%>
+              <span>*</span>
+              <i class="fa fa-calendar"></i> <%=@job.date%> 
+              <span></span>
               <% if !current_user.nil? %>
               <% if current_user.owner == true %>
               <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %>
@@ -74,67 +63,74 @@ async defer></script>
 <div class="container bid-details">
   <h2 class="subtitle"><span><i class="fa fa-gavel"></i>Bids<i class="fa fa-gavel fa-rotate-90"></i></span></h2>
 
-    <% if @job.bids.empty? %>
-      <% if !current_user.nil? %>
-        <% if current_user.owner == true %>
-          <p class="text-center">No bids yet. Be the first to place a bid!</p>
-        <% elsif @job.user == current_user %>
-          <p class="text-center">There are no bids on your job yet.</p>
-        <% else %>
-          <p class="text-center">There are no bids on this job.</p>
-        <% end %>
-      <% end %>
-    <% else %>
-      <% @job.bids.each do |bid|%>
-        <div class="bid-list">
-          <div class="row">
-            <div class="job-user-block">
-              <div class="job-user-block-profile">
-                <div class="user-block-avatar">
-                  <%= cl_image_tag bid.drone.user.profile_pic.url, size: "32x32", alt: "profile picture", crop: :fill, style: "border-radius: 50%; margin-left: 15px;" %>
-                </div>
-                <div class="user-block-description">
-                  <%= link_to "#{bid.drone.user.first_name} #{bid.drone.user.last_name}", pilot_path(bid.drone.user) %>
-                  <p><%= l(bid.created_at, format: :date) %></p>
-                </div>
-              </div>
-              <div class="bid-amount">
-                  <h3 class="text-right">€ <%= bid.amount %></h3>
-              </div>
-            </div>
+  <% if @job.bids.empty? %>
+  <% if !current_user.nil? %>
+  <% if current_user.owner == true %>
+  <p class="text-center">No bids yet. Be the first to place a bid!</p>
+  <% elsif @job.user == current_user %>
+  <p class="text-center">There are no bids on your job yet.</p>
+  <% else %>
+  <p class="text-center">There are no bids on this job.</p>
+  <% end %>
+  <% end %>
+  <% else %>
+
+  <% @job.bids.each do |bid|%>
+  <div class="bid-list">
+    <div class="row">
+      <div class="job-user-block">
+        <div class="job-user-block-profile">
+          <div class="user-block-avatar">
+            <%= cl_image_tag bid.drone.user.profile_pic.url, size: "35x35", alt: "profile picture", crop: :fill, style: "border-radius: 50%; object-fit: cover;" %>
           </div>
-          <div class="row">
-            <div class="bid-description-block">
-              <div class="bids-description">
-                <p><%= bid.description %></p>
-              </div>
-              <div class="bids-drone-description">
-                <div class="job-user-block-drone">
-                  <div class="bid-drone-block-avatar">
-                    <%= cl_image_tag bid.drone.photo.url, size: "60x60", alt: "drone", style: "border-radius: 50%; padding: 5px;"%>
-                  </div>
-                  <div class="bid-drone-block-description">
-                    <div>
-                      <span class="bid-drone-label">BRAND - </span><span class="bid-drone-value"><%=bid.drone.brand%></span>
-                    </div>
-                    <div>
-                      <span class="bid-drone-label">MODEL - </span><span class="bid-drone-value"><%=bid.drone.model%></span>
-                    </div>
-                    <div>
-                      <span class="bid-drone-label">CAMERA - </span><span class="bid-drone-value"><%=bid.drone.camera%></span>
-                    </div>
-                  </div>
-                </div>
-                <% if @job.user == current_user %>
-                  <div class="user-accept-bid">
-                    <%= link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid), method: :patch, class: "btn btn-primary" %>
-                  </div>
-                <% end %>
-              </div>
+          <div class="user-block-description">
+            <a href=""><%=bid.drone.user.first_name%> <%=bid.drone.user.last_name%></a>
+            <p><%=bid.created_at.strftime('%A, %b %d') %></p>
+          </div>
+        </div>
+        <div class="bid-amount">
+          <h3 class="text-right">€ <%= bid.amount %></h3>
+          <% if @job.user == current_user %>
+          <div class="user-accept-bid">
+            <%= link_to "Accept Bid", accept_inquirer_job_bid_path(@job, bid), method: :patch, class: "btn btn-primary" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="bid-description-block">
+        <div class="bids-description">
+          <p><%= bid.description %></p>
+        </div>
+        <div class="bids-drone-description">
+          <div class="job-user-block-drone">
+            <div class="bid-drone-block-avatar">
+              <%= cl_image_tag bid.drone.photo.url, size: "95x95", alt: "drone", style: "border-radius: 50%; padding: 5px; object-fit: cover;"%>
+            </div>
+            <div class="bid-drone-label">
+              <ul>
+                <li>BRAND</li>
+                <li>MODEL</li>
+                <li>CAMERA</li>
+              </ul>
+            </div>
+            <div class="bid-drone-value">  
+              <ul>
+                <li><%=bid.drone.brand%></li>
+                <li><%=bid.drone.model%></li>
+                <li><%=bid.drone.camera%></li>
+              </ul>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
+    </div>
+  </div>
+
   <% end %>
+  <% end %>
+
 </div>
 <%= render 'bids/modal_new', job: @job, drones: @drones %>
