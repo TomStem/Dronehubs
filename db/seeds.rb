@@ -76,16 +76,16 @@ iris = User.new({
   location: "Ilpendam"
   })
 iris[:profile_pic] = "v1459436713/szymrug7ntwrjtjyhaed.jpg"
-iris[:banner_pic] = "v1459436714/a3kxcbwhnieknt59s2pu.jpg" 
+iris[:banner_pic] = "v1459513566/082813_1044_DronesInArc1_y5lfna.jpg" 
 iris.save!
 
 iris_drone1 = Drone.new({
-  brand: "DJI",
-  model: "Phantom 4",
-  camera: "4k",
+  brand: "eBee",
+  model: "Fixed wing",
+  camera: "Multispec 4c",
   user: iris
 })
-iris_drone1[:photo] = "v1459436624/cgqywxydh0dtme1u9vea.jpg"
+iris_drone1[:photo] = "v1459513283/multispectraldrone_lzx3oo.jpg"
 iris_drone1.save!
 
 iris_drone2 = Drone.new({
@@ -214,9 +214,6 @@ UserCategory.create!(user: tom, category: sport)
 UserCategory.create!(user: tom, category: fun)
 UserCategory.create!(user: tom, category: festival)
 UserCategory.create!(user: iris, category: environment)
-UserCategory.create!(user: iris, category: family)
-UserCategory.create!(user: iris, category: fun)
-UserCategory.create!(user: iris, category: other)
 UserCategory.create!(user: iris, category: education)
 
 puts "DONE!"
