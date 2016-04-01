@@ -8,7 +8,7 @@
           <!-- this list should be called with an each statement over each of the categories. Capitals can be changed in css with capitalize -->
           <li><%= link_to "ALL CATEGORIES", pilots_path %></li>
           <% Category.all.each do |c| %>
-            <li class="<%=  @selected_category == c ? "cat_active" : "cat" %>"><%= link_to c.name.upcase, pilots_path(category: c.name) %></li>
+          <li class="<%=  @selected_category == c ? "cat_active" : "cat" %>"><%= link_to c.name.upcase, pilots_path(category: c.name) %></li>
           <% end %>
         </ul>
       </div>
@@ -17,65 +17,76 @@
     <div class="col-xs-12 col-sm-10">
       <h5>PILOTS > 
         <% if @selected_category %>
-            <span><%= @selected_category.name.upcase %></span>
-          <% else %> 
-            <span>ALL CATEGORIES</span>
-          <% end %> 
-       <%= link_to "How to become a pilot", about_path, { class: "btn btn-primary cta-discover"} %>
+        <span><%= @selected_category.name.upcase %></span>
+        <% else %> 
+        <span>ALL CATEGORIES</span>
+        <% end %> 
+        <%= link_to "How to become a pilot", about_path, { class: "btn btn-primary cta-discover"} %>
       </h5>
 
       <% if @selected_category %>
-        <div class="banner pilots" style="background-image: url('<%= image_path(@selected_category.name + ".jpg") %>')">
-      <% else %> 
-      <div class="banner pilots">
-      <% end %> 
-
-        <div class="banner-content" id="all_categories">
-          <% if @selected_category %>
-            <h1><%= @selected_category.name.capitalize %></h1>
-          <% else %> 
-            <h1>All categories</h1>
+      <div class="banner pilots" style="background-image: url('<%= image_path(@selected_category.name + ".jpg") %>')">
+        <% else %> 
+        <div class="banner pilots">
           <% end %> 
-          <p>Find your pilot</p>
+
+          <div class="banner-content" id="all_categories">
+            <% if @selected_category %>
+            <h1><%= @selected_category.name.capitalize %></h1>
+            <% else %> 
+            <h1>All categories</h1>
+            <% end %> 
+            <p>Find your pilot</p>
+          </div>
         </div>
-      </div>
 
-      <div class="kill-padding-card">
-        <div class="row">
-          <div class="card-grid">
-          <% if !owners.empty? %>
-            <% owners.each do |owner| %>
-            <div class="col-xs-12 col-sm-4">
-              <div class="card">
-               <!-- style="background-image: url(' owner.drones.photo ');" -->
-               <% if owner[:banner_pic].nil? %>
-               <%= image_tag "aerial-trees.jpg", class:"card-image" %>
-               <% else %>
-               <%= image_tag owner.banner_pic, class:"card-image"%>
-               <% end %>
+        <div class="kill-padding-card">
+          <div class="row">
+            <div class="card-grid">
+              <% if !owners.empty? %>
+              <% owners.each do |owner| %>
+              <div class="col-xs-12 col-sm-4">
+                <div class="card">
+                  <!-- style="background-image: url(' owner.drones.photo ');" -->
+                  <% if owner[:banner_pic].nil? %>
+                  <%= image_tag "aerial-trees.jpg", class:"card-image" %>
+                  <% else %>
+                  <%= image_tag owner.banner_pic, class:"card-image"%>
+                  <% end %>
 
-               <% if owner[:profile_pic].nil? %>
-               <%= image_tag "https://robohash.org/my-own-slug.png?size=300x300", class:"card-avatar" %>
-               <% else %>
-               <%= image_tag owner.profile_pic, class:"card-avatar"%>
-               <% end %>
-               <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
-               <%= link_to "", pilot_path(owner), class: "card-link" %>
-               <div class="card-description">
-                <h5>Specialised: <%= category_human_names(owner) %></h5>
-                <hr>
-                <p><%=owner.first_name%> is based in <%= owner.location %></p>
+
+                  <!-- image_tag owner.photo, class:"card-user avatar avatar-large" -->
+                  <%= link_to "", pilot_path(owner), class: "card-link" %>
+                  <div class="card-description">
+                    <div class="pilot-block-profile">
+                      <div class="user-block-avatar">
+                        <% if owner[:profile_pic].nil? %>
+                        <%= image_tag "https://robohash.org/my-own-slug.png?size=300x300", class:"card-avatar" %>
+                        <% else %>
+                        <%= image_tag owner.profile_pic, class:"card-avatar"%>
+                        <% end %>
+                        <%= cl_image_tag owner.profile_pic.url, size: "35x35", crop: :fill, style: "border-radius: 50%; object-fit: cover;" %>
+                      </div>
+                      <div class="user-block-description">
+                        <a href=""><%=owner.first_name%> <%=owner.last_name%></a>
+                        <p>Pilot since <%=owner.created_at.strftime('%b %d') %></p>
+                      </div>
+                    </div>
+                    <div class="pilot-block-specialist">
+                      <span>BASED: <%= owner.location %></span>
+                      <p>TAGS: <%= category_human_names(owner) %></p>
+                    </div>
+                  </div>
+                  <!-- this p-content will change with the location and categories when migrated -->
+                </div>
               </div>
-              <!-- this p-content will change with the location and categories when migrated -->
+              <!-- show 10max and allow user to show the next 10 etc.  -->
+              <% end %>
+              <% else %>
+              <p>No pilots in this category yet</p>
+              <% end %>
             </div>
           </div>
-          <!-- show 10max and allow user to show the next 10 etc.  -->
-          <% end %>
-          <% else %>
-            <p>No pilots in this category yet</p>
-        <% end %>
         </div>
       </div>
     </div>
-  </div>
-</div>

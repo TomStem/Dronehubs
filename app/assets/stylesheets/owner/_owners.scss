@@ -47,3 +47,27 @@
     padding: 5px 5px;
   }
 }
+.pilot-block-profile{
+  a{
+    color: #616668;
+  }
+}
+.pilot-block-specialist{
+  padding-top: 10px;
+  display: inline-block;
+  text-transform: uppercase;
+  p{
+    font-size: 14px;
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #79B791;
+    padding-top: 5px;
+  }
+  span{
+    font-size: 14px;
+    padding: 0;
+    margin-bottom: 3px;
+    color: rgba(97, 102, 104, 0.79);
+    font-weight: 500;
+  }
+}
