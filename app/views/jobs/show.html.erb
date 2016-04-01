@@ -26,7 +26,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
 async defer></script>
 
-<div class="container">
+<div class="container padding-top">
   <div class="row">
     <div class="job-details">
       <div class="job-user">
@@ -46,14 +46,14 @@ async defer></script>
               <i class="fa fa-map-marker"></i> <%=@job.location%>
               <span>*</span>
               <i class="fa fa-calendar"></i> <%=@job.date%> 
-              <span>*</span>
-          </div>
+              <span></span>
               <% if !current_user.nil? %>
               <% if current_user.owner == true %>
               <%= link_to "Place a bid", '#', { class: "btn btn-primary new-bid btn-xs", data: {'job-id': @job.id, toggle: "modal", target: "#modal-bid"}} %>
               <% end %>
               <% end %>
             </p>
+          </div>
         </div>
       </div>  
     </div>

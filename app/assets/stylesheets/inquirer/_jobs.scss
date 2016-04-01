@@ -51,7 +51,7 @@
 .user-block-description{
   display: table-cell;
   vertical-align: middle;
-  font-size: 14px;
+  font-size: 15px;
   padding-left: 10px;
   a{
     margin: 0;
@@ -98,6 +98,11 @@
   }
   span{
     padding: 0 5px;
+  }
+  .new-bid{
+    text-transform: lowercase;
+    text-transform: capitalize;
+
   }
 }
 .job-footer-bid{
